@@ -15,6 +15,12 @@ RM := rm -rf
 -include objects.mk
 
 ifneq ($(MAKECMDGOALS),clean)
+ifneq ($(strip $(S_DEPS)),)
+-include $(S_DEPS)
+endif
+ifneq ($(strip $(S_UPPER_DEPS)),)
+-include $(S_UPPER_DEPS)
+endif
 ifneq ($(strip $(C_DEPS)),)
 -include $(C_DEPS)
 endif
@@ -24,24 +30,24 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-spi_test.elf \
+prueba_interruptiontime.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-spi_test.list \
+prueba_interruptiontime.list \
 
 OBJCOPY_BIN += \
-spi_test.bin \
+prueba_interruptiontime.bin \
 
 
 # All Target
-all: spi_test.elf secondary-outputs
+all: prueba_interruptiontime.elf secondary-outputs
 
 # Tool invocations
-spi_test.elf: $(OBJS) $(USER_OBJS) C:\Users\teto_\Documents\FACULTAD_2020\Proyecto\ final\prueba_SPI\spi_test\STM32F103C8TX_FLASH.ld
-	arm-none-eabi-gcc -o "spi_test.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\prueba_SPI\spi_test\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="spi_test.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+prueba_interruptiontime.elf: $(OBJS) $(USER_OBJS) /home/julian/proyecto-final/proyecto_finall/deteccion_inhibidores/STM32F103C8TX_FLASH.ld
+	arm-none-eabi-gcc -o "prueba_interruptiontime.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/home/julian/proyecto-final/proyecto_finall/deteccion_inhibidores/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="prueba_interruptiontime.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -50,13 +56,13 @@ default.size.stdout: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-spi_test.list: $(EXECUTABLES)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "spi_test.list"
+prueba_interruptiontime.list: $(EXECUTABLES)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "prueba_interruptiontime.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-spi_test.bin: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "spi_test.bin"
+prueba_interruptiontime.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "prueba_interruptiontime.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 

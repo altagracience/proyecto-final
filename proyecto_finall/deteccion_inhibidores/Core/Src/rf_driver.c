@@ -80,7 +80,7 @@ uint8_t cc1100_AKS_115_kb[] = {
 		0x18,   // MCSM0    -     Main Radio Control State Machine Configuration
 		0x16,  // FOCCFG    -    Frequency Offset Compensation Configuration
 		0x6C,  // BSCFG     -    Bit Synchronization Configuration
-		0x3C,  // AGCCTRL2  -    AGC Control
+		0x2C,  // AGCCTRL2  -    AGC Control
 		0x78,  // AGCCTRL1  -    AGC Control
 		0x91,  // AGCCTRL0  -    AGC Control
 		0x87,  // WOREVT1       High Byte Event0 Timeout
