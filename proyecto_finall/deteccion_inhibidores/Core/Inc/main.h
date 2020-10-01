@@ -104,10 +104,6 @@ void Error_Handler(void);
 #define LD2_Pin GPIO_PIN_7
 #define LD2_GPIO_Port GPIOB
 
-
-int agcctrl2r();
-int agcctrl1r();
-int agcctrl0r();
 void RSSI_level(int RSSI);
 /* USER CODE END Private defines */
 

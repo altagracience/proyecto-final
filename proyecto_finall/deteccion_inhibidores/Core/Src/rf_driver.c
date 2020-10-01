@@ -69,7 +69,7 @@ uint8_t cc1100_AKS_115_kb[] = {
 		0x10,   // FREQ2    -     Frequency Control Word, High Byte
 		0xB0,   // FREQ1    -     Frequency Control Word, Middle Byte
 		0x71,   // FREQ0    -     Frequency Control Word, Low Byte
-		0xA9,  // MDMCFG4       Modem Configuration
+		0x69,  // MDMCFG4       Modem Configuration
 		0xE4,   // MDMCFG3  -     Modem Configuration
 		0x30,   // MDMCFG2  -     Modem Configuration
 		0x22,  // MDMCFG1   -    Modem Configuration

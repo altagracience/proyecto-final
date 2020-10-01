@@ -50,9 +50,6 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 
-uint8_t agcctrl0;
-uint8_t agcctrl1;
-uint8_t agcctrl2;
 uint16_t promedio, promediador, contador500ms = 0,  contador10cero_consecutivo = 0, contador200ms = 0;
 uint8_t contador1000ms = 0;
 _Bool banderadeuno, contador500ms_start, b10ms_clear = 0, bLed = 0;
@@ -128,65 +125,6 @@ int main(void)
   int result = rf_read_register(MARCSTATE);
 
 //  test_cargar_cfg();
-
-  while(i!=0){
-	  i++;
-//	  result = rf_read_register(0xF4);
-//	  if(result < 128)  result = (int)(result/2)-74;
-//	  else result = (int)((result -256)/2)-74;
-	  if(i==250) i=1;
-  }
-
-
-
-
-  uint8_t boton;
-
-  while (1)
-     {
-	  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) boton=1;
-	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) boton=2;
-	  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)) boton=3;
-	  else boton=0;
-
-	  switch(boton){
-	  case 1:
-		  agcctrl2r();
-		  error = rf_begin(&hspi1, AKS_115_kb, MHz434, CS_GPIO_Port, CS_Pin, GDO0_Pin);
-		  rf_set_carrier_frequency(433.92);
-		  rf_set_carrier_offset(50);
-		  test_cargar_cfg();
-		  rf_write_register(0X1B, agcctrl2);
-		  rf_write_strobe(SRX);
-		  break;
-
-	  case 2:
-		  agcctrl1r();
-		  error = rf_begin(&hspi1, AKS_115_kb, MHz434, CS_GPIO_Port, CS_Pin, GDO0_Pin);
-		  rf_set_carrier_frequency(433.92);
-		  rf_set_carrier_offset(50);
-		  test_cargar_cfg();
-		  rf_write_register(0X1C, agcctrl1);
-		  rf_write_strobe(SRX);
-		  break;
-
-	  case 3:
-		  agcctrl0r();
-		  error = rf_begin(&hspi1, AKS_115_kb, MHz434, CS_GPIO_Port, CS_Pin, GDO0_Pin);
-		  rf_set_carrier_frequency(433.92);
-		  rf_set_carrier_offset(50);
-		  test_cargar_cfg();
-		  rf_write_register(0X1D, agcctrl0);
-		  rf_write_strobe(SRX);
-		  break;
-
-	  default:
-		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-		  HAL_Delay(300);
-
-	  }
-     }
-
 
   /* USER CODE END 2 */
 
@@ -449,183 +387,6 @@ return 0;
 }
 
 
-
-int agcctrl2r(){
-
-	uint8_t  MAX_DVGA_GAIN, MAX_LNA_GAIN, MAGN_TARGET;
-	uint8_t boton;
-	agcctrl2 = rf_read_register(0x01B);
-	HAL_Delay(100);
-
-	while (1){
-
-		MAX_DVGA_GAIN = (agcctrl2 & 0b11000000) >> 6;
-		MAX_LNA_GAIN  = (agcctrl2 & 0b00111000) >> 3;
-		MAGN_TARGET  = (agcctrl2 & 0b00000111);
-
-		if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) boton=1;
-		else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) boton=2;
-		else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)) boton=3;
-		else boton=0;
-
-		switch(boton){
-		case 1:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl2 += 64; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl2 -= 64; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-		case 2:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl2 += 8; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl2 -= 8; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-		case 3:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl2 += 1; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl2 -= 1; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-
-		default:
-		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-		  HAL_Delay(300);
-
-		}
-	 }
-}
-
-
-int agcctrl1r(){
-
-	uint8_t  AGC_LNA_PRIORITY, CARRIER_SENSE_REL_THR, CARRIER_SENSE_ABS_THR;
-
-	agcctrl1 = rf_read_register(0x01C);
-	HAL_Delay(100);
-
-	uint8_t boton;
-
-
-	while (1){
-
-		AGC_LNA_PRIORITY = (agcctrl1 & 0b01000000) >> 6;
-		CARRIER_SENSE_REL_THR  = (agcctrl1 & 0b00110000) >> 4;
-		CARRIER_SENSE_ABS_THR  = (agcctrl1 & 0b00001111);
-
-		if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) boton=1;
-		else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) boton=2;
-		else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)) boton=3;
-		else boton=0;
-
-		switch(boton){
-		case 1:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl1 += 64; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl1 -= 64; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-		case 2:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl1 += 16; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl1 -= 16; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-		case 3:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl1 += 1; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl1 -= 1; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-
-		default:
-		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-		  HAL_Delay(300);
-
-		}
-	 }
-
-
-}
-
-int agcctrl0r(){
-
-	uint8_t  HYST_LEVEL, WAIT_TIME, AGC_FREEZE, FILTER_LENGTH;
-
-	agcctrl0 = rf_read_register(0x01D);
-	HAL_Delay(100);
-
-	uint8_t boton;
-	while (1){
-
-		HYST_LEVEL = (agcctrl0 & 0b11000000) >> 6;
-		WAIT_TIME  = (agcctrl0 & 0b00110000) >> 4;
-		AGC_FREEZE  = (agcctrl0 & 0b00001100) >> 2;
-		FILTER_LENGTH = (agcctrl0 & 0b00000011);
-
-		if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) boton=1;
-		else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) boton=2;
-		else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_14)) boton=3;
-		else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_15)) boton=4;
-		else boton=0;
-
-		switch(boton){
-		case 1:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl0 += 64; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl0 -= 64; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-		case 2:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl0 += 16; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl0 -= 16; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-		case 3:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl0 += 4; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl0 -= 4; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-		case 4:
-			while(1){
-			  if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_12)) {agcctrl0 += 1; return 0;}
-			  else if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_13)) {agcctrl0 -= 1; return 0;}
-			  HAL_Delay(300);
-			}
-			break;
-
-
-		default:
-		  HAL_GPIO_TogglePin(GPIOC, GPIO_PIN_13);
-		  HAL_Delay(300);
-
-		}
-	 }
-
-
-}
-
-
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 	int result_RSSI;
@@ -639,26 +400,36 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			contador200ms = 0;
 
 			result = rf_read_register(RSSI);
-			if(result < 128)  result_RSSI = (int)(result/2)-74;
-			else result_RSSI = (int)((result -256)/2)-74;
+			if(result < 128){
+				result_RSSI = (int)(result/2)-74;
+			}
+			else{
+				result_RSSI = (int)((result -256)/2)-74;
+			}
 
 			RSSI_level(result_RSSI);
 		}
 
-		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 1) contador500ms_start = 1;
+		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 1){
+			contador500ms_start = 1;
+		}
 
 		if(contador500ms_start == 1) {
 			contador500ms++;
 
 			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 0) {
-				if(banderadeuno == 0) contador10cero_consecutivo++;
+				if(banderadeuno == 0){
+					contador10cero_consecutivo++;
+				}
 				banderadeuno=0;
 
 			}
 
 			else {
 				promediador++;
-				if(banderadeuno == 1)contador10cero_consecutivo = 0;
+				if(banderadeuno == 1){
+					contador10cero_consecutivo = 0;
+				}
 				banderadeuno = 1;
 				b10ms_clear=0;
 			}
@@ -681,10 +452,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 
 			if(contador1000ms < 2){
-				if(bLed == 1)HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
+				if(bLed == 1){
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
+				}
 			}
 			else {
-				if(bLed == 0)HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1);
+				if(bLed == 0){
+					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1);
+				}
 				bLed = 0;
 				contador1000ms = 0;
 			}
