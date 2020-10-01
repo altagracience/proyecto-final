@@ -1,0 +1,14 @@
+main.c:81:5:main	32	static
+main.c:209:6:SystemClock_Config	72	static
+main.c:247:13:MX_SPI1_Init	8	static
+main.c:285:13:MX_TIM4_Init	32	static
+main.c:330:13:MX_USART1_UART_Init	8	static
+main.c:363:13:MX_GPIO_Init	40	static
+main.c:426:6:transmit_demo	40	dynamic
+main.c:447:5:test	4	static
+main.c:453:5:agcctrl2r	16	static
+main.c:506:5:agcctrl1r	16	static
+main.c:563:5:agcctrl0r	16	static
+main.c:629:6:HAL_TIM_PeriodElapsedCallback	24	static
+main.c:698:6:RSSI_level	40	static
+main.c:724:6:Error_Handler	4	static

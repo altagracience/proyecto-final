@@ -1,0 +1,5 @@
+main.c:166:6:SystemClock_Config	72	static
+main.c:274:6:transmit_demo	16	dynamic
+main.c:67:5:main	8264	dynamic,bounded
+main.c:295:5:test	0	static
+main.c:306:6:Error_Handler	0	static
