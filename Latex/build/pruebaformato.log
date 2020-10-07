@@ -1,12 +1,12 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.6)  7 OCT 2020 20:02
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.6)  7 OCT 2020 20:23
 entering extended mode
 **"c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/pruebaformato.tex"
 ("c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/pruebaformato.tex"
 LaTeX2e <2020-10-01>
-L3 programming layer <2020-09-24> xparse <2020-03-03> (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/base\book.cls
-Document Class: book 2020/04/10 v1.4m Standard LaTeX document class
-(C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/base\bk12.clo
-File: bk12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
+L3 programming layer <2020-09-24> xparse <2020-03-03> (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/base\report.cls
+Document Class: report 2020/04/10 v1.4m Standard LaTeX document class
+(C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/base\size12.clo
+File: size12.clo 2020/04/10 v1.4m Standard LaTeX file (size option)
 )
 \c@part=\count175
 \c@chapter=\count176
@@ -56,20 +56,20 @@ File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
 ) ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\pruebaformato.aux")
 \openout1 = `pruebaformato.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
-LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
+LaTeX Font Info:    ... okay on input line 28.
  (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count185
@@ -88,22 +88,13 @@ Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 29.
+(Font)              <14.4> on input line 34.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 29.
+(Font)              <7> on input line 34.
  [1
 
 
-
-{C:/Users/teto_/AppData/Local/MiKTeX/pdftex/config/pdftex.map}]
-<LogoUTN.png, id=7, 301.125pt x 301.125pt>
-File: LogoUTN.png Graphic file (type png)
-<use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 30.
-(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [2
-
- <./LogoUTN.png (PNG copy)>] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\pruebaformato.toc"
+{C:/Users/teto_/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\pruebaformato.toc"
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <12> on input line 1.
 LaTeX Font Info:    External font `cmex10' loaded for size
@@ -114,31 +105,34 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `pruebaformato.toc'.
 
- [3]
-File: LogoUTN.png Graphic file (type png)
-<use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 32.
-(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [4
+ [1
 
 ]
+<LogoUTN.png, id=10, 301.125pt x 301.125pt>
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 40.
+Package pdftex.def Info: LogoUTN.png  used on input line 43.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [1] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\pruebaformato.aux") ) 
+ [1
+
+ <./LogoUTN.png (PNG copy)>]
+File: LogoUTN.png Graphic file (type png)
+<use LogoUTN.png>
+Package pdftex.def Info: LogoUTN.png  used on input line 47.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [2] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\pruebaformato.aux") ) 
 Here is how much of TeX's memory you used:
- 1360 strings out of 480236
- 21271 string characters out of 2880559
- 283919 words of memory out of 3000000
- 17946 multiletter control sequences out of 15000+200000
+ 1357 strings out of 480236
+ 21253 string characters out of 2880559
+ 283876 words of memory out of 3000000
+ 17943 multiletter control sequences out of 15000+200000
  540862 words of font info for 48 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 60i,14n,66p,267b,308s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 60i,14n,66p,267b,306s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb>
-Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\pruebaformato.pdf" (5 pages, 36070 bytes).
+Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\pruebaformato.pdf" (4 pages, 35493 bytes).
 PDF statistics:
- 27 PDF objects out of 1000 (max. 8388607)
+ 24 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 
