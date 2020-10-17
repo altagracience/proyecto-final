@@ -222,6 +222,14 @@ INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tf
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
 OUTPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.toc
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
+OUTPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lot
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lot
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lot
+OUTPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lot
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT .\LogoUTN.png
 INPUT .\LogoUTN.png

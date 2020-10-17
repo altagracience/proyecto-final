@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.6)  17 OCT 2020 15:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.6)  17 OCT 2020 15:59
 entering extended mode
 **"c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
 ("c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
@@ -154,6 +154,8 @@ Package pdftex.def Info: LogoUTN.png  used on input line 33.
 
 {C:/Users/teto_/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./LogoUTN.png (PNG copy)>] [1
 
+] [2
+
 ] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.toc"
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
@@ -167,29 +169,49 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 \tf@toc=\write3
 \openout3 = `ProyectoFinal.toc'.
 
+ [3
+
+] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof"
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lof=\write4
+\openout4 = `ProyectoFinal.lof'.
+
+ [4
+
+
+] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lot"
+LaTeX Info: Redefining \. on input line 1.
+LaTeX Info: Redefining \% on input line 1.
+)
+\tf@lot=\write5
+\openout5 = `ProyectoFinal.lot'.
+
  [1
+
 
 ]
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 86.
+Package pdftex.def Info: LogoUTN.png  used on input line 107.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [2] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 ) ) 
 Here is how much of TeX's memory you used:
- 2997 strings out of 480236
- 46068 string characters out of 2880559
+ 3007 strings out of 480236
+ 46514 string characters out of 2880559
  330176 words of memory out of 3000000
- 19528 multiletter control sequences out of 15000+200000
+ 19532 multiletter control sequences out of 15000+200000
  539988 words of font info for 45 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  64i,14n,70p,294b,361s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (4 pages, 53489 bytes).
+Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (7 pages, 58859 bytes).
 PDF statistics:
- 28 PDF objects out of 1000 (max. 8388607)
+ 39 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
  6 words of extra memory for PDF output out of 10000 (max. 10000000)
 

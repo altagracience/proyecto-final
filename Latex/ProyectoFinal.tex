@@ -62,18 +62,39 @@
     
 \end{titlepage}
 
+\pagenumbering{roman}
 
 \chapter*{}
 \pagenumbering{Roman} % para comenzar la numeracion de paginas en numeros romanos
 \begin{flushright}
 \textit{Agradecemos profundamente a nuestra familia \\
-que siempre nos apoyó en este camino \\
+que siempre nos apoyó en este largo camino \\
 y a la Universidad Tecnológica Nacional, \\
 particularmente a la carrera de ingeniería electrónica,
 la cual siempre se caracterizó por la buena organización y la búsqueda del bienestar estudiantil.}
 \end{flushright}
-\tableofcontents
 
+\chapter*{Resumen} % si no queremos que añada la palabra "Capitulo"
+\addcontentsline{toc}{section}{Resumen} % si queremos que aparezca en el índice
+\markboth{RESUMEN}{RESUMEN} % encabezado
+
+En este documento se plasma el proceso de investigación y desarrollo de un sistema multinodal pensado para detectar 
+inhibiciones en los sistemas de seguridad vehicular que funcionen en la frecuencia de 433,92MHz.\\
+El dispositivo planteado cuenta con tres unidades de recepción, las cuales denominamos nodos, y una central de procesamiento
+encargada de comunicarse y gestionar la información por estos recolectada. \\
+Para la comunicación entre los nodos y la central se utiliza el protocolo RS485, 
+y para comunicar la central con un servidor web teniendo así los datos a disposición remotamente se hace uso de un módulo GSM.
+
+
+\tableofcontents % indice de contenidos
+
+\cleardoublepage
+% \addcontentsline{toc}{chapter}{Lista de figuras} % para que aparezca en el indice de contenidos
+\listoffigures % indice de figuras
+
+\cleardoublepage
+% \addcontentsline{toc}{chapter}{Lista de tablas} % para que aparezca en el indice de contenidos
+\listoftables % indice de tablas
 
 \pagenumbering{arabic}
 \section{Capitulo}
