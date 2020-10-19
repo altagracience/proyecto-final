@@ -1,5 +1,5 @@
 \babel@toc {spanish}{}
 \contentsline {section}{Resumen}{II}{}%
-\contentsline {section}{\numberline {0.1}Capitulo}{1}{}%
-\contentsline {subsection}{\numberline {0.1.1}One}{1}{}%
-\contentsline {subsection}{\numberline {0.1.2}Two}{2}{}%
+\contentsline {chapter}{\numberline {1}Introducción}{2}{}%
+\contentsline {section}{\numberline {1.1}Objetivos de la investigación}{3}{}%
+\contentsline {section}{\numberline {1.2}Estado del arte}{3}{}%

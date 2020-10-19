@@ -83,7 +83,7 @@ inhibiciones en los sistemas de seguridad vehicular que funcionen en la frecuenc
 El dispositivo planteado cuenta con tres unidades de recepción, las cuales denominamos nodos, y una central de procesamiento
 encargada de comunicarse y gestionar la información por estos recolectada. \\
 Para la comunicación entre los nodos y la central se utiliza el protocolo RS485, 
-y para comunicar la central con un servidor web teniendo así los datos a disposición remotamente se hace uso de un módulo GSM.
+y para comunicar la central con un servidor web, teniendo así los datos a disposición remotamente, se hace uso de un módulo GSM.
 
 
 \tableofcontents % indice de contenidos
@@ -97,10 +97,33 @@ y para comunicar la central con un servidor web teniendo así los datos a dispos
 \listoftables % indice de tablas
 
 \pagenumbering{arabic}
-\section{Capitulo}
-\subsection{One}
+\chapter{Introducción}
+Hoy en día en muchos paises, y particularmente en la Argentina, se presenta una recurrente modalida de delincuencia que trata de 
+inhibir los sistemas de seguridad vehicular, no permitiendo que estos se cierren y pudiendo tener completo acceso a su interior. Es 
+una metodología muy usada debido a que no se hace uso de la fuerza bruta para ingresar al vehículo y apela a la distracción del usuario.\\
+Siendo conscientes de esta problemática nos hemos empeñado en desarrollar un sistema de detección de los dispositivos utilizados
+con este fin. Como se verá más adelante se ha hecho un relevamiento de los dispositivos incautados por la policía a través de notas
+periodísticas y con vínculos internos a departamentos policiales que pusieron a disposición la información presente sobre estos.\\
+Los inhibidores pueden operar corrompiendo la trama de datos emitida por el llavero, no dejando así que el receptor del vehículo 
+pueda identificar el intento de comunicación y también lo pueden hacer saturando el receptor, cosa que de igual manera este no puede identificar
+la comunicación intentada. Creemos importante que el dispositivo a diseñar abarque estas dos posibilidades. \\
+Otra característica importante a la hora de encarar el proyecto es determinar la frecuencia de operación. Los controles remotos poseen transmisores
+de radio de corto alcance que operan en dos bandas posibles: 433,92 MHz para vehículos de origen europeo y asiático y 315 MHz para vehículos de origen 
+norteamericano. En la Argentina la mayor cantidad de sistemas de seguridad operan en 433,92 MHz por lo que nos pareció adecuado diseñar el
+detector para esta frecuencia. \\
+Una vez definidas los requerimientos básicos del desarrollo es importante establecer el lugar en el que creemos adecuado que opere. Es así
+que surge la idea de tener al menos tres nodos receptores capaces de identificar si hay o no un inhibidor en las inmediaciones de este
+y que la información que recolecte sea enviada a una unidad de procesamiento, que denominamos "central", la cual se encargaría de 
+comunicarse con los nodos, recopilar la información y subirla a una base de datos, permitiendo la visualización remota de lo que está sucediendo 
+en tiempo real y, de ser posible, triangular la posición estimada del dispositivo inhibidor dentro del arreglo de receptores.\\
+Esto sería emplazado en un estacionamiento utilizando una estrategia de disposición que se analizará más adelante
+
+\section{Objetivos de la investigación}
+En base a la información recolectada hemos definido las bases de funcionamiento
+capacidad de detectar inhibicion de potencia o corrupcion
+\section{Estado del arte}
 \pagebreak
-\subsection{Two}
+
 
 
 
