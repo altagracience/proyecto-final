@@ -6,6 +6,7 @@
 \usepackage[spanish]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage{subfigure} 
+\usepackage{todonotes}
 
 
 \pagestyle{myheadings}
@@ -23,6 +24,7 @@
 
 
 \begin{document}
+
 
 \begin{titlepage}
 
@@ -194,6 +196,74 @@ comando de acción repetidamente hasta que se deje de accionar.
 \end{figure}
 
 \subsection{Tipos de inhibiciones}
+
+Un inhibidor, o en inglés jammer, es un dispositivo desarrollado con el objetivo de deteriorar la comunicación en un enlace de 
+radiofrecuencia. Este objetivo puede ser logrado mediante dos estrategias:
+
+\begin{itemize}
+    \item Inhibición por corrupción de datos
+    \item Inhibición por saturación de etapa receptora
+
+\end{itemize}
+
+\subsubsection{Inhibición por corrupción de datos}
+
+El ataque más evidente que se presenta para inhibir una comunicación es el de inyectar en el canal que se desea perjudicar una señal con 
+datos aleatorios que perjudique la relación señal ruido (SNR) y dificulte la recepción para el sistema. \\
+En el caso particular de los vehículos, los receptores de radiofrecuencia que se utilizan y sobre los que basamos nuestro análisis
+son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se puede observar en \todo[inline, inlinewidth=9cm, noinlinepar]{[1] AGREGAR REF A datasheet de MAX147}-.\\
+El ancho de banda de recepción da lugar a sumar ruido en el canal, alterando así los datos recibidos por el demodulador. Una figura
+ilustrativa se puede observa en la imagen \ref{fpb_jam} de \todo[inline, inlinewidth=9cm, noinlinepar]{referencia a carhackerhandbook [2]}.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.8]{fpb_jam.png}
+	\caption{Presencia de inhibidor en ancho de banda de recepción}
+	\label{fpb_jam}
+\end{figure}
+
+Existen diversas alternativas para efectivizar este tipo de interferencias. En la figura \ref{fpb_jam} se observa que se ha inyectado una
+interferencia de ancho de banda angosto, pero también podría sumarse un tono, multitonos o sumar una señal de gran ancho de banda que 
+tape completamente el canal. \\
+Las alternativas antes mencionadas hacen referencia a inhibidores no inteligentes, los cuales están metiendo ruido constantemente. Hay otras 
+alternativas de inhibiciones que de manera continua están escuchando el canal y cuando detectan una señal que 
+desean interferir comienzan a emitir el ruido - en los papers \todo[inline, inlinewidth=3cm, noinlinepar]{[3]-[5]} se detallan
+los métodos inteligentes más utilizados-. 
+
+\subsubsection{Inhibición por saturación de etapa receptora}
+
+Los receptores de radiofrecuencia usualmente están diseñados asumiendo que se recibirá una pequeña señal de entrada, por lo que la primer
+etapa presente es un amplificador de bajo ruido.  Este es clave para que el ruido del mezclador no afecte la relación señal ruido de las 
+etapas siguientes. Entre las especificaciones importantes de dichos amplificadores de RF se incluyen la figura de ruido, la ganancia y la 
+intercepción de intermodulación de tercer orden.\\
+La influencia de grandes señales de interferencia se manifiesta de varias formas. Una de estas es en la intermodulación de tercer orden en 
+la que dos señales, una pequeña (de interés) y la interferente (de gran amplitud), se superponen. La interferente podría saturar el receptor
+de modo que la señal de interés presente una pequeña ganancia. Este efecto es causado por la no linealidad de tercer orden del sistema y la relación
+entrada salida está regida por \ref{eq:tercer_orden}
+
+\begin{equation}\label{eq:tercer_orden}
+    y(t) \approx  a_1 x(t) + a_2 x^{2}(t) + a_3 x^{3}(t) 
+\end{equation}
+
+Donde \emph{y} es la salida del sistema y \(a_1, a_2, a_3 \) son coeficientes. Ahora supongamos que la entrada, como es de esperar con lo antes
+descripto, es \(x(t)=V_1 cos(\omega_1 t)+ V_2 cos(\omega_2 t)\), \(V_1\) representando a la señal de interés y \(V_2\) a la interferente.\\
+Reemplazando en la ecuación \ref{eq:tercer_orden} y asumiendo que la interferencia es mucho más grande que la señal, la salida del sistema 
+en la frecuencia de interés \(\omega_1\) resulta ser \ref{eq:intermodulacion}
+
+\begin{equation}\label{eq:intermodulacion}
+    y(t) \approx \left( a_1 x(t) + \frac{3}{2} a_3 V_2^{2} \right) V_1  cos(\omega_1 t)
+\end{equation}
+
+Para que el sistema comprima la ganancia, como es evidente que sucede, el producto \(a_1 a_3 < 0\). De aquí se puede observar entonces que
+la salida del sistema en la frecuencia deseada es función de \(V_2^{2}\) y que la ganancia decae, saturando el sistema y decrementando la SNR.
+Esto es fácilmente observable en la figura \ref{no_linealidad_e_tercer_orden}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{no_linealidad_e_tercer_orden.png}
+	\caption{Compresión de la ganancia por no linealidad de tercer orden}
+	\label{no_linealidad_e_tercer_orden}
+\end{figure}
 
 
 \section{Objetivos de la investigación}
