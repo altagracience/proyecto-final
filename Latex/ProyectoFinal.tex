@@ -227,36 +227,41 @@ interferencia de ancho de banda angosto, pero también podría sumarse un tono, 
 tape completamente el canal. \\
 Las alternativas antes mencionadas hacen referencia a inhibidores no inteligentes, los cuales están metiendo ruido constantemente. Hay otras 
 alternativas de inhibiciones que de manera continua están escuchando el canal y cuando detectan una señal que 
-desean interferir comienzan a emitir el ruido - en los papers \todo[inline, inlinewidth=3cm, noinlinepar]{[3]-[5]} se detallan
-los métodos inteligentes más utilizados-. 
+desean interferir comienzan a emitir el ruido. Estos casos serán detallados más adelante.
 
 \subsubsection{Inhibición por saturación de etapa receptora}
 
 Los receptores de radiofrecuencia usualmente están diseñados asumiendo que se recibirá una pequeña señal de entrada, por lo que la primer
 etapa presente es un amplificador de bajo ruido.  Este es clave para que el ruido del mezclador no afecte la relación señal ruido de las 
 etapas siguientes. Entre las especificaciones importantes de dichos amplificadores de RF se incluyen la figura de ruido, la ganancia y la 
-intercepción de intermodulación de tercer orden.\\
+intercepción de intermodulación de tercer orden.\\ \todo[inline, inlinewidth=4cm, noinlinepar]{[6]-[7]}
 La influencia de grandes señales de interferencia se manifiesta de varias formas. Una de estas es en la intermodulación de tercer orden en 
 la que dos señales, una pequeña (de interés) y la interferente (de gran amplitud), se superponen. La interferente podría saturar el receptor
 de modo que la señal de interés presente una pequeña ganancia. Este efecto es causado por la no linealidad de tercer orden del sistema y la relación
-entrada salida está regida por \ref{eq:tercer_orden}
+entrada salida está regida por \ref{eq:tercer_orden}.
 
 \begin{equation}\label{eq:tercer_orden}
     y(t) \approx  a_1 x(t) + a_2 x^{2}(t) + a_3 x^{3}(t) 
 \end{equation}
 
 Donde \emph{y} es la salida del sistema y \(a_1, a_2, a_3 \) son coeficientes. Ahora supongamos que la entrada, como es de esperar con lo antes
-descripto, es \(x(t)=V_1 cos(\omega_1 t)+ V_2 cos(\omega_2 t)\), \(V_1\) representando a la señal de interés y \(V_2\) a la interferente.\\
-Reemplazando en la ecuación \ref{eq:tercer_orden} y asumiendo que la interferencia es mucho más grande que la señal, la salida del sistema 
-en la frecuencia de interés \(\omega_1\) resulta ser \ref{eq:intermodulacion}
+descripto, resulta:
+
+\begin{equation}\label{eq:entrada}
+    x(t)=V_1 cos(\omega_1 t)+ V_2 cos(\omega_2 t)
+\end{equation}
+
+\(V_1\) representando a la señal de interés y \(V_2\) a la interferente.\\
+Reemplazando en la ecuación \ref{eq:entrada} en \ref{eq:tercer_orden} y asumiendo que la interferencia es mucho más grande que la señal, 
+la salida del sistema en la frecuencia de interés \(\omega_1\) resulta ser \ref{eq:intermodulacion}.
 
 \begin{equation}\label{eq:intermodulacion}
     y(t) \approx \left( a_1 x(t) + \frac{3}{2} a_3 V_2^{2} \right) V_1  cos(\omega_1 t)
 \end{equation}
 
 Para que el sistema comprima la ganancia, como es evidente que sucede, el producto \(a_1 a_3 < 0\). De aquí se puede observar entonces que
-la salida del sistema en la frecuencia deseada es función de \(V_2^{2}\) y que la ganancia decae, saturando el sistema y decrementando la SNR.
-Esto es fácilmente observable en la figura \ref{no_linealidad_e_tercer_orden}
+la salida del sistema en la frecuencia deseada es función de \(V_2^{2}\), que la ganancia decae saturando el sistema y por ende se decrementa 
+la SNR. Esto es fácilmente observable en la figura \ref{no_linealidad_e_tercer_orden}.
 
 \begin{figure}[htb]
 	\centering
@@ -264,6 +269,63 @@ Esto es fácilmente observable en la figura \ref{no_linealidad_e_tercer_orden}
 	\caption{Compresión de la ganancia por no linealidad de tercer orden}
 	\label{no_linealidad_e_tercer_orden}
 \end{figure}
+
+\subsection{Estrategias de inhibición}
+
+Antes hemos presentado los principios de inhibición que se pueden utilizar, en este apartado se tratará de una manera generalizada las diversas 
+estrategias existentes para inhibir sistemas de comunicación. Cada una de estas estrategias tienen ventajas y desventajas, por lo que es necesario
+hacer un análisis del ámbito de aplicación para elegir la más adecuada.
+
+
+\subsubsection{Inhibición por ruido de banda ancha}
+
+La característica principal de este tipo de estrategia es que introduce energía dentro de todo el ancho del espectro donde opera la comunicación.
+Es aplicable a cualquier tipo de señal y es ideal para inhibir comunicaciones que tienen destinada una gran parte del espectro de frecuencias.\\
+Este método tiene una fuerte desventaja y es que la potencia de interferencia aportada en el canal deseado tiene una muy baja densidad debido 
+a es aplicada a un gran ancho de banda.
+
+\subsubsection{Inhibición por ruido de banda parcial}
+
+Este método opera inyectando ruido en bandas específicas del espectro, de modo que se efectúa la  inhibición en zonas de interés. Estas zonas 
+pueden ser continuas o discontinuas, por lo que se destina más inteligentemente la potencia consumida. El ejemplo más trivial aplicado a nuestro
+campo sería el de un inhibidor que funcione en 433,92 y en 315 MHz, siendo  aplicable a todos los canales de comunicación de controles remotos.
+
+\subsubsection{Inhibición por ruido de banda angosta}
+
+Esta caso es el más utilizado en el campo de inhibición sobre el que nos centramos ya que permite puntualizar la potencia en una pequeña
+banda aumentando la densidad de potencia espectral. Para su aplicación es necesario conocer precisamente el canal a atacar debido a que las 
+comunicaciones innalámbricas de banda angosta poseen un angosto filtrado.
+
+\subsubsection{Inhibición por tono}
+
+Se utiliza una señal constante que se modula con la portadora resultando una señal de muy angosto ancho de banda. En sistemas de comunicación 
+avanzados posee una alta eficiencia de interferencia ya que perjudica la recuperación de la sintonización a causa de que el receptor detecta 
+la señal como una segunda portadora y de que más potencia por Hertz (densidad de potencia espectral) gracias a que está más concentrado
+en el canal, como profundamente se analiza en \todo[inline, inlinewidth=3cm, noinlinepar]{[8]}.
+
+\subsubsection{Inhibición por pulsos}
+
+En esta estrategia nos enfocamos en el tiempo que se genera la interferencia. Se hace uso de uno de los métodos anteriores de inhibición
+y se desata la misma de manera inteligente. De aquí surge el concepto de aplicar la estrategia a casos específicos, permitiendo, por ejemplo:
+romper tramas específicas de datos conocidas cuando se detecta un CLT/RTS, interferir el dato de direccionamiento MAC o romper exclusivamente
+la trama de datos.
+
+\subsubsection{Inhibición por barrido y seguimiento}
+
+Esta es una aplicación del ruido de banda parcial. Se realiza una variación rápida del posicionamiento espectral de la interferencia para inhibir
+un gran ancho de banda teniendo un mejor aprovechamiento de la potencia disponible.\\
+De esta alternativa se desprende la capacidad de seguimiento de la señal inhibidora, permitiendo contrarestar estrategias de comunicación que 
+hacen uso de saltos de canales para ser efectivas.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.8]{tipos_de_jam.png}
+    \caption{Donde a) es el canal a inhibir, b) inhibición por ruido de banda ancha, c) inhibición por ruido de banda parcial continuo, 
+    d) inhibición por ruido de banda parcial discontinuo, e) inhibición por ruido de banda angosta, f) inhibición por tono }
+	\label{tipos_de_jam}
+\end{figure}
+
+
 
 
 \section{Objetivos de la investigación}

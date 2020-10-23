@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  21 OCT 2020 21:38
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  22 OCT 2020 22:31
 entering extended mode
 **"c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
 ("c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
@@ -468,39 +468,59 @@ Package pdftex.def Info: fpb_jam.png  used on input line 220.
 (pdftex.def)             Requested size: 263.1836pt x 182.48198pt.
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 243.
+Package pdftex.def Info: LogoUTN.png  used on input line 242.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [7 <./fpb_jam.png>]
 <no_linealidad_e_tercer_orden.png, id=77, 367.3725pt x 688.07062pt>
 File: no_linealidad_e_tercer_orden.png Graphic file (type png)
 <use no_linealidad_e_tercer_orden.png>
-Package pdftex.def Info: no_linealidad_e_tercer_orden.png  used on input line 263.
+Package pdftex.def Info: no_linealidad_e_tercer_orden.png  used on input line 268.
 (pdftex.def)             Requested size: 146.94638pt x 275.22337pt.
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 274.
+Package pdftex.def Info: LogoUTN.png  used on input line 278.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [8]
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 279.
+Package pdftex.def Info: LogoUTN.png  used on input line 287.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [9 <./no_linealidad_e_tercer_orden.png>] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
+ [9 <./no_linealidad_e_tercer_orden.png>]
+File: LogoUTN.png Graphic file (type png)
+<use LogoUTN.png>
+Package pdftex.def Info: LogoUTN.png  used on input line 319.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [10]
+<tipos_de_jam.png, id=93, 353.06906pt x 387.69844pt>
+File: tipos_de_jam.png Graphic file (type png)
+<use tipos_de_jam.png>
+Package pdftex.def Info: tipos_de_jam.png  used on input line 322.
+(pdftex.def)             Requested size: 282.45563pt x 310.15916pt.
+File: LogoUTN.png Graphic file (type png)
+<use LogoUTN.png>
+Package pdftex.def Info: LogoUTN.png  used on input line 336.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [11 <./tipos_de_jam.png>]
+File: LogoUTN.png Graphic file (type png)
+<use LogoUTN.png>
+Package pdftex.def Info: LogoUTN.png  used on input line 341.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [12] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
 LaTeX Info: Redefining \. on input line 8.
 LaTeX Info: Redefining \% on input line 8.
 ) ) 
 Here is how much of TeX's memory you used:
- 13865 strings out of 480236
- 283380 string characters out of 2880558
- 545873 words of memory out of 3000000
- 30165 multiletter control sequences out of 15000+200000
+ 13875 strings out of 480236
+ 283562 string characters out of 2880558
+ 544945 words of memory out of 3000000
+ 30174 multiletter control sequences out of 15000+200000
  540295 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,15n,99p,501b,857s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (14 pages, 390769 bytes).
+Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (17 pages, 432137 bytes).
 PDF statistics:
- 113 PDF objects out of 1000 (max. 8388607)
+ 124 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 500000)
- 134 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 139 words of extra memory for PDF output out of 10000 (max. 10000000)
 
