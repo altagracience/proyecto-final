@@ -7,6 +7,7 @@
 \usepackage[utf8]{inputenc}
 \usepackage{subfigure} 
 \usepackage{todonotes}
+\usepackage{hyperref}
 
 
 \pagestyle{myheadings}
@@ -324,6 +325,53 @@ hacen uso de saltos de canales para ser efectivas.
     d) inhibición por ruido de banda parcial discontinuo, e) inhibición por ruido de banda angosta, f) inhibición por tono }
 	\label{tipos_de_jam}
 \end{figure}
+
+
+\subsection{Detección de inhibiciones}
+
+En esta sección trataremos los métodos que pueden utilizarse para detectar interferencias en enlaces de radiofrecuencia. Es importante que 
+sea robusta la detección, en principal que el funcionamiento del sistema que se pretende asegurar no pueda desatar una falsa alarma. En el caso
+puntual de aplicación de este proyecto el sistema debería poder identificar una inhibición y no debería reaccionar a las señales de controles 
+remotos que van a estar funcionando en el área circundante.
+Hay algunas características las cuales son naturales pensar como sensibles de analizar para detectar inhibiciones, y estas son: 
+
+\begin{itemize}
+    \item Potencia de la señal recibida
+    \item Sensado temporal de portadora
+    \item Ocupación del canal
+
+\end{itemize}
+
+\subsubsection{Potencia de la señal recibida}
+
+Como antes se ha definido, el receptor sufre compresión de ganancia en su primera etapa amplificadora cuando la potencia recibida es alta
+comparado a la potencia de señal que se espera recibir y para el que fue diseñado. Es por esto que resulta natural analizar los niveles de
+potencia recibidos, estableciendo un valor a partir del cual se señale como alarmante para la correcta recepción de la información. 
+En el caso particular de los dispositivos de control remoto en los sitemas de seguridad vehicular resulta más sencillo el análisis 
+debido a que los dispositivos emisores que se utilizan son de baja potencia comparado a la necesaria para saturar un receptor típico.\\
+En [7] se realiza el análisis del receptor MAX1470 [1], muy difundido en sistemas de control remoto tanto en el ámbito automotriz como también
+en sistemas de portones de apertura innalámbrica, sistemas de seguridad, sensores innalámbricos y mucho más. Este integrado es un receptor de 
+ASK superheterodíneo de bajo costo que posee un mezclador de rechazo de imagen que mezcla la señal a una frecuencia intermedia de 10,7 MHz. En
+la figura \ref{compresion_max} se puede observar que la ganancia del sistema de recepción se aplana aproximadamente con una entrada de -35 dBm.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.5]{compresion_max.png}
+    \caption{Curva de ganancia de MAX1470}
+	\label{compresion_max}
+\end{figure}
+
+
+\subsubsection{Sensado temporal de portadora}
+
+Esta es una estrategia muy utilizada en sistemas de comunicación en que se realiza un envío efectivo de paquetes cuando se detecta que el canal 
+de transmisión está desocupado. Esta característica hace sensible al sistema de ser engañado dejando presente una señal portadora de información
+que engañe a los dispositivos emisores de la red.\\
+En nuestro caso no nos detendremos a hacer un análisis profundo de esta metodología ya que es ajena a nuestro potencial mecanismo de detección
+debido a que, como se menciona en 3.1.2, el control remoto emite señal cuando es accionado un botón que este posee, haciendolo de manera continua
+hasta que deje de ser apretado. Es fácil ver que esta característica de la comunicación hace inútil aplicar esta estrategia de detección
+
+\subsubsection{Ocupación del canal}
 
 
 

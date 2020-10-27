@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  22 OCT 2020 22:31
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  26 OCT 2020 21:25
 entering extended mode
 **"c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
 ("c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
@@ -325,59 +325,176 @@ LaTeX Info: Redefining \addtolength on input line 81.
 \calc@Cskip=\skip66
 )
 \c@@todonotes@numberoftodonotes=\count282
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hyperref.sty
+Package: hyperref 2020-05-15 v7.00e Hypertext links for LaTeX
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/ltxcmds\ltxcmds.sty
+Package: ltxcmds 2020-05-10 v1.25 LaTeX kernel commands for general use (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/iftex\iftex.sty
+Package: iftex 2020/03/06 v1.0d TeX engine tests
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/pdftexcmds\pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/infwarerr\infwarerr.sty
+Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
+)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/kvsetkeys\kvsetkeys.sty
+Package: kvsetkeys 2019/12/15 v1.18 Key value parser (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/kvdefinekeys\kvdefinekeys.sty
+Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/pdfescape\pdfescape.sty
+Package: pdfescape 2019/12/09 v1.15 Implements pdfTeX's escape features (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/hycolor\hycolor.sty
+Package: hycolor 2020-01-27 v1.10 Color options for hyperref/bookmark (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/letltxmacro\letltxmacro.sty
+Package: letltxmacro 2019/12/03 v1.6 Let assignment for LaTeX macros (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/auxhook\auxhook.sty
+Package: auxhook 2019-12-17 v1.6 Hooks for auxiliary files (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/kvoptions\kvoptions.sty
+Package: kvoptions 2019/11/29 v3.13 Key value format for package options (HO)
+)
+\@linkdim=\dimen196
+\Hy@linkcounter=\count283
+\Hy@pagecounter=\count284
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\pd1enc.def
+File: pd1enc.def 2020-05-15 v7.00e Hyperref: PDFDocEncoding definition (HO)
+Now handling font encoding PD1 ...
+... no UTF-8 mapping file for font encoding PD1
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/intcalc\intcalc.sty
+Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/etexcmds\etexcmds.sty
+Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
+)
+\Hy@SavedSpaceFactor=\count285
+Package hyperref Info: Hyper figures OFF on input line 4464.
+Package hyperref Info: Link nesting OFF on input line 4469.
+Package hyperref Info: Hyper index ON on input line 4472.
+Package hyperref Info: Plain pages OFF on input line 4479.
+Package hyperref Info: Backreferencing OFF on input line 4484.
+Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
+Package hyperref Info: Bookmarks ON on input line 4717.
+\c@Hy@tempcnt=\count286
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/url\url.sty
+\Urlmuskip=\muskip16
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+LaTeX Info: Redefining \url on input line 5076.
+\XeTeXLinkMargin=\dimen197
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/bitset\bitset.sty
+Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/bigintcalc\bigintcalc.sty
+Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
+))
+\Fld@menulength=\count287
+\Field@Width=\dimen198
+\Fld@charsize=\dimen199
+Package hyperref Info: Hyper figures OFF on input line 6347.
+Package hyperref Info: Link nesting OFF on input line 6352.
+Package hyperref Info: Hyper index ON on input line 6355.
+Package hyperref Info: backreferencing OFF on input line 6362.
+Package hyperref Info: Link coloring OFF on input line 6367.
+Package hyperref Info: Link coloring with OCG OFF on input line 6372.
+Package hyperref Info: PDF/A mode OFF on input line 6377.
+LaTeX Info: Redefining \ref on input line 6417.
+LaTeX Info: Redefining \pageref on input line 6421.
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/base\atbegshi-ltx.sty
+Package: atbegshi-ltx 2020/08/17 v1.0a Emulation of the original atbegshi package
+with kernel methods
+)
+\Hy@abspage=\count288
+\c@Item=\count289
+\c@Hfootnote=\count290
+)
+Package hyperref Info: Driver (autodetected): hpdftex.
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\hpdftex.def
+File: hpdftex.def 2020-05-15 v7.00e Hyperref driver for pdfTeX
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/base\atveryend-ltx.sty
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery package
+with kernel methods
+)
+\Fld@listcount=\count291
+\c@bookmark@seq@number=\count292
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/rerunfilecheck\rerunfilecheck.sty
+Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/uniquecounter\uniquecounter.sty
+Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
+)
+Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 286.
+)
+\Hy@SectionHShift=\skip67
 ) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/l3backend\l3backend-pdftex.def
 File: l3backend-pdftex.def 2020-09-24 L3 backend support: PDF output (pdfTeX)
-\l__kernel_color_stack_int=\count283
+\l__kernel_color_stack_int=\count293
 \l__pdf_internal_box=\box58
 ) ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
-LaTeX Info: Redefining \. on input line 8.
-LaTeX Info: Redefining \% on input line 8.
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
 )
 \openout1 = `ProyectoFinal.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 26.
-LaTeX Font Info:    ... okay on input line 26.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 27.
+LaTeX Font Info:    ... okay on input line 27.
  (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/context/base/mkii\supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count284
-\scratchdimen=\dimen196
+\scratchcounter=\count294
+\scratchdimen=\dimen256
 \scratchbox=\box59
-\nofMPsegments=\count285
-\nofMParguments=\count286
+\nofMPsegments=\count295
+\nofMParguments=\count296
 \everyMPshowfont=\toks33
-\MPscratchCnt=\count287
-\MPscratchDim=\dimen197
-\MPnumerator=\count288
-\makeMPintoPDFobject=\count289
+\MPscratchCnt=\count297
+\MPscratchDim=\dimen257
+\MPnumerator=\count298
+\makeMPintoPDFobject=\count299
 \everyMPtoPDFconversion=\toks34
 ) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/epstopdf-pkg\epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 )
-LaTeX Info: Redefining \. on input line 26.
-LaTeX Info: Redefining \% on input line 26.
+LaTeX Info: Redefining \. on input line 27.
+LaTeX Info: Redefining \% on input line 27.
 
 
-Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 26.
+Package todonotes Warning: The length marginparwidth is less than 2cm and will most likely cause issues with the appearance of inserted todonotes. The issue can be solved by adding a line like \setlength {\marginparwidth }{2cm} prior to loading the todonotes package. on input line 27.
 
-<LogoUTN.png, id=28, 301.125pt x 301.125pt>
+Package hyperref Info: Link coloring OFF on input line 27.
+(C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/hyperref\nameref.sty
+Package: nameref 2019/09/16 v2.46 Cross-referencing by name of section
+ (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/latex/refcount\refcount.sty
+Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
+) (C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex/generic/gettitlestring\gettitlestring.sty
+Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
+)
+\c@section@level=\count300
+)
+LaTeX Info: Redefining \ref on input line 27.
+LaTeX Info: Redefining \pageref on input line 27.
+LaTeX Info: Redefining \nameref on input line 27.
+ ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out") ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out")
+\@outlinefile=\write4
+\openout4 = `ProyectoFinal.out'.
+
+<LogoUTN.png, id=66, 301.125pt x 301.125pt>
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 35.
+Package pdftex.def Info: LogoUTN.png  used on input line 36.
 (pdftex.def)             Requested size: 227.62204pt x 227.63055pt.
-[1
+ [1
 
 {C:/Users/teto_/AppData/Local/MiKTeX/pdftex/config/pdftex.map} <./LogoUTN.png (PNG copy)>] [1
 
@@ -393,8 +510,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 2.
 )
-\tf@toc=\write4
-\openout4 = `ProyectoFinal.toc'.
+\tf@toc=\write5
+\openout5 = `ProyectoFinal.toc'.
 
  [3
 
@@ -402,8 +519,8 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
-\tf@lof=\write5
-\openout5 = `ProyectoFinal.lof'.
+\tf@lof=\write6
+\openout6 = `ProyectoFinal.lof'.
 
  [4
 
@@ -412,10 +529,14 @@ LaTeX Info: Redefining \% on input line 1.
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
 )
-\tf@lot=\write6
-\openout6 = `ProyectoFinal.lot'.
+\tf@lot=\write7
+\openout7 = `ProyectoFinal.lot'.
 
- [1
+pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.103 \chapter
+              {Introducción} [1
 
 
 ]
@@ -423,104 +544,118 @@ Cap\'{\i }tulo 1.
 [2
 
 ]
-Underfull \hbox (badness 10000) in paragraph at lines 132--136
+Underfull \hbox (badness 10000) in paragraph at lines 133--137
 
  []
 
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 143.
+Package pdftex.def Info: LogoUTN.png  used on input line 144.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
 [3]
-Underfull \hbox (badness 10000) in paragraph at lines 168--176
+Underfull \hbox (badness 10000) in paragraph at lines 169--177
 
  []
 
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 176.
+Package pdftex.def Info: LogoUTN.png  used on input line 177.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
 [4]
-<sdr.png, id=61, 408.77719pt x 383.18156pt>
+<sdr.png, id=141, 408.77719pt x 383.18156pt>
 File: sdr.png Graphic file (type png)
 <use sdr.png>
-Package pdftex.def Info: sdr.png  used on input line 179.
+Package pdftex.def Info: sdr.png  used on input line 180.
 (pdftex.def)             Requested size: 163.50797pt x 153.2699pt.
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 190.
+Package pdftex.def Info: LogoUTN.png  used on input line 191.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [5 <./sdr.png>]
-<llaves.png, id=67, 651.18282pt x 557.08125pt>
+<llaves.png, id=149, 651.18282pt x 557.08125pt>
 File: llaves.png Graphic file (type png)
 <use llaves.png>
-Package pdftex.def Info: llaves.png  used on input line 193.
+Package pdftex.def Info: llaves.png  used on input line 194.
 (pdftex.def)             Requested size: 260.4685pt x 222.82855pt.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 215.
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 217.
+Package pdftex.def Info: LogoUTN.png  used on input line 218.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [6 <./llaves.png>]
-<fpb_jam.png, id=72, 328.97906pt x 228.10219pt>
+<fpb_jam.png, id=157, 328.97906pt x 228.10219pt>
 File: fpb_jam.png Graphic file (type png)
 <use fpb_jam.png>
-Package pdftex.def Info: fpb_jam.png  used on input line 220.
+Package pdftex.def Info: fpb_jam.png  used on input line 221.
 (pdftex.def)             Requested size: 263.1836pt x 182.48198pt.
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 242.
+Package pdftex.def Info: LogoUTN.png  used on input line 243.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [7 <./fpb_jam.png>]
-<no_linealidad_e_tercer_orden.png, id=77, 367.3725pt x 688.07062pt>
+<no_linealidad_e_tercer_orden.png, id=171, 367.3725pt x 688.07062pt>
 File: no_linealidad_e_tercer_orden.png Graphic file (type png)
 <use no_linealidad_e_tercer_orden.png>
-Package pdftex.def Info: no_linealidad_e_tercer_orden.png  used on input line 268.
+Package pdftex.def Info: no_linealidad_e_tercer_orden.png  used on input line 269.
 (pdftex.def)             Requested size: 146.94638pt x 275.22337pt.
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 278.
+Package pdftex.def Info: LogoUTN.png  used on input line 279.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [8]
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 287.
+Package pdftex.def Info: LogoUTN.png  used on input line 288.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [9 <./no_linealidad_e_tercer_orden.png>]
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 319.
+Package pdftex.def Info: LogoUTN.png  used on input line 320.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [10]
-<tipos_de_jam.png, id=93, 353.06906pt x 387.69844pt>
+<tipos_de_jam.png, id=201, 353.06906pt x 387.69844pt>
 File: tipos_de_jam.png Graphic file (type png)
 <use tipos_de_jam.png>
-Package pdftex.def Info: tipos_de_jam.png  used on input line 322.
+Package pdftex.def Info: tipos_de_jam.png  used on input line 323.
 (pdftex.def)             Requested size: 282.45563pt x 310.15916pt.
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 336.
+Package pdftex.def Info: LogoUTN.png  used on input line 337.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [11 <./tipos_de_jam.png>]
+<compresion_max.png, id=209, 604.50844pt x 320.69812pt>
+File: compresion_max.png Graphic file (type png)
+<use compresion_max.png>
+Package pdftex.def Info: compresion_max.png  used on input line 359.
+(pdftex.def)             Requested size: 302.25348pt x 160.34866pt.
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 341.
+Package pdftex.def Info: LogoUTN.png  used on input line 373.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [12] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
-LaTeX Info: Redefining \. on input line 8.
-LaTeX Info: Redefining \% on input line 8.
-) ) 
+ [12]
+File: LogoUTN.png Graphic file (type png)
+<use LogoUTN.png>
+Package pdftex.def Info: LogoUTN.png  used on input line 389.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [13 <./compresion_max.png>] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
+LaTeX Info: Redefining \. on input line 25.
+LaTeX Info: Redefining \% on input line 25.
+)
+Package rerunfilecheck Info: File `ProyectoFinal.out' has not changed.
+(rerunfilecheck)             Checksum: 0B42E4DF390F376DE68C1164530A791E;653.
+ ) 
 Here is how much of TeX's memory you used:
- 13875 strings out of 480236
- 283562 string characters out of 2880558
- 544945 words of memory out of 3000000
- 30174 multiletter control sequences out of 15000+200000
+ 17798 strings out of 480236
+ 346686 string characters out of 2880558
+ 634704 words of memory out of 3000000
+ 33935 multiletter control sequences out of 15000+200000
  540295 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,15n,99p,501b,857s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 89i,15n,99p,522b,865s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (17 pages, 432137 bytes).
+Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (18 pages, 481762 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
- 0 named destinations out of 1000 (max. 500000)
- 139 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 260 PDF objects out of 1000 (max. 8388607)
+ 58 named destinations out of 1000 (max. 500000)
+ 216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
