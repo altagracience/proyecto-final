@@ -302,7 +302,7 @@ comunicaciones innalámbricas de banda angosta poseen un angosto filtrado.
 Se utiliza una señal constante que se modula con la portadora resultando una señal de muy angosto ancho de banda. En sistemas de comunicación 
 avanzados posee una alta eficiencia de interferencia ya que perjudica la recuperación de la sintonización a causa de que el receptor detecta 
 la señal como una segunda portadora y de que más potencia por Hertz (densidad de potencia espectral) gracias a que está más concentrado
-en el canal, como profundamente se analiza en \todo[inline, inlinewidth=3cm, noinlinepar]{[8]}.
+en el canal, como profundamente se analiza en [8].
 
 \subsubsection{Inhibición por pulsos}
 
@@ -373,7 +373,12 @@ hasta que deje de ser apretado. Es fácil ver que esta característica de la com
 
 \subsubsection{Ocupación del canal}
 
-
+El sistema de comunicación que nos basamos para desarrollar este trabajo tiene la particularidad de que la comunicación unilateral que sucede
+entre los dispositivos de emisión (controles remotos) y recepción (vehículos) tienen una muy baja tasa de ocupación de canal. Esto se debe a 
+la trama de datos empleada. La misma, como antes fue explicado, posee un período de sincronización que es una rápida variación de estados, para
+que el receptor pueda engancharse en fase a la recepción, y luego envío de paquetes de datos separados por espacios vacíos de información. Esta
+característica nos da una relación de bits en alto recibidos respecto a los medidos de un valor porcentual muy bajo. Es por esto que esta medición
+en el canal, usandola estratégicamente, nos puede dar mucha información de lo que está sucediendo.
 
 
 \section{Objetivos de la investigación}

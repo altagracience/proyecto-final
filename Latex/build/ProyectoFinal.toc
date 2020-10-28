@@ -15,10 +15,10 @@
 \contentsline {subsubsection}{Inhibición por ruido de banda parcial}{10}{section*.15}%
 \contentsline {subsubsection}{Inhibición por ruido de banda angosta}{10}{section*.16}%
 \contentsline {subsubsection}{Inhibición por tono}{10}{section*.17}%
-\contentsline {subsubsection}{Inhibición por pulsos}{10}{section*.19}%
-\contentsline {subsubsection}{Inhibición por barrido y seguimiento}{11}{section*.20}%
+\contentsline {subsubsection}{Inhibición por pulsos}{10}{section*.18}%
+\contentsline {subsubsection}{Inhibición por barrido y seguimiento}{11}{section*.19}%
 \contentsline {subsection}{\numberline {1.1.5}Detección de inhibiciones}{12}{subsection.1.1.5}%
-\contentsline {subsubsection}{Potencia de la señal recibida}{12}{section*.21}%
-\contentsline {subsubsection}{Sensado temporal de portadora}{13}{section*.22}%
-\contentsline {subsubsection}{Ocupación del canal}{13}{section*.23}%
-\contentsline {section}{\numberline {1.2}Objetivos de la investigación}{13}{section.1.2}%
+\contentsline {subsubsection}{Potencia de la señal recibida}{12}{section*.20}%
+\contentsline {subsubsection}{Sensado temporal de portadora}{13}{section*.21}%
+\contentsline {subsubsection}{Ocupación del canal}{13}{section*.22}%
+\contentsline {section}{\numberline {1.2}Objetivos de la investigación}{14}{section.1.2}%

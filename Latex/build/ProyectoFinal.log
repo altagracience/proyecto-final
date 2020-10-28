@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  26 OCT 2020 21:25
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  26 OCT 2020 21:46
 entering extended mode
 **"c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
 ("c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
@@ -613,7 +613,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 320.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [10]
-<tipos_de_jam.png, id=201, 353.06906pt x 387.69844pt>
+<tipos_de_jam.png, id=200, 353.06906pt x 387.69844pt>
 File: tipos_de_jam.png Graphic file (type png)
 <use tipos_de_jam.png>
 Package pdftex.def Info: tipos_de_jam.png  used on input line 323.
@@ -623,7 +623,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 337.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [11 <./tipos_de_jam.png>]
-<compresion_max.png, id=209, 604.50844pt x 320.69812pt>
+<compresion_max.png, id=208, 604.50844pt x 320.69812pt>
 File: compresion_max.png Graphic file (type png)
 <use compresion_max.png>
 Package pdftex.def Info: compresion_max.png  used on input line 359.
@@ -635,9 +635,14 @@ Package pdftex.def Info: LogoUTN.png  used on input line 373.
  [12]
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 389.
+Package pdftex.def Info: LogoUTN.png  used on input line 382.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [13 <./compresion_max.png>] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
+ [13 <./compresion_max.png>]
+File: LogoUTN.png Graphic file (type png)
+<use LogoUTN.png>
+Package pdftex.def Info: LogoUTN.png  used on input line 394.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [14] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
@@ -645,17 +650,17 @@ Package rerunfilecheck Info: File `ProyectoFinal.out' has not changed.
 (rerunfilecheck)             Checksum: 0B42E4DF390F376DE68C1164530A791E;653.
  ) 
 Here is how much of TeX's memory you used:
- 17798 strings out of 480236
- 346686 string characters out of 2880558
- 634704 words of memory out of 3000000
- 33935 multiletter control sequences out of 15000+200000
+ 17792 strings out of 480236
+ 346537 string characters out of 2880558
+ 634655 words of memory out of 3000000
+ 33929 multiletter control sequences out of 15000+200000
  540295 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,15n,99p,522b,865s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (18 pages, 481762 bytes).
+Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (19 pages, 483034 bytes).
 PDF statistics:
- 260 PDF objects out of 1000 (max. 8388607)
+ 264 PDF objects out of 1000 (max. 8388607)
  58 named destinations out of 1000 (max. 500000)
  216 words of extra memory for PDF output out of 10000 (max. 10000000)
 
