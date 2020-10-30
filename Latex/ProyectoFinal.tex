@@ -187,13 +187,21 @@ utiliza. En un comienzo la señal posee un preámbulo, el cual es utilizado por 
 decodificar correctamente los paquetes del transmisor. Después del preámbulo hay una palabra de sincronización que se utiliza para evitar 
 choques con otros dispositivos que operan en esa banda y por último se encuentra la señal de código real.\\
 Al presionar el botón del control remoto el preámbulo es enviado una única vez y luego se envía la palabra de sincronización y el
-comando de acción repetidamente hasta que se deje de accionar.
+comando de acción repetidamente hasta que se deje de accionar. El espectro de la señal transmitida se puede observar en la figura \ref{espectro_ASK},
+la cual es una simulación en el software AWR de una transmisión de datos random modulados ASK.
 
 \begin{figure}[htb]
 	\centering
 	\includegraphics[scale=0.4]{llaves.png}
 	\caption{Demodulación ASK de señales de controles remotos en 433,92 MHz}
 	\label{llaves}
+\end{figure}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.4]{espectro_ASK.png}
+	\caption{Espectro de señal random bits modulada ASK en 433,92 MHz }
+	\label{espectro_ASK}
 \end{figure}
 
 \subsection{Tipos de inhibiciones}
@@ -212,9 +220,9 @@ radiofrecuencia. Este objetivo puede ser logrado mediante dos estrategias:
 El ataque más evidente que se presenta para inhibir una comunicación es el de inyectar en el canal que se desea perjudicar una señal con 
 datos aleatorios que perjudique la relación señal ruido (SNR) y dificulte la recepción para el sistema. \\
 En el caso particular de los vehículos, los receptores de radiofrecuencia que se utilizan y sobre los que basamos nuestro análisis
-son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se puede observar en \todo[inline, inlinewidth=9cm, noinlinepar]{[1] AGREGAR REF A datasheet de MAX147}-.\\
+son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se puede observar en [1].\\
 El ancho de banda de recepción da lugar a sumar ruido en el canal, alterando así los datos recibidos por el demodulador. Una figura
-ilustrativa se puede observa en la imagen \ref{fpb_jam} de \todo[inline, inlinewidth=9cm, noinlinepar]{referencia a carhackerhandbook [2]}.
+ilustrativa se puede observa en la imagen \ref{fpb_jam} de [2].
 
 \begin{figure}[htb]
 	\centering
@@ -326,13 +334,49 @@ hacen uso de saltos de canales para ser efectivas.
 	\label{tipos_de_jam}
 \end{figure}
 
+\subsubsection{Simulación de inhibición por ruido de banda parcial}
+
+En este apartado se ha elegido la metodología de inyección de ruido de banda parcial para ser simulado y mostrar como decae la calidad de 
+comunicación y, por ende, la capacidad de recepción de la información. La simulación fue realizada con el software AWR de Cadence.\\
+El diagrama en bloques se puede observar en la figura \ref{bloques_inh}, este cuenta de 4 secciones principales:
+
+\begin{itemize}
+    \item Inhibidor de potencia variable: este bloque inyecta ruido blanco al sistema en la frecuencia definida como portadora, que en nuestro 
+    caso es 433,92 MHz. La potencia de ruido va a variar entre 0 y -30 dBW, lo que sería igual a decir entre -30 y -60 dBm. 
+    \item Emisor de señal: el emisor de señal es un modulador de ASK que modula una generación aleatoria de bits a 2500 baudios con la portadora.
+    \item Medio de enlace: en este caso está representado con un combinador de señal RF, el cual va a servir para sumar la potencia de las dos
+    señales anteriores.
+    \item Demodulador: en esta instancia se produce la demodulación de la señal ASK más el ruido blanco agregado. Al final posee un bloque que
+    se encarga de controlar el BER (Bit Error Rate), chequeando cuántos datos de los enviados efectivamente fueron recibidos. 
+
+\end{itemize}
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.37]{bloques_inh.png}
+    \caption{Diagrama en bloques de sistema de comunicación ASK inhibido}
+	\label{bloques_inh}
+\end{figure}
+
+Como antes se menciona, y como se puede observar en la figura \ref{BER_ask}, el error de recepción alcanza su valor máximo cuando el ruido 
+inyectado es de 0 dBW (-30 dBm). En la figura se puede leer un valor de BER = 0.4866, el cual es lógico debido a que la modulación ASK solo 
+posee dos símbolos, por lo que la probabilidad de que coincida el dato generado por el ruido y el esperado es del 50\%. Por otro lado el valor
+mínimo de error en la simulación propuesta sucede cuando la potencia del inhibidor es de -30 dBW (-60 dBm) teniendo un error de cuatro bits 
+por cada diez mil recibidos.
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.37]{BER_ask.png}
+    \caption{Bit Error Rate para comunicación ASK inhibida.}
+	\label{BER_ask}
+\end{figure}
 
 \subsection{Detección de inhibiciones}
 
 En esta sección trataremos los métodos que pueden utilizarse para detectar interferencias en enlaces de radiofrecuencia. Es importante que 
 sea robusta la detección, en principal que el funcionamiento del sistema que se pretende asegurar no pueda desatar una falsa alarma. En el caso
 puntual de aplicación de este proyecto el sistema debería poder identificar una inhibición y no debería reaccionar a las señales de controles 
-remotos que van a estar funcionando en el área circundante.
+remotos que van a estar funcionando en el área circundante. 
 Hay algunas características las cuales son naturales pensar como sensibles de analizar para detectar inhibiciones, y estas son: 
 
 \begin{itemize}
