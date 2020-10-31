@@ -732,10 +732,6 @@ INPUT .\LogoUTN.png
 INPUT .\LogoUTN.png
 INPUT LogoUTN.png
 INPUT .\LogoUTN.png
-INPUT .\LogoUTN.png
-INPUT .\LogoUTN.png
-INPUT LogoUTN.png
-INPUT .\LogoUTN.png
 INPUT .\bloques_inh.png
 INPUT .\bloques_inh.png
 INPUT bloques_inh.png
@@ -743,6 +739,10 @@ INPUT .\bloques_inh.png
 INPUT .\bloques_inh.png
 INPUT .\bloques_inh.png
 INPUT .\bloques_inh.png
+INPUT .\LogoUTN.png
+INPUT .\LogoUTN.png
+INPUT LogoUTN.png
+INPUT .\LogoUTN.png
 INPUT .\BER_ask.png
 INPUT .\BER_ask.png
 INPUT BER_ask.png

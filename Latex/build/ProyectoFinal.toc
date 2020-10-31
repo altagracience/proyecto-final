@@ -21,5 +21,5 @@
 \contentsline {subsection}{\numberline {1.1.5}Detección de inhibiciones}{13}{subsection.1.1.5}%
 \contentsline {subsubsection}{Potencia de la señal recibida}{14}{section*.19}%
 \contentsline {subsubsection}{Sensado temporal de portadora}{15}{section*.20}%
-\contentsline {subsubsection}{Ocupación del canal}{16}{section*.21}%
+\contentsline {subsubsection}{Ocupación del canal}{15}{section*.21}%
 \contentsline {section}{\numberline {1.2}Objetivos de la investigación}{16}{section.1.2}%
