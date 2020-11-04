@@ -104,7 +104,9 @@ void Error_Handler(void);
 #define LD2_Pin GPIO_PIN_7
 #define LD2_GPIO_Port GPIOB
 
-void RSSI_level(int RSSI);
+#define threshold 40
+
+int RSSI_level();
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

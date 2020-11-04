@@ -2,7 +2,7 @@
 /**
   ******************************************************************************
   * @file           : main.c
-  * @brief          : Main program body
+  * @brief          : Cuerpo de programa para detección de inhibiciones
   ******************************************************************************
   * @attention
   *
@@ -50,9 +50,10 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 
-uint16_t promedio, promediador, contador500ms = 0,  contador10cero_consecutivo = 0, contador200ms = 0;
-uint8_t contador1000ms = 0;
-_Bool banderadeuno, contador500ms_start, b10ms_clear = 0, bLed = 0;
+uint16_t promedio = 0, a_promediar = 0, contador20ms = 0, contador150ms = 0;
+uint16_t sync_mx = 1; 			//variable de control para sincronización máxima de 320ms
+_Bool state = 0;
+
 
 /* USER CODE END PV */
 
@@ -107,7 +108,6 @@ int main(void)
 
 
   uint32_t error;
-  uint8_t i = 2;
   uint16_t marcstate=0;
 
 
@@ -403,118 +403,74 @@ return 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 	int result_RSSI;
-	uint8_t result;
+	uint8_t inhibicion = 0, data_in;
 
 
-	if(htim->Instance == TIM4){
-		contador200ms++;
 
-		if(contador200ms == 4999){
-			contador200ms = 0;
 
-			result = rf_read_register(RSSI);
-			if(result < 128){
-				result_RSSI = (int)(result/2)-74;
-			}
-			else{
-				result_RSSI = (int)((result -256)/2)-74;
-			}
 
-			RSSI_level(result_RSSI);
+	if(htim->Instance == TIM4){ //chequea que la interrupción sea la del timer adecuado
+
+
+
+
+		data_in = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2); //leo el valor de dato de entrada
+
+
+		switch(state)
+		{
+			case 0:
+				a_promediar += data_in;
+				contador20ms++;
+				if(contador20ms == 499){ 							// 500 cuentas equivalen a 20ms por la frecuencia de 25kHz de la interrupcion
+					promedio = (int) ((a_promediar * 100) / 500); 	//calculo el promedio de 1 en 20 ms
+					result_RSSI = RSSI_level(); 					//Llamo a función que devuelve el valor del rssi
+
+					if(promedio > threshold) sync_mx = sync_mx << 1; //sync_mx es una variable de 16 bits que me permite testear cuantos bloques consecutivos de 20ms hubo un porcentaje de 1 que supere el threshold
+					else sync_mx = 1;
+
+					if(sync_mx == 0)  {
+						state = 1; //si surgen 16 bloques consecutivos sospechamos inhibición y hacemos análisis en 150ms
+						sync_mx = 1;
+					}
+					contador20ms = 0;
+					a_promediar = 0;
+					inhibicion = 0;
+				}
+				break;
+
+			case 1:
+				a_promediar += data_in;
+				contador150ms++;
+				if(contador150ms == 3749) {
+					promedio = (int) ((a_promediar * 100) / 3750); 	//calculo el promedio de unos en 150 ms
+					if(promedio > threshold) inhibicion = 1;
+					contador150ms = 0; // 3750 cuentas equivalen a 150ms por la frecuencia de 25kHz de la interrupcion
+					state = 0;
+				}
+				break;
 		}
 
-		if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 1){
-			contador500ms_start = 1;
 		}
-
-		if(contador500ms_start == 1) {
-			contador500ms++;
-
-			if(HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2) == 0) {
-				if(banderadeuno == 0){
-					contador10cero_consecutivo++;
-				}
-				banderadeuno=0;
-
-			}
-
-			else {
-				promediador++;
-				if(banderadeuno == 1){
-					contador10cero_consecutivo = 0;
-				}
-				banderadeuno = 1;
-				b10ms_clear=0;
-			}
-
-		}
-		if(contador500ms == 12500) {
-
-			if(contador10cero_consecutivo >= 250 ){
-				b10ms_clear=1;
-			}
-			promedio = (int)((promediador*100)/12500);
-			if (promedio > 40){
-				bLed = 1;
-			}
-			contador500ms = 0;
-			contador500ms_start = 0;
-			contador10cero_consecutivo = 0;
-			promediador = 0;
-			contador1000ms++;
-
-
-			if(contador1000ms < 2){
-				if(bLed == 1){
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 0);
-				}
-			}
-			else {
-				if(bLed == 0){
-					HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, 1);
-				}
-				bLed = 0;
-				contador1000ms = 0;
-			}
-
-
-		}
-	}
 
 }
 
-void RSSI_level(int RSSI_lvl){
+int RSSI_level(){
+	int result_RSSI, result;
 
-	int ledLevel;
-    uint16_t puerto = 1024;
-
-	ledLevel = (0.06*RSSI_lvl+7.2);
-
-
-	for(int i=0; i<7; i++){
-		if(i!=0) puerto = puerto * i;
-
-		if(i < ledLevel){
-			if(i==5){
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 1);
-			}
-			else{
-				HAL_GPIO_WritePin(GPIOB, puerto, 1);
-			}
-
-		}
-		else{
-			if(i==5){
-				HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0);
-			}
-			else{
-				HAL_GPIO_WritePin(GPIOB, puerto, 0);
-			}
-
-		}
+	result = rf_read_register(RSSI); 			//leo el registro que almacena el RSSI
+	if(result < 128){  							//Transformo a dBm segun su valor
+		result_RSSI = (int)(result/2)-74;
+	}
+	else{
+		result_RSSI = (int)((result -256)/2)-74;
 	}
 
+
+	return result_RSSI;
 }
+
+
 
 /* USER CODE END 4 */
 
