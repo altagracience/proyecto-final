@@ -52,7 +52,7 @@ UART_HandleTypeDef huart1;
 
 uint16_t promedio = 0, a_promediar = 0, contador20ms = 0, contador150ms = 0;
 uint16_t sync_mx = 1; 			//variable de control para sincronización máxima de 320ms
-_Bool state = 0;
+uint8_t state = 0;
 
 
 /* USER CODE END PV */
@@ -429,13 +429,14 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 					if(promedio > threshold) sync_mx = sync_mx << 1; //sync_mx es una variable de 16 bits que me permite testear cuantos bloques consecutivos de 20ms hubo un porcentaje de 1 que supere el threshold
 					else sync_mx = 1;
 
-					if(sync_mx == 0)  {
+ 					if(sync_mx == 0)  {
 						state = 1; //si surgen 16 bloques consecutivos sospechamos inhibición y hacemos análisis en 150ms
 						sync_mx = 1;
 					}
 					contador20ms = 0;
 					a_promediar = 0;
 					inhibicion = 0;
+					promedio = 0;
 				}
 				break;
 
@@ -447,7 +448,10 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 					if(promedio > threshold) inhibicion = 1;
 					contador150ms = 0; // 3750 cuentas equivalen a 150ms por la frecuencia de 25kHz de la interrupcion
 					state = 0;
+					a_promediar = 0;
+					promedio = 0;
 				}
+
 				break;
 		}
 
@@ -455,7 +459,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 }
 
-int RSSI_level(){
+int RSSI_level(){ //esta funcion devuelve el valor en dBm del RSSI
 	int result_RSSI, result;
 
 	result = rf_read_register(RSSI); 			//leo el registro que almacena el RSSI
