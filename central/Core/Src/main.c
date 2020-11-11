@@ -100,8 +100,7 @@ int main(void)
   while (1)
   {
 
-
-	   HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+	  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
 
 
     /* USER CODE END WHILE */

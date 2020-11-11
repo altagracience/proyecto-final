@@ -20,6 +20,7 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
+#include <stdbool.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
@@ -54,6 +55,18 @@ uint16_t promedio = 0, a_promediar = 0, contador20ms = 0, contador150ms = 0;
 uint16_t sync_mx = 1; 			//variable de control para sincronización máxima de 320ms
 uint8_t state = 0;
 
+//Different state of ATM machine
+typedef enum
+{
+    RxJammer_State,
+    Info_central_Tx_State,
+	Guarda_RSSI_Rx_State,
+    Espera_Rx_State,
+    Envia_Tx_State,
+    Reset_Rx_State
+} eSystemState;
+
+bool bInhibicion;
 
 /* USER CODE END PV */
 
@@ -79,6 +92,10 @@ static void MX_USART1_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
+
+	eSystemState NextState;
+	bInhibicion = false;
+	int RSSI_value;
 
   /* USER CODE END 1 */
 
@@ -125,6 +142,8 @@ int main(void)
   int result = rf_read_register(MARCSTATE);
   char ch[8] = "HolaReyy";
 
+  NextState = RxJammer_State;
+
 //  test_cargar_cfg();
 
   /* USER CODE END 2 */
@@ -135,6 +154,61 @@ int main(void)
   {
 	  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
 	  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10);
+
+	  // Maquina de estados para comunicacion
+	  switch(NextState){
+	  	  case RxJammer_State:
+	  		  // Codigo que corre el estado
+
+	  		  // Seleccion de nuevo estado
+	  		  if(bInhibicion = 1)
+	  			  NextState = Info_central_Tx_State;
+	  		  else
+	  			  NextState = RxJammer_State;
+	  		  break;
+	  	  case Info_central_Tx_State:
+	  		  // Desactivar interrupcion de escucha
+	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar
+
+	  		  NextState = Guarda_RSSI_Rx_State;
+	  		  break;
+	  	  case Guarda_RSSI_Rx_State:
+	  		  // Deberia existir un rssi avaliable, ver
+	  		  if(central pide)
+	  			  RSSI_value = RSSI_level();
+	  		  	  NextState = Espera_Rx_State;
+	  		  else
+	  			  NextState = Guarda_RSSI_Rx_State;
+
+	  		  break;
+	  	  case Espera_Rx_State:
+	  		  // Faltaria la forma en que bFIN = 1
+	  		  if(bFIN = 1)
+				  NextState = Reset_Rx_State;
+	  		  else if(ID_envia = ID_nodo)
+				  NextState = Envia_Tx_State;
+	  		  else
+	  			  NextState = Espera_Rx_State;
+
+	  		  break;
+	  	  case Envia_Tx_State:
+	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar, deberia enviar ID RSSI
+	  		  if(comprueba que el mismo msj que envio lo reciba)
+	  			  NextState = Espera_Rx_State;
+	  		  else
+	  			  NextState = Envia_Tx_State;
+	  		  break;
+	  	  case Reset_Rx_State:
+	  		  //Vuelve a activar interrupcion de escucha
+	  		  bInhibicion = 0;
+	  		  NextState = RxJammer_State;
+	  		  break;
+	  	  default:
+	  		  //Marcar error para estado no definido
+	  		  //Resetear sistema ?
+	  		  break;
+
+	  };
 
     /* USER CODE END WHILE */
 
