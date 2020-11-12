@@ -94,127 +94,152 @@ int main(void)
   /* USER CODE BEGIN 1 */
 
 	eSystemState NextState;
-	bInhibicion = false;
 	int RSSI_value;
+	char ID_nodo = 'a';
+	char ch[8] = "HolaReyy";
+	char in[8];
 
-  /* USER CODE END 1 */
+	bInhibicion = false;
+	NextState = RxJammer_State;
 
-  /* MCU Configuration--------------------------------------------------------*/
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempo
+	/* USER CODE END 1 */
 
-  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-  HAL_Init();
+	/* MCU Configuration--------------------------------------------------------*/
 
-  /* USER CODE BEGIN Init */
+	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+	HAL_Init();
 
-  /* USER CODE END Init */
+	/* USER CODE BEGIN Init */
 
-  /* Configure the system clock */
-  SystemClock_Config();
+	/* USER CODE END Init */
 
-  /* USER CODE BEGIN SysInit */
+	/* Configure the system clock */
+	SystemClock_Config();
 
-  /* USER CODE END SysInit */
+	/* USER CODE BEGIN SysInit */
 
-  /* Initialize all configured peripherals */
-  MX_GPIO_Init();
-  MX_SPI1_Init();
-  MX_TIM4_Init();
-  MX_USART1_UART_Init();
-  /* USER CODE BEGIN 2 */
+	/* USER CODE END SysInit */
 
-
-
-  uint32_t error;
-  uint16_t marcstate=0;
-
-
-  //Init rf driver
-  error = rf_begin(&hspi1, AKS_115_kb, MHz434, CS_GPIO_Port, CS_Pin, GDO0_Pin);
-  rf_write_strobe(SRX);
-
-  while(marcstate != RX){
-  		marcstate = (rf_read_register(MARCSTATE)); //read out state of cc1100 to be sure in RX
-  	}
-
-  HAL_TIM_Base_Start_IT(&htim4);
+	/* Initialize all configured peripherals */
+	MX_GPIO_Init();
+	MX_SPI1_Init();
+	MX_TIM4_Init();
+	MX_USART1_UART_Init();
+	/* USER CODE BEGIN 2 */
 
 
-  int result = rf_read_register(MARCSTATE);
-  char ch[8] = "HolaReyy";
 
-  NextState = RxJammer_State;
+	uint32_t error;
+	uint16_t marcstate=0;
 
-//  test_cargar_cfg();
 
-  /* USER CODE END 2 */
+	//Init rf driver
+	error = rf_begin(&hspi1, AKS_115_kb, MHz434, CS_GPIO_Port, CS_Pin, GDO0_Pin);
+	rf_write_strobe(SRX);
 
-  /* Infinite loop */
-  /* USER CODE BEGIN WHILE */
-  while (1)
-  {
-	  //HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-	  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10);
+	while(marcstate != RX){
+		marcstate = (rf_read_register(MARCSTATE)); //read out state of cc1100 to be sure in RX
+	}
 
-	  // Maquina de estados para comunicacion
-	  switch(NextState){
-	  	  case RxJammer_State:
-	  		  // Codigo que corre el estado
+	HAL_TIM_Base_Start_IT(&htim4);
 
-	  		  // Seleccion de nuevo estado
-	  		  if(bInhibicion = 1)
-	  			  NextState = Info_central_Tx_State;
-	  		  else
-	  			  NextState = RxJammer_State;
-	  		  break;
-	  	  case Info_central_Tx_State:
-	  		  // Desactivar interrupcion de escucha
-	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar
+	//  test_cargar_cfg();
 
-	  		  NextState = Guarda_RSSI_Rx_State;
-	  		  break;
-	  	  case Guarda_RSSI_Rx_State:
-	  		  // Deberia existir un rssi avaliable, ver
-	  		  if(central pide)
-	  			  RSSI_value = RSSI_level();
-	  		  	  NextState = Espera_Rx_State;
-	  		  else
-	  			  NextState = Guarda_RSSI_Rx_State;
+	/* USER CODE END 2 */
 
-	  		  break;
-	  	  case Espera_Rx_State:
-	  		  // Faltaria la forma en que bFIN = 1
-	  		  if(bFIN = 1)
-				  NextState = Reset_Rx_State;
-	  		  else if(ID_envia = ID_nodo)
+	/* Infinite loop */
+	/* USER CODE BEGIN WHILE */
+	while (1)
+	{
+		//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+		HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10);
+
+		// Maquina de estados para comunicacion
+		switch(NextState){
+		  case RxJammer_State:
+			  // Codigo que corre el estado
+
+			  // Seleccion de nuevo estado
+			  if(bInhibicion = 1)
+				  NextState = Info_central_Tx_State;
+			  else
+				  NextState = RxJammer_State;
+			  break;
+		  case Info_central_Tx_State:
+			  ch = ; //Palabra a transmitir
+			  // Desactivar interrupcion de escucha
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+
+			  if(in != 0){
+				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+				  NextState = Guarda_RSSI_Rx_State;
+			  }
+			  else
+				  NextState = Guarda_RSSI_Rx_State;
+
+			  break;
+		  case Guarda_RSSI_Rx_State:
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+
+			  if(in == ){ //Cambiar por msj
+				  RSSI_value = RSSI_level();
+				  NextState = Espera_Rx_State;
+				  //Falta determinar una variable que tenga 3 estados:
+				  //    *No hay inhibicion
+				  //    *Inhibicion por corrupcion de datos
+				  //    *Inhibicion por potencia
+			  }
+			  else
+				  NextState = Guarda_RSSI_Rx_State;
+
+			  break;
+		  case Espera_Rx_State:
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+
+			  if(in[0] == ID_nodo)
 				  NextState = Envia_Tx_State;
-	  		  else
-	  			  NextState = Espera_Rx_State;
+			  else if(in[1] == 'F') //En el char 1 se pone F de fin
+				  NextState = Reset_Rx_State;
+			  else
+				  NextState = Espera_Rx_State;
 
-	  		  break;
-	  	  case Envia_Tx_State:
-	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar, deberia enviar ID RSSI
-	  		  if(comprueba que el mismo msj que envio lo reciba)
-	  			  NextState = Espera_Rx_State;
-	  		  else
-	  			  NextState = Envia_Tx_State;
-	  		  break;
-	  	  case Reset_Rx_State:
-	  		  //Vuelve a activar interrupcion de escucha
-	  		  bInhibicion = 0;
-	  		  NextState = RxJammer_State;
-	  		  break;
-	  	  default:
-	  		  //Marcar error para estado no definido
-	  		  //Resetear sistema ?
-	  		  break;
+			  break;
+		  case Envia_Tx_State:
+			  ch = ;//palabra a transmitir
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar, deberia enviar ID RSSI MODINHIBICION
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
 
-	  };
+			  if(in == ch){
+				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+				  NextState = Espera_Rx_State;
+			  }
+			  else
+				  NextState = Envia_Tx_State;
+			  break;
+		  case Reset_Rx_State:
+			  //Vuelve a activar interrupcion de escucha
+			  bInhibicion = 0;
+			  NextState = RxJammer_State;
+			  break;
+		  default:
+			  //Marcar error para estado no definido
+			  //Resetear sistema ?
+			  break;
 
-    /* USER CODE END WHILE */
+		};
 
-    /* USER CODE BEGIN 3 */
-  }
-  /* USER CODE END 3 */
+	/* USER CODE END WHILE */
+
+	/* USER CODE BEGIN 3 */
+	}
+	/* USER CODE END 3 */
 }
 
 /**
@@ -480,12 +505,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 	uint8_t inhibicion = 0, data_in;
 
 
-
-
-
 	if(htim->Instance == TIM4){ //chequea que la interrupción sea la del timer adecuado
-
-
 
 
 		data_in = HAL_GPIO_ReadPin(GPIOA, GPIO_PIN_2); //leo el valor de dato de entrada

@@ -30,24 +30,24 @@ endif
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-reciver.elf \
+central.elf \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-reciver.list \
+central.list \
 
 OBJCOPY_BIN += \
-reciver.bin \
+central.bin \
 
 
 # All Target
-all: reciver.elf secondary-outputs
+all: central.elf secondary-outputs
 
 # Tool invocations
-reciver.elf: $(OBJS) $(USER_OBJS) C:\Users\marti\Desktop\Tesis\STMCube\reciver\STM32F103C8TX_FLASH.ld
-	arm-none-eabi-gcc -o "reciver.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\marti\Desktop\Tesis\STMCube\reciver\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="reciver.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+central.elf: $(OBJS) $(USER_OBJS) /home/julian/proyecto-final/central/STM32F103C8TX_FLASH.ld
+	arm-none-eabi-gcc -o "central.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/home/julian/proyecto-final/central/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="central.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -56,13 +56,13 @@ default.size.stdout: $(EXECUTABLES)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-reciver.list: $(EXECUTABLES)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "reciver.list"
+central.list: $(EXECUTABLES)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "central.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
-reciver.bin: $(EXECUTABLES)
-	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "reciver.bin"
+central.bin: $(EXECUTABLES)
+	arm-none-eabi-objcopy  -O binary $(EXECUTABLES) "central.bin"
 	@echo 'Finished building: $@'
 	@echo ' '
 
