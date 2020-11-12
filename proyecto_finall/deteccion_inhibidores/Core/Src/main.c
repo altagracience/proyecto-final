@@ -17,14 +17,13 @@
   ******************************************************************************
   */
 /* USER CODE END Header */
-
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdbool.h>
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include "rf_driver.h"
+#include <stdbool.h>
 
 /* USER CODE END Includes */
 
@@ -93,43 +92,42 @@ int main(void)
 {
   /* USER CODE BEGIN 1 */
 
-	eSystemState NextState;
-	int RSSI_value;
-	char ID_nodo = 'a';
-	char ch[8] = "HolaReyy";
-	char in[8];
+  /* USER CODE END 1 */
 
-	bInhibicion = false;
-	NextState = RxJammer_State;
+  /* MCU Configuration--------------------------------------------------------*/
+
+  /* Reset of all peripherals, Initializes the Flash interface and the Systick. */
+  HAL_Init();
+
+  /* USER CODE BEGIN Init */
+
+  /* USER CODE END Init */
+
+  /* Configure the system clock */
+  SystemClock_Config();
+
+  /* USER CODE BEGIN SysInit */
+
+  /* USER CODE END SysInit */
+
+  /* Initialize all configured peripherals */
+  MX_GPIO_Init();
+  MX_SPI1_Init();
+  MX_TIM4_Init();
+  MX_USART1_UART_Init();
+  /* USER CODE BEGIN 2 */
+
+  	eSystemState NextState;
+  	int RSSI_value;
+  	char ID_nodo = 'A';
+  	char ch[8] = "HolaReyy";
+  	char in[8];
+
+  	bInhibicion = false;
+  	NextState = RxJammer_State;
 
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempo
-	/* USER CODE END 1 */
-
-	/* MCU Configuration--------------------------------------------------------*/
-
-	/* Reset of all peripherals, Initializes the Flash interface and the Systick. */
-	HAL_Init();
-
-	/* USER CODE BEGIN Init */
-
-	/* USER CODE END Init */
-
-	/* Configure the system clock */
-	SystemClock_Config();
-
-	/* USER CODE BEGIN SysInit */
-
-	/* USER CODE END SysInit */
-
-	/* Initialize all configured peripherals */
-	MX_GPIO_Init();
-	MX_SPI1_Init();
-	MX_TIM4_Init();
-	MX_USART1_UART_Init();
-	/* USER CODE BEGIN 2 */
-
-
 
 	uint32_t error;
 	uint16_t marcstate=0;
@@ -145,16 +143,19 @@ int main(void)
 
 	HAL_TIM_Base_Start_IT(&htim4);
 
+
+
 	//  test_cargar_cfg();
 
-	/* USER CODE END 2 */
+  /* USER CODE END 2 */
 
-	/* Infinite loop */
-	/* USER CODE BEGIN WHILE */
+  /* Infinite loop */
+  /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		//HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-		HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10);
+		/*if(HAL_GPIO_ReadPin(GPIOB, GPIO_PIN_6) == 1){
+			HAL_TIM_Base_Start_IT(&htim4);
+		  }*/
 
 		// Maquina de estados para comunicacion
 		switch(NextState){
@@ -162,24 +163,18 @@ int main(void)
 			  // Codigo que corre el estado
 
 			  // Seleccion de nuevo estado
-			  if(bInhibicion = 1)
+			  if(bInhibicion == 1)
 				  NextState = Info_central_Tx_State;
 			  else
 				  NextState = RxJammer_State;
 			  break;
 		  case Info_central_Tx_State:
-			  ch = ; //Palabra a transmitir
+			  ch[0] = 'I'; //Palabra a transmitir cuando detecta inhibicion
 			  // Desactivar interrupcion de escucha
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
 			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
-
-			  if(in != 0){
-				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-				  NextState = Guarda_RSSI_Rx_State;
-			  }
-			  else
-				  NextState = Guarda_RSSI_Rx_State;
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+			  NextState = Espera_Rx_State;
 
 			  break;
 		  case Guarda_RSSI_Rx_State:
@@ -214,7 +209,7 @@ int main(void)
 			  ch = ;//palabra a transmitir
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
 			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar, deberia enviar ID RSSI MODINHIBICION
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000); //TODO poner bandera
 
 			  if(in == ch){
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
@@ -229,17 +224,18 @@ int main(void)
 			  NextState = RxJammer_State;
 			  break;
 		  default:
-			  //Marcar error para estado no definido
+			  NextState = RxJammer_State;
 			  //Resetear sistema ?
 			  break;
 
 		};
 
-	/* USER CODE END WHILE */
+    /* USER CODE END WHILE */
 
-	/* USER CODE BEGIN 3 */
+    /* USER CODE BEGIN 3 */
+
 	}
-	/* USER CODE END 3 */
+  /* USER CODE END 3 */
 }
 
 /**
@@ -251,7 +247,8 @@ void SystemClock_Config(void)
   RCC_OscInitTypeDef RCC_OscInitStruct = {0};
   RCC_ClkInitTypeDef RCC_ClkInitStruct = {0};
 
-  /** Initializes the CPU, AHB and APB busses clocks
+  /** Initializes the RCC Oscillators according to the specified parameters
+  * in the RCC_OscInitTypeDef structure.
   */
   RCC_OscInitStruct.OscillatorType = RCC_OSCILLATORTYPE_HSE;
   RCC_OscInitStruct.HSEState = RCC_HSE_ON;
@@ -264,7 +261,7 @@ void SystemClock_Config(void)
   {
     Error_Handler();
   }
-  /** Initializes the CPU, AHB and APB busses clocks
+  /** Initializes the CPU, AHB and APB buses clocks
   */
   RCC_ClkInitStruct.ClockType = RCC_CLOCKTYPE_HCLK|RCC_CLOCKTYPE_SYSCLK
                               |RCC_CLOCKTYPE_PCLK1|RCC_CLOCKTYPE_PCLK2;
@@ -423,6 +420,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
+
   /*Configure GPIO pin : PC13 */
   GPIO_InitStruct.Pin = GPIO_PIN_13;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -450,9 +450,9 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB10 PB11 PB12 PB13
-                           PB15 */
+                           PB15 PB7 */
   GPIO_InitStruct.Pin = GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
-                          |GPIO_PIN_15;
+                          |GPIO_PIN_15|GPIO_PIN_7;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
@@ -464,6 +464,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_PULLUP;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PB6 */
+  GPIO_InitStruct.Pin = GPIO_PIN_6;
+  GPIO_InitStruct.Mode = GPIO_MODE_INPUT;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI3_IRQn, 0, 0);
@@ -502,7 +508,7 @@ return 0;
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 	int result_RSSI;
-	uint8_t inhibicion = 0, data_in;
+	uint8_t data_in;
 
 
 	if(htim->Instance == TIM4){ //chequea que la interrupción sea la del timer adecuado
@@ -529,7 +535,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 					}
 					contador20ms = 0;
 					a_promediar = 0;
-					inhibicion = 0;
+					bInhibicion = 0;
 					promedio = 0;
 				}
 				break;
@@ -539,7 +545,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 				contador150ms++;
 				if(contador150ms == 3749) {
 					promedio = (int) ((a_promediar * 100) / 3750); 	//calculo el promedio de unos en 150 ms
-					if(promedio > threshold) inhibicion = 1;
+					if(promedio > threshold) bInhibicion = 1;
 					contador150ms = 0; // 3750 cuentas equivalen a 150ms por la frecuencia de 25kHz de la interrupcion
 					state = 0;
 					a_promediar = 0;

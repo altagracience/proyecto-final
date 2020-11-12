@@ -80,19 +80,7 @@ static void MX_USART1_UART_Init(void);
 int main(void)
 {
   /* USER CODE BEGIN 1 */
-	eSystemState NextState;
-	int RSSI_value[3];
-	char estado_inhi[3];
-	int cRx = 0;
-	bool bPresencia_Inhibi;
-	char in[8];
-	char ch[8];
 
-	NextState = RxNodos_State;
-	bPresencia_Inhibi = false;
-
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempo
   /* USER CODE END 1 */
 
   /* MCU Configuration--------------------------------------------------------*/
@@ -115,7 +103,19 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
+  	eSystemState NextState;
+	int RSSI_value[3];
+	char estado_inhi[3];
+	int cRx = 0;
+	bool bPresencia_Inhibi;
+	char in[8];
+	char ch[8];
+	uint16_t eRx;
 
+	NextState = RxNodos_State;
+	bPresencia_Inhibi = false;
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
+	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempo
   /* USER CODE END 2 */
 
   /* Infinite loop */
@@ -129,9 +129,9 @@ int main(void)
 	  switch(NextState){
 		  case RxNodos_State:
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+			  eRx = HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
 
-			  if(in != 0){
+			  if(eRx == HAL_TIMEOUT){
 				  bPresencia_Inhibi = true;
 				  NextState = Captura_Inhibicion_Tx_State;
 	  	  	  }
@@ -141,6 +141,7 @@ int main(void)
 			  break;
 
 		  case Captura_Inhibicion_Tx_State:
+			  ch = ;
 			  // Pone en modo tx
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
 			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
