@@ -119,7 +119,7 @@ int main(void)
 
   	eSystemState NextState;
   	uint8_t gRSSI_value;
-  	char ID_nodo = 'C';
+  	char ID_nodo = 'A';
   	char ch[3];
   	char in[3]={0, 0, 0};
   	uint8_t gInhibicion;
@@ -193,16 +193,17 @@ int main(void)
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1000);
 
-			  if(err ==  0x03U) NextState = RxJammer_State;
 
 			  if(in[0] == 'G')
 				  NextState = Guarda_RSSI_Rx_State;
-			  else if(in[0] == 'c')
+			  else if(in[0] == 'a')
 				  NextState = Envia_Tx_State;
 			  else if(in[0] == 'F') //En el char 1 se pone F de fin
 				  NextState = Reset_Rx_State;
 			  else
 				  NextState = Espera_Rx_State;
+
+			  if(err ==  3) NextState = RxJammer_State;
 
 			  break;
 		  case Envia_Tx_State:
@@ -221,6 +222,7 @@ int main(void)
 			  HAL_TIM_Base_Start_IT(&htim4);
 			  bInhibicion = 0;
 			  NextState = RxJammer_State;
+			  in[0] = in[1] = in[2] = 0;
 			  break;
 		  default:
 			  HAL_TIM_Base_Start_IT(&htim4);
