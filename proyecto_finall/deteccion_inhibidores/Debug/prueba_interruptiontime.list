@@ -195,8 +195,8 @@ int main(void)
 
   	eSystemState NextState;
   	uint8_t gRSSI_value;
-  	char ID_nodo = 'a';
- 80001ca:	2361      	movs	r3, #97	; 0x61
+  	char ID_nodo = 'C';
+ 80001ca:	2343      	movs	r3, #67	; 0x43
  80001cc:	727b      	strb	r3, [r7, #9]
   	char ch[3];
   	char in[3]={0, 0, 0};
@@ -392,9 +392,9 @@ int main(void)
 
 			  break;
  80002f8:	e03b      	b.n	8000372 <main+0x1c6>
-			  else if(in[0] == 'A')
+			  else if(in[0] == 'c')
  80002fa:	783b      	ldrb	r3, [r7, #0]
- 80002fc:	2b41      	cmp	r3, #65	; 0x41
+ 80002fc:	2b63      	cmp	r3, #99	; 0x63
  80002fe:	d102      	bne.n	8000306 <main+0x15a>
 				  NextState = Envia_Tx_State;
  8000300:	2304      	movs	r3, #4

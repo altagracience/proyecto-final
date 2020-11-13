@@ -176,11 +176,18 @@ int main(void)
 			  }
 
 			  if(cRx == 3){
+
 				  cRx = 0;
-				  NextState = Reset_Tx_State;
+				  ch[0] = 'F';
+				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+				  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1);
+				  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
+				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+
+				  bPresencia_Inhibi = 0;
+				  NextState = RxNodos_State;
+
 			  }
-			  else
-				  NextState = Espera_Estados_Rx_State;
 
 
 			  break;
