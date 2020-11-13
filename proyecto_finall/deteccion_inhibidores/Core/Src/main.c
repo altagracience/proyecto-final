@@ -65,7 +65,7 @@ typedef enum
     Reset_Rx_State
 } eSystemState;
 
-bool bInhibicion;
+uint8_t bInhibicion;
 
 /* USER CODE END PV */
 
@@ -118,23 +118,23 @@ int main(void)
   /* USER CODE BEGIN 2 */
 
   	eSystemState NextState;
-  	int RSSI_value;
-  	char ID_nodo = 'A';
-  	char ch[8] = "HolaReyy";
-  	char in[8];
+  	uint8_t gRSSI_value;
+  	char ID_nodo = 'a';
+  	char ch[3];
+  	char in[3]={0, 0, 0};
+  	uint8_t gInhibicion;
 
-  	bInhibicion = false;
+  	bInhibicion = 0;
   	NextState = RxJammer_State;
 
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempo
 
-	uint32_t error;
 	uint16_t marcstate=0;
 
 
 	//Init rf driver
-	error = rf_begin(&hspi1, AKS_115_kb, MHz434, CS_GPIO_Port, CS_Pin, GDO0_Pin);
+	rf_begin(&hspi1, AKS_115_kb, MHz434, CS_GPIO_Port, CS_Pin, GDO0_Pin);
 	rf_write_strobe(SRX);
 
 	while(marcstate != RX){
@@ -161,69 +161,66 @@ int main(void)
 		switch(NextState){
 		  case RxJammer_State:
 			  // Codigo que corre el estado
-
-			  // Seleccion de nuevo estado
-			  if(bInhibicion == 1)
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1000);
+			  if(in[0] != 0)
+				  NextState = Espera_Rx_State;
+			  else if(bInhibicion != 0)
 				  NextState = Info_central_Tx_State;
 			  else
 				  NextState = RxJammer_State;
 			  break;
 		  case Info_central_Tx_State:
 			  ch[0] = 'I'; //Palabra a transmitir cuando detecta inhibicion
-			  // Desactivar interrupcion de escucha
+			  HAL_TIM_Base_Stop_IT(&htim4);
+
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10); //Definir palabra a enviar
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 			  NextState = Espera_Rx_State;
 
 			  break;
 		  case Guarda_RSSI_Rx_State:
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
 
-			  if(in == ){ //Cambiar por msj
-				  RSSI_value = RSSI_level();
-				  NextState = Espera_Rx_State;
-				  //Falta determinar una variable que tenga 3 estados:
-				  //    *No hay inhibicion
-				  //    *Inhibicion por corrupcion de datos
-				  //    *Inhibicion por potencia
-			  }
-			  else
-				  NextState = Guarda_RSSI_Rx_State;
+			  gRSSI_value = RSSI_level();
+			  gInhibicion = bInhibicion;
+			  NextState = Espera_Rx_State;
 
 			  break;
 		  case Espera_Rx_State:
+			  HAL_TIM_Base_Stop_IT(&htim4);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1000);
 
-			  if(in[0] == ID_nodo)
+			  if(in[0] == 'G')
+				  NextState = Guarda_RSSI_Rx_State;
+			  else if(in[0] == 'A')
 				  NextState = Envia_Tx_State;
-			  else if(in[1] == 'F') //En el char 1 se pone F de fin
+			  else if(in[0] == 'F') //En el char 1 se pone F de fin
 				  NextState = Reset_Rx_State;
 			  else
 				  NextState = Espera_Rx_State;
 
 			  break;
 		  case Envia_Tx_State:
-			  ch = ;//palabra a transmitir
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar, deberia enviar ID RSSI MODINHIBICION
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000); //TODO poner bandera
+			  ch[0] = ID_nodo;
+			  ch[1] = gRSSI_value;
+			  ch[2] = gInhibicion;
 
-			  if(in == ch){
-				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-				  NextState = Espera_Rx_State;
-			  }
-			  else
-				  NextState = Envia_Tx_State;
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 3, 10); //Definir palabra a enviar, deberia enviar ID RSSI MODINHIBICION
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+
+			  NextState = Espera_Rx_State;
+
 			  break;
 		  case Reset_Rx_State:
-			  //Vuelve a activar interrupcion de escucha
+			  HAL_TIM_Base_Start_IT(&htim4);
 			  bInhibicion = 0;
 			  NextState = RxJammer_State;
 			  break;
 		  default:
+			  HAL_TIM_Base_Start_IT(&htim4);
+			  bInhibicion = 0;
 			  NextState = RxJammer_State;
 			  //Resetear sistema ?
 			  break;
@@ -479,35 +476,9 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
-void transmit_demo(uint16_t size){
-	  uint8_t data[size];
-	  int i;
-	  uint8_t error = 0;
-
-	  static int counter = 0;
-
-	  data[0] = size & 0xFF;
-	  data[1] = (size>>8) & 0xFF;
-
-	  for(i=2; i<size; i++){
-		  data[i] = (i)%256;
-	  }
-
-	  //while(1){
-		  if(send_frame(data, size)!=FRAME_OK) error = 1;
-		  data[size-1] = counter++;
-
-	  //}
-}
-
-int test(){
-return 0;
-}
-
-
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
-	int result_RSSI;
+	uint8_t result_RSSI;
 	uint8_t data_in;
 
 
@@ -545,7 +516,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 				contador150ms++;
 				if(contador150ms == 3749) {
 					promedio = (int) ((a_promediar * 100) / 3750); 	//calculo el promedio de unos en 150 ms
-					if(promedio > threshold) bInhibicion = 1;
+					if(promedio > threshold){ bInhibicion = 1; HAL_TIM_Base_Stop_IT(&htim4);}
 					contador150ms = 0; // 3750 cuentas equivalen a 150ms por la frecuencia de 25kHz de la interrupcion
 					state = 0;
 					a_promediar = 0;
@@ -559,7 +530,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 }
 
-int RSSI_level(){ //esta funcion devuelve el valor en dBm del RSSI
+uint8_t RSSI_level(){ //esta funcion devuelve el valor en dBm del RSSI
 	int result_RSSI, result;
 
 	result = rf_read_register(RSSI); 			//leo el registro que almacena el RSSI
@@ -571,7 +542,7 @@ int RSSI_level(){ //esta funcion devuelve el valor en dBm del RSSI
 	}
 
 
-	return result_RSSI;
+	return (uint8_t)((-1)*result_RSSI);
 }
 
 

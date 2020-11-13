@@ -46,8 +46,8 @@ central.bin \
 all: central.elf secondary-outputs
 
 # Tool invocations
-central.elf: $(OBJS) $(USER_OBJS) /home/julian/proyecto-final/central/STM32F103C8TX_FLASH.ld
-	arm-none-eabi-gcc -o "central.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"/home/julian/proyecto-final/central/STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="central.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+central.elf: $(OBJS) $(USER_OBJS) C:\Users\teto_\Documents\FACULTAD_2020\Proyecto\ final\proyecto-final\central\STM32F103C8TX_FLASH.ld
+	arm-none-eabi-gcc -o "central.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m3 -T"C:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\central\STM32F103C8TX_FLASH.ld" --specs=nosys.specs -Wl,-Map="central.map" -Wl,--gc-sections -static --specs=nano.specs -mfloat-abi=soft -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

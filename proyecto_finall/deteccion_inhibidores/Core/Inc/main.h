@@ -106,7 +106,7 @@ void Error_Handler(void);
 
 #define threshold 40
 
-int RSSI_level();
+uint8_t RSSI_level();
 /* USER CODE END Private defines */
 
 #ifdef __cplusplus

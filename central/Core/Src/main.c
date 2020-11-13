@@ -20,11 +20,11 @@
 
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
-#include <stdbool.h>
+
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-
+#include <stdbool.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -51,7 +51,6 @@ typedef enum
 {
     RxNodos_State,
     Captura_Inhibicion_Tx_State,
-	Comienza_Cadena_Tx_State,
     Espera_Estados_Rx_State,
     Reset_Tx_State
 } eSystemState;
@@ -104,16 +103,16 @@ int main(void)
   MX_USART1_UART_Init();
   /* USER CODE BEGIN 2 */
   	eSystemState NextState;
-	int RSSI_value[3];
-	char estado_inhi[3];
-	int cRx = 0;
+	uint8_t RSSI_value[3];
+	uint8_t estado_inhi[3];
+	uint8_t cRx = 0;
 	bool bPresencia_Inhibi;
-	char in[8];
-	char ch[8];
-	uint16_t eRx;
+	char in[3] = {0, 0, 0};
+	char ch[3] = {0, 0, 0};
+
 
 	NextState = RxNodos_State;
-	bPresencia_Inhibi = false;
+	bPresencia_Inhibi = 0;
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempo
   /* USER CODE END 2 */
@@ -123,16 +122,15 @@ int main(void)
   while (1)
   {
 
-	  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
-
 	  // Maquina de estados para comunicacion
 	  switch(NextState){
 		  case RxNodos_State:
+			  in[0] = 0;
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-			  eRx = HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1000);
 
-			  if(eRx == HAL_TIMEOUT){
-				  bPresencia_Inhibi = true;
+			  if(in[0] != 0){
+				  bPresencia_Inhibi = 1;
 				  NextState = Captura_Inhibicion_Tx_State;
 	  	  	  }
 			  else
@@ -141,74 +139,68 @@ int main(void)
 			  break;
 
 		  case Captura_Inhibicion_Tx_State:
-			  ch = ;
+			  ch[0] = 'G';
 			  // Pone en modo tx
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
-			  if(in == ch)
-				  NextState = Comienza_Cadena_Tx_State;
-			  else
-				  NextState = Captura_Inhibicion_Tx_State;
-			  break;
-
-		  case Comienza_Cadena_Tx_State:
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
-
-			  if(in == ch){
-				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-				  NextState = Espera_Estados_Rx_State;
-				  cRx = 0;
-			  }
-			  else
-				  NextState = Comienza_Cadena_Tx_State;
-			  break;
+			  NextState = Espera_Estados_Rx_State;
 
 		  case Espera_Estados_Rx_State:
+
+			  if 	  (cRx == 0) ch[0] = 'a';
+			  else if (cRx == 1) ch[0] = 'b';
+			  else if (cRx == 2) ch[0] = 'c';
+
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 1000);
 			  if(in[0] == 'A'){
-				  RSSI_value[0] = //Descomponer y agarrarHAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
-				  estado_inhi[0] = //Descomponer y agarrarHAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+				  RSSI_value[0] = in[1];
+				  estado_inhi[0] = in[2];
+				  cRx++;
+			  }
+			  else if(in[0] == 'B'){
+				  RSSI_value[1] = in[1];
+				  estado_inhi[1] = in[2];
 				  cRx++;
 			  }
 			  else if(in[0] == 'C'){
-				  RSSI_value[1] = //Descomponer y agarrarHAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
-				  estado_inhi[1] = //Descomponer y agarrarHAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
-				  cRx++;
-			  }
-			  else if(in[0] == 'F'){
-				  RSSI_value[2] = //Descomponer y agarrarHAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
-				  estado_inhi[2] = //Descomponer y agarrarHAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+				  RSSI_value[2] = in[1];
+				  estado_inhi[2] = in[2];
 				  cRx++;
 			  }
 
-			  if(cRx = 3)
+			  if(cRx == 3){
+				  cRx = 0;
 				  NextState = Reset_Tx_State;
+			  }
 			  else
 				  NextState = Espera_Estados_Rx_State;
 
 
 			  break;
 		  case Reset_Tx_State:
+			  ch[0] = 'F';
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 8, 10); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 8, 1000);
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
-			  if(in == ch){
-				  bPresencia_Inhibi = false;
-				  NextState = RxNodos_State;
-			  }
-			  else
-				  NextState = Reset_Tx_State;
+			  bPresencia_Inhibi = 0;
+			  NextState = RxNodos_State;
 
 			  break;
 		  default:
-			  //Marcar error para estado no definido
-			  //Resetear sistema ?
+			  ch[0] = 'F';
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);
+			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+
+			  bPresencia_Inhibi = 0;
+			  NextState = RxNodos_State;
 			  break;
 
 	  };
