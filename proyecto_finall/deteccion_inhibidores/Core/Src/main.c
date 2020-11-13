@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define ID_nodo  'C'
+#define ID_nodo  'A'
 
 /* USER CODE END PTD */
 
@@ -129,6 +129,7 @@ int main(void)
   	char in[3]={0, 0, 0};
   	uint8_t gInhibicion;
   	uint16_t err;
+  	uint8_t cError = 0;
 
 
   	bInhibicion = 0;
@@ -182,7 +183,8 @@ int main(void)
 			  HAL_TIM_Base_Stop_IT(&htim4);
 
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10); //Definir palabra a enviar
+			  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1); //Definir palabra a enviar
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 			  NextState = Espera_Rx_State;
 
@@ -197,7 +199,7 @@ int main(void)
 		  case Espera_Rx_State:
 			  HAL_TIM_Base_Stop_IT(&htim4);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 4000);
+			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 40);
 
 
 			  if(in[0] == 'G')
@@ -209,7 +211,15 @@ int main(void)
 			  else
 				  NextState = Espera_Rx_State;
 
-			  if(err ==  3) NextState = Reset_Rx_State;
+			  if(err ==  3) {
+				  cError++;
+
+				  if (cError >= 100){
+					  NextState = Reset_Rx_State;
+					  cError = 0;
+				  }
+			  }
+
 
 			  break;
 		  case Envia_Tx_State:
