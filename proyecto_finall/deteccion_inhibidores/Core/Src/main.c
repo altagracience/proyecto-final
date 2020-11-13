@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define ID_nodo  'A'
+#define ID_nodo  'C'
 
 /* USER CODE END PTD */
 
@@ -52,9 +52,12 @@ UART_HandleTypeDef huart1;
 
 /* USER CODE BEGIN PV */
 
-uint16_t promedio = 0, a_promediar = 0, contador20ms = 0, contador150ms = 0;
+uint16_t promedio = 0, a_promediar = 0, contador20ms = 0, contador150ms = 0, contador20ms_rssi = 0;
 uint16_t sync_mx = 1; 			//variable de control para sincronización máxima de 320ms
-uint8_t state = 0;
+uint8_t state = 0, i_rssi=0;
+uint16_t suma_RSSI = 90;
+uint8_t RSSI_val[10] = {90,90,90,90,90,90,90,90,90,90};
+
 
 //Different state of ATM machine
 typedef enum
@@ -165,6 +168,7 @@ int main(void)
 		switch(NextState){
 		  case RxJammer_State:
 			  // Codigo que corre el estado
+			  in[0] = in[1] = in[2] = 0;
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1000);
 			  if(in[0] != 0)
 				  NextState = Espera_Rx_State;
@@ -205,7 +209,7 @@ int main(void)
 			  else
 				  NextState = Espera_Rx_State;
 
-			  if(err ==  3) NextState = RxJammer_State;
+			  if(err ==  3) NextState = Reset_Rx_State;
 
 			  break;
 		  case Envia_Tx_State:
@@ -486,7 +490,6 @@ static void MX_GPIO_Init(void)
 
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
-	uint8_t result_RSSI;
 	uint8_t data_in;
 
 
@@ -503,7 +506,6 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 				contador20ms++;
 				if(contador20ms == 499){ 							// 500 cuentas equivalen a 20ms por la frecuencia de 25kHz de la interrupcion
 					promedio = (int) ((a_promediar * 100) / 500); 	//calculo el promedio de 1 en 20 ms
-					result_RSSI = RSSI_level(); 					//Llamo a función que devuelve el valor del rssi
 
 					if(promedio > threshold) sync_mx = sync_mx << 1; //sync_mx es una variable de 16 bits que me permite testear cuantos bloques consecutivos de 20ms hubo un porcentaje de 1 que supere el threshold
 					else sync_mx = 1;
@@ -524,7 +526,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 				contador150ms++;
 				if(contador150ms == 3749) {
 					promedio = (int) ((a_promediar * 100) / 3750); 	//calculo el promedio de unos en 150 ms
-					if(promedio > threshold){ bInhibicion = 1; HAL_TIM_Base_Stop_IT(&htim4);}
+					if(promedio > threshold){
+						bInhibicion = 1;
+						HAL_TIM_Base_Stop_IT(&htim4);}
 					contador150ms = 0; // 3750 cuentas equivalen a 150ms por la frecuencia de 25kHz de la interrupcion
 					state = 0;
 					a_promediar = 0;
@@ -534,7 +538,32 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 				break;
 		}
 
+		contador20ms_rssi++;
+		if(contador20ms_rssi == 499){ 							// 500 cuentas equivalen a 20ms por la frecuencia de 25kHz de la interrupcion
+
+			if(i_rssi < 10){
+				RSSI_val[i_rssi] = RSSI_level(); 					//Llamo a función que devuelve el valor del rssi
+				if (RSSI_val[i_rssi] > 120 || RSSI_val[i_rssi] < 18) RSSI_val[i_rssi] = suma_RSSI;
+				i_rssi++;
+			}
+			else i_rssi = 0;
+
+
+			for(int i = 0; i<10; i++){
+				suma_RSSI += RSSI_val[i];
+			}
+
+			suma_RSSI = (uint16_t)(suma_RSSI/10);
+
+			if(suma_RSSI <= 30) {
+				bInhibicion = 2;
+				HAL_TIM_Base_Stop_IT(&htim4);  // Si RSSI promedio es <= 30 es inhibicion por potencia
+			}
+			contador20ms_rssi = 0;
+
+
 		}
+	}
 
 }
 

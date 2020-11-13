@@ -105,6 +105,8 @@ int main(void)
 	uint8_t RSSI_value[3];
 	uint8_t estado_inhi[3];
 	uint8_t cRx = 0;
+	uint8_t cIn = 0;
+	uint8_t err = 0;
 	bool bPresencia_Inhibi;
 	char in[3] = {0, 0, 0};
 	char ch[3] = {0, 0, 0};
@@ -158,22 +160,37 @@ int main(void)
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 1000);
+			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
 			  if(in[0] == 'A'){
-				  RSSI_value[0] = in[1];
-				  estado_inhi[0] = in[2];
+				  if (in[1] > 120 || in[1] < 18) RSSI_value[0] = 0;
+				  else RSSI_value[0] = in[1];
+				  if (in[2] > 2) estado_inhi[0] = 0;
+				  else estado_inhi[0] = in[2];
+
 				  cRx++;
+				  cIn = 0;
 			  }
 			  else if(in[0] == 'B'){
-				  RSSI_value[1] = in[1];
-				  estado_inhi[1] = in[2];
+				  if (in[1] > 120 || in[1] < 18) RSSI_value[1] = 0;
+				  else RSSI_value[1] = in[1];
+
+				  if (in[2] > 2) estado_inhi[1] = 0;
+				  else estado_inhi[1] = in[2];
 				  cRx++;
+				  cIn = 0;
 			  }
 			  else if(in[0] == 'C'){
+				  if (in[1] > 120 || in[1] < 18) RSSI_value[2] = 0;
+				  else RSSI_value[2] = in[1];
 				  RSSI_value[2] = in[1];
-				  estado_inhi[2] = in[2];
+				  if (in[2] > 2) estado_inhi[2] = 0;
+				  else estado_inhi[2] = in[2];
 				  cRx++;
+				  cIn = 0;
 			  }
+
+			  if(err == 3)
+				  cIn++;
 
 			  if(cRx == 3){
 
@@ -187,6 +204,11 @@ int main(void)
 				  bPresencia_Inhibi = 0;
 				  NextState = RxNodos_State;
 
+			  }
+
+			  if (cIn >= 50){
+				  cIn = 0;
+				  cRx++;
 			  }
 
 

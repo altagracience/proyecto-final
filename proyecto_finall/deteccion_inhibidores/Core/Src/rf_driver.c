@@ -737,11 +737,11 @@ void rf_wakeup(void){
 }
 
 //TODO Not tested
-uint8_t rf_get_settings(){
-   static uint8_t settings[CFG_REGISTER];
-   rf_read_data(0, settings, CFG_REGISTER);
-   return settings;
-}
+//uint8_t rf_get_settings(){
+//   static uint8_t settings[CFG_REGISTER];
+//   rf_read_data(0, settings, CFG_REGISTER);
+//   return settings;
+//}
 
 //TODO Not tested
 void rf_wor_enable(){

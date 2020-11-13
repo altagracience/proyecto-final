@@ -15,7 +15,6 @@ rf_driver.c:684:6:rf_sidle	16	static
 rf_driver.c:701:6:rf_receive	16	static
 rf_driver.c:722:6:rf_power_down	8	static
 rf_driver.c:728:6:rf_wakeup	8	static
-rf_driver.c:740:9:rf_get_settings	8	static
 rf_driver.c:747:6:rf_wor_enable	8	static
 rf_driver.c:779:6:rf_wor_disable	8	static
 rf_driver.c:785:6:rf_wor_reset	8	static
