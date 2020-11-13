@@ -150,7 +150,7 @@ int main(void)
 			  ch[0] = 'G';
 			  // Pone en modo tx
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
@@ -213,7 +213,7 @@ int main(void)
 					  bPresencia_Inhibi = 1;
 				  }
 
-
+				  estado_inhi[0] = estado_inhi[1] = estado_inhi[2] = 0;
 
 				  bPresencia_Inhibi = 0;
 				  NextState = RxNodos_State;
@@ -409,7 +409,7 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pin = GPIO_PIN_6;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_HIGH;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
 }
