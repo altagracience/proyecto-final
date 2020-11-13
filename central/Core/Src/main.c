@@ -21,7 +21,6 @@
 /* Includes ------------------------------------------------------------------*/
 #include "main.h"
 
-
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdbool.h>
@@ -88,7 +87,7 @@ int main(void)
   HAL_Init();
 
   /* USER CODE BEGIN Init */
-
+//  HAL_UART_IRQHandler(&huart1);
   /* USER CODE END Init */
 
   /* Configure the system clock */
@@ -142,7 +141,8 @@ int main(void)
 			  ch[0] = 'G';
 			  // Pone en modo tx
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
+			  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1); //Definir palabra a enviar para que todos los nodos escuchen y guarden rssi y estado
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 			  NextState = Espera_Estados_Rx_State;
@@ -154,7 +154,8 @@ int main(void)
 			  else if (cRx == 2) ch[0] = 'c';
 
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);
+			  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1);
+			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 1000);
@@ -289,10 +290,21 @@ static void MX_USART1_UART_Init(void)
   */
 static void MX_GPIO_Init(void)
 {
+  GPIO_InitTypeDef GPIO_InitStruct = {0};
 
   /* GPIO Ports Clock Enable */
   __HAL_RCC_GPIOD_CLK_ENABLE();
   __HAL_RCC_GPIOA_CLK_ENABLE();
+
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8|GPIO_PIN_11, GPIO_PIN_RESET);
+
+  /*Configure GPIO pins : PA8 PA11 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_11;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
 }
 
