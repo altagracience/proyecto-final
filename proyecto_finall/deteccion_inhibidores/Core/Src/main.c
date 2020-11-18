@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define ID_nodo  'A'
+#define ID_nodo  'B'
 
 /* USER CODE END PTD */
 
@@ -171,7 +171,7 @@ int main(void)
 			  // Codigo que corre el estado
 			  in[0] = in[1] = in[2] = 0;
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1000);
-			  if(in[0] != 0)
+			  if((in[0] != 0) && (in[0] != 'F'))
 				  NextState = Espera_Rx_State;
 			  else if(bInhibicion != 0)
 				  NextState = Info_central_Tx_State;
@@ -214,7 +214,7 @@ int main(void)
 			  if(err ==  3) {
 				  cError++;
 
-				  if (cError >= 100){
+				  if (cError >= 10){
 					  NextState = Reset_Rx_State;
 					  cError = 0;
 				  }

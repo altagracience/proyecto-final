@@ -108,18 +108,17 @@ int main(void)
   MX_TIM4_Init();
   /* USER CODE BEGIN 2 */
   	eSystemState NextState;
-	uint8_t RSSI_value[3];
+	uint8_t RSSI_value[3] = {0,0,0};
 	uint8_t estado_inhi[3] = {0,0,0};
 	uint8_t cRx = 0;
 	uint8_t cIn = 0;
 	uint8_t err = 0;
-	bool bPresencia_Inhibi;
+	uint8_t cGuardar = 0;
 	char in[3] = {0, 0, 0};
 	char ch[3] = {0, 0, 0};
 
 
 	NextState = RxNodos_State;
-	bPresencia_Inhibi = 0;
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempoc
 
@@ -171,6 +170,7 @@ int main(void)
 			  if(in[0] == 'A'){
 				  if (in[1] > 120 || in[1] < 18) RSSI_value[0] = 0;
 				  else RSSI_value[0] = in[1];
+
 				  if (in[2] > 2) estado_inhi[0] = 0;
 				  else estado_inhi[0] = in[2];
 
@@ -202,25 +202,32 @@ int main(void)
 			  if(cRx == 3){
 
 				  cRx = 0;
-				  ch[0] = 'F';
-				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-				  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1);
-				  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
-				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
-				  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2])  {
-					  HAL_TIM_Base_Start_IT(&htim4);
-					  bPresencia_Inhibi = 1;
+				  if(cGuardar < 3 && RSSI_value[0] == 0 && RSSI_value[1] == 0 && RSSI_value[2] == 0){
+					  NextState = Captura_Inhibicion_Tx_State;
+					  cGuardar++;
 				  }
 
-				  estado_inhi[0] = estado_inhi[1] = estado_inhi[2] = 0;
+				  else {
+					  ch[0] = 'F';
+					  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+					  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1);
+					  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
+					  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
-				  bPresencia_Inhibi = 0;
-				  NextState = RxNodos_State;
+					  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2])   HAL_TIM_Base_Start_IT(&htim4);
+
+
+					  estado_inhi[0] = estado_inhi[1] = estado_inhi[2] = 0;
+					  RSSI_value[0] = RSSI_value[1] = RSSI_value[2] = 0;
+
+					  cGuardar = 0;
+					  NextState = RxNodos_State;
+				  }
 
 			  }
 
-			  if (cIn >= 50){
+			  if (cIn >= 3){
 				  cIn = 0;
 				  cRx++;
 			  }
@@ -233,7 +240,6 @@ int main(void)
 			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
-			  bPresencia_Inhibi = 0;
 			  NextState = RxNodos_State;
 
 			  break;
@@ -243,7 +249,6 @@ int main(void)
 			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
-			  bPresencia_Inhibi = 0;
 			  NextState = RxNodos_State;
 			  break;
 
