@@ -183,7 +183,7 @@ int main(void)
 			  HAL_TIM_Base_Stop_IT(&htim4);
 
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1); //Definir palabra a enviar
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10); //Definir palabra a enviar
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 			  NextState = Espera_Rx_State;

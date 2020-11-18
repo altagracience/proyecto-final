@@ -209,14 +209,15 @@ int main(void)
 				  }
 
 				  else {
+
+					  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2]) //desata alarma visual y sonora en la central
+						  HAL_TIM_Base_Start_IT(&htim4);
+
 					  ch[0] = 'F';
 					  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
 					  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1);
 					  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
 					  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
-
-					  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2])   HAL_TIM_Base_Start_IT(&htim4);
-
 
 					  estado_inhi[0] = estado_inhi[1] = estado_inhi[2] = 0;
 					  RSSI_value[0] = RSSI_value[1] = RSSI_value[2] = 0;

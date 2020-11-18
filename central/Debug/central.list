@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_macro  00016b4f  00000000  00000000  0002cb88  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   00008cc5  00000000  00000000  000436d7  2**0
+ 17 .debug_line   00008cc1  00000000  00000000  000436d7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    00085f73  00000000  00000000  0004c39c  2**0
+ 18 .debug_str    00085f73  00000000  00000000  0004c398  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  000d230f  2**0
+ 19 .comment      0000007b  00000000  00000000  000d230b  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000309c  00000000  00000000  000d238c  2**2
+ 20 .debug_frame  0000309c  00000000  00000000  000d2388  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -460,45 +460,46 @@ int main(void)
 				  }
 
 				  else {
+
+					  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2]) //desata alarma visual y sonora en la central
+ 8000396:	7b3b      	ldrb	r3, [r7, #12]
+ 8000398:	2b00      	cmp	r3, #0
+ 800039a:	d105      	bne.n	80003a8 <main+0x25c>
+ 800039c:	7b7b      	ldrb	r3, [r7, #13]
+ 800039e:	2b00      	cmp	r3, #0
+ 80003a0:	d102      	bne.n	80003a8 <main+0x25c>
+ 80003a2:	7bbb      	ldrb	r3, [r7, #14]
+ 80003a4:	2b00      	cmp	r3, #0
+ 80003a6:	d002      	beq.n	80003ae <main+0x262>
+						  HAL_TIM_Base_Start_IT(&htim4);
+ 80003a8:	4835      	ldr	r0, [pc, #212]	; (8000480 <main+0x334>)
+ 80003aa:	f001 facb 	bl	8001944 <HAL_TIM_Base_Start_IT>
+
 					  ch[0] = 'F';
- 8000396:	2346      	movs	r3, #70	; 0x46
- 8000398:	713b      	strb	r3, [r7, #4]
+ 80003ae:	2346      	movs	r3, #70	; 0x46
+ 80003b0:	713b      	strb	r3, [r7, #4]
 					  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
- 800039a:	2201      	movs	r2, #1
- 800039c:	f44f 7180 	mov.w	r1, #256	; 0x100
- 80003a0:	4835      	ldr	r0, [pc, #212]	; (8000478 <main+0x32c>)
- 80003a2:	f000 fe31 	bl	8001008 <HAL_GPIO_WritePin>
+ 80003b2:	2201      	movs	r2, #1
+ 80003b4:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 80003b8:	482f      	ldr	r0, [pc, #188]	; (8000478 <main+0x32c>)
+ 80003ba:	f000 fe25 	bl	8001008 <HAL_GPIO_WritePin>
 					  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1);
- 80003a6:	1d3b      	adds	r3, r7, #4
- 80003a8:	2201      	movs	r2, #1
- 80003aa:	4619      	mov	r1, r3
- 80003ac:	4833      	ldr	r0, [pc, #204]	; (800047c <main+0x330>)
- 80003ae:	f002 f813 	bl	80023d8 <HAL_UART_Transmit_IT>
+ 80003be:	1d3b      	adds	r3, r7, #4
+ 80003c0:	2201      	movs	r2, #1
+ 80003c2:	4619      	mov	r1, r3
+ 80003c4:	482d      	ldr	r0, [pc, #180]	; (800047c <main+0x330>)
+ 80003c6:	f002 f807 	bl	80023d8 <HAL_UART_Transmit_IT>
 					  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
- 80003b2:	f107 0108 	add.w	r1, r7, #8
- 80003b6:	2301      	movs	r3, #1
- 80003b8:	2201      	movs	r2, #1
- 80003ba:	4830      	ldr	r0, [pc, #192]	; (800047c <main+0x330>)
- 80003bc:	f001 ff6d 	bl	800229a <HAL_UART_Receive>
+ 80003ca:	f107 0108 	add.w	r1, r7, #8
+ 80003ce:	2301      	movs	r3, #1
+ 80003d0:	2201      	movs	r2, #1
+ 80003d2:	482a      	ldr	r0, [pc, #168]	; (800047c <main+0x330>)
+ 80003d4:	f001 ff61 	bl	800229a <HAL_UART_Receive>
 					  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
- 80003c0:	2200      	movs	r2, #0
- 80003c2:	f44f 7180 	mov.w	r1, #256	; 0x100
- 80003c6:	482c      	ldr	r0, [pc, #176]	; (8000478 <main+0x32c>)
- 80003c8:	f000 fe1e 	bl	8001008 <HAL_GPIO_WritePin>
-
-					  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2])   HAL_TIM_Base_Start_IT(&htim4);
- 80003cc:	7b3b      	ldrb	r3, [r7, #12]
- 80003ce:	2b00      	cmp	r3, #0
- 80003d0:	d105      	bne.n	80003de <main+0x292>
- 80003d2:	7b7b      	ldrb	r3, [r7, #13]
- 80003d4:	2b00      	cmp	r3, #0
- 80003d6:	d102      	bne.n	80003de <main+0x292>
- 80003d8:	7bbb      	ldrb	r3, [r7, #14]
- 80003da:	2b00      	cmp	r3, #0
- 80003dc:	d002      	beq.n	80003e4 <main+0x298>
- 80003de:	4828      	ldr	r0, [pc, #160]	; (8000480 <main+0x334>)
- 80003e0:	f001 fab0 	bl	8001944 <HAL_TIM_Base_Start_IT>
-
+ 80003d8:	2200      	movs	r2, #0
+ 80003da:	f44f 7180 	mov.w	r1, #256	; 0x100
+ 80003de:	4826      	ldr	r0, [pc, #152]	; (8000478 <main+0x32c>)
+ 80003e0:	f000 fe12 	bl	8001008 <HAL_GPIO_WritePin>
 
 					  estado_inhi[0] = estado_inhi[1] = estado_inhi[2] = 0;
  80003e4:	2300      	movs	r3, #0
