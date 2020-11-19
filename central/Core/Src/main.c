@@ -138,7 +138,8 @@ int main(void)
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1000);
 
 
-			  if(in[0] != 0) NextState = Captura_Inhibicion_Tx_State;
+			  if(in[0] != 0)
+				  NextState = Captura_Inhibicion_Tx_State;
 
 			  else
 				  NextState = RxNodos_State;
@@ -162,7 +163,7 @@ int main(void)
 			  else if (cRx == 2) ch[0] = 'c';
 
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1);
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
 			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 

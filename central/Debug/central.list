@@ -37,13 +37,13 @@ Idx Name          Size      VMA       LMA       File off  Algn
                   CONTENTS, READONLY, DEBUGGING
  16 .debug_macro  00016b4f  00000000  00000000  0002cb88  2**0
                   CONTENTS, READONLY, DEBUGGING
- 17 .debug_line   00008cc1  00000000  00000000  000436d7  2**0
+ 17 .debug_line   00008cb7  00000000  00000000  000436d7  2**0
                   CONTENTS, READONLY, DEBUGGING
- 18 .debug_str    00085f73  00000000  00000000  0004c398  2**0
+ 18 .debug_str    00085f73  00000000  00000000  0004c38e  2**0
                   CONTENTS, READONLY, DEBUGGING
- 19 .comment      0000007b  00000000  00000000  000d230b  2**0
+ 19 .comment      0000007b  00000000  00000000  000d2301  2**0
                   CONTENTS, READONLY
- 20 .debug_frame  0000309c  00000000  00000000  000d2388  2**2
+ 20 .debug_frame  0000309c  00000000  00000000  000d237c  2**2
                   CONTENTS, READONLY, DEBUGGING
 
 Disassembly of section .text:
@@ -200,10 +200,11 @@ int main(void)
  80001fc:	f002 f84d 	bl	800229a <HAL_UART_Receive>
 
 
-			  if(in[0] != 0) NextState = Captura_Inhibicion_Tx_State;
+			  if(in[0] != 0)
  8000200:	7a3b      	ldrb	r3, [r7, #8]
  8000202:	2b00      	cmp	r3, #0
  8000204:	d002      	beq.n	800020c <main+0xc0>
+				  NextState = Captura_Inhibicion_Tx_State;
  8000206:	2301      	movs	r3, #1
  8000208:	75fb      	strb	r3, [r7, #23]
 
@@ -278,12 +279,12 @@ int main(void)
  8000270:	f44f 7180 	mov.w	r1, #256	; 0x100
  8000274:	4880      	ldr	r0, [pc, #512]	; (8000478 <main+0x32c>)
  8000276:	f000 fec7 	bl	8001008 <HAL_GPIO_WritePin>
-			  HAL_UART_Transmit_IT(&huart1, (uint8_t *)&ch, 1);
- 800027a:	1d3b      	adds	r3, r7, #4
- 800027c:	2201      	movs	r2, #1
- 800027e:	4619      	mov	r1, r3
+			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 1, 10);
+ 800027a:	1d39      	adds	r1, r7, #4
+ 800027c:	230a      	movs	r3, #10
+ 800027e:	2201      	movs	r2, #1
  8000280:	487e      	ldr	r0, [pc, #504]	; (800047c <main+0x330>)
- 8000282:	f002 f8a9 	bl	80023d8 <HAL_UART_Transmit_IT>
+ 8000282:	f001 ff78 	bl	8002176 <HAL_UART_Transmit>
 			  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 1);
  8000286:	f107 0108 	add.w	r1, r7, #8
  800028a:	2301      	movs	r3, #1
