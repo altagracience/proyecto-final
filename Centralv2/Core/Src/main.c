@@ -186,7 +186,7 @@ int main(void)
 
 			  in[2] = in[1] = in[0] = 0;
 
-			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 10);
+			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
 
 			  if(in[0] == 'A'){
 				  if (in[1] > 120 || in[1] < 18) RSSI_value[0] = 0;
@@ -210,8 +210,8 @@ int main(void)
 				  if (in[2] > 2) estado_inhi[2] = 0;
 				  else estado_inhi[2] = in[2];
 			  }
-
-			  cRx++;
+			  if (err != 3)
+				  cRx++;
 
 			  if (cRx == 3){
 				  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2]) //desata alarma visual y sonora en la central
