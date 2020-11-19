@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define ID_nodo  'B'
+#define ID_nodo  'A'
 
 /* USER CODE END PTD */
 
@@ -61,7 +61,8 @@ uint8_t RSSI_val[10] = {90,90,90,90,90,90,90,90,90,90};
 
 //Different state of ATM machine
 
-uint8_t bInhibicion;
+uint8_t bInhibicion=0;
+bool Inte=1;
 
 /* USER CODE END PV */
 
@@ -117,10 +118,9 @@ int main(void)
   	uint8_t gRSSI_value;
 
   	char ch[3]={0, 0, 0};
-  	char in[2]={0, 0};
+  	char in[3]={0, 0, 0};
 
   	uint16_t err;
-  	bInhibicion = 0;
 
 
 	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
@@ -152,15 +152,26 @@ int main(void)
 		in[0] = in[1] = 0;
 		ch[0] = ch[1] = ch[2] = 0;
 
-		HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 100);
+		HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 200);
+
+		if(in[1] == 0){
+			if (Inte == 0){
+				HAL_TIM_Base_Start_IT(&htim4);
+				bInhibicion = 0;
+				gRSSI_value = 0;
+				Inte = 1;
+			}
+		}
 
 		if(in[0] == 'A' && in[1] == 1){
 			gRSSI_value = RSSI_level();
 			HAL_TIM_Base_Stop_IT(&htim4);
-
+			Inte = 0;
 		}
+
 		else if (in[0] == 'A' && in[1] == 2){
 			HAL_TIM_Base_Start_IT(&htim4);
+			Inte = 1;
 			bInhibicion = 0;
 			gRSSI_value = 0;
 			ch[0] = ch[1] = ch[2] = 0;
@@ -174,8 +185,10 @@ int main(void)
 			ch[2] = bInhibicion;
 
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+			HAL_Delay(50);
 			HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 3, 10);
-			HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 1);
+			HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
+			HAL_Delay(50);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 		}
 
@@ -325,7 +338,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 19200;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_EVEN;
