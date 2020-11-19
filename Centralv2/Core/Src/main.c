@@ -131,6 +131,8 @@ int main(void)
 	  switch(NextState){
 	  	  case No_Inhibicion_State:
 
+	  		  HAL_Delay(200);
+
 	  		  ch[1] = 0;
 	  		  in[2] = 0;
 
@@ -138,23 +140,27 @@ int main(void)
 			  else if (cRx == 1) ch[0] = 'B';
 			  else if (cRx == 2) ch[0] = 'C';
 
+
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 10);
-	  		  HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 1);
+	  		  HAL_Delay(50);
+	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
+	  		  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
+	  		  HAL_Delay(50);
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
+	  		  in[2] = in[1] = in[0] = 0;
 	  		  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
 
 	  		  if(err==3){
 
 	  		  }
 
-	  		  if (cRx == 2)
+	  		  if (cRx >= 2)
 	  			  cRx = 0;
 
 	  		  else cRx++;
 
-	  		  if(in[2] != 0){
+	  		  if(in[2] == 1 || in[2] == 2){
 	  			  NextState = Inhibicion_State;
 	  			  cRx = 0;
 	  		  }
@@ -164,17 +170,23 @@ int main(void)
 	  	  case Inhibicion_State:
 
 	  		  ch[1] = 1;
+	  		  in[0] = in[1] = in[2] = 0;
+
 
 	  		  if 	  (cRx == 0) ch[0] = 'A';
 	  		  else if (cRx == 1) ch[0] = 'B';
 	  		  else if (cRx == 2) ch[0] = 'C';
 
-	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 10);
-			  HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 1);
-			  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+	  		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+	  		HAL_Delay(50);
+	  		HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
+	  		HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
+	  		HAL_Delay(50);
+	  		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
-			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
+			  in[2] = in[1] = in[0] = 0;
+
+			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 10);
 
 			  if(in[0] == 'A'){
 				  if (in[1] > 120 || in[1] < 18) RSSI_value[0] = 0;
@@ -215,12 +227,13 @@ int main(void)
 
 	  		  for(i = 0; i < 2; i++){
 
-				  ch[0] = 'A';
+	  			  ch[0] = 'A';
 				  ch[1] = 2;
 
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-				  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 10);
-				  HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 1);
+				  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
+				  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
+				  HAL_Delay(50);
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 	  		  }
 
@@ -344,7 +357,7 @@ static void MX_USART1_UART_Init(void)
 
   /* USER CODE END USART1_Init 1 */
   huart1.Instance = USART1;
-  huart1.Init.BaudRate = 115200;
+  huart1.Init.BaudRate = 19200;
   huart1.Init.WordLength = UART_WORDLENGTH_8B;
   huart1.Init.StopBits = UART_STOPBITS_1;
   huart1.Init.Parity = UART_PARITY_EVEN;
