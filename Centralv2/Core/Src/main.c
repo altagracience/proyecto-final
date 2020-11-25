@@ -110,10 +110,11 @@ int main(void)
 	uint8_t RSSI_value[3] = {0,0,0};
 	uint8_t estado_inhi[3] = {0,0,0};
 	uint8_t cRx = 0;
-	uint8_t err = 0;
+	uint8_t err = 0, eRx = 0;
 	uint8_t i = 0;
 	char in[3] = {0, 0, 0};
 	char ch[2] = {0, 0};
+	uint8_t salud_nodos[3] = {1, 1, 1};
 
 
 	NextState = No_Inhibicion_State;
@@ -151,9 +152,6 @@ int main(void)
 	  		  in[2] = in[1] = in[0] = 0;
 	  		  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
 
-	  		  if(err==3){
-
-	  		  }
 
 	  		  if (cRx >= 2)
 	  			  cRx = 0;
@@ -189,34 +187,49 @@ int main(void)
 			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
 
 			  if(in[0] == 'A'){
-				  if (in[1] > 120 || in[1] < 18) RSSI_value[0] = 0;
+				  if (in[1] > 120 || in[1] < 10) RSSI_value[0] = 0;
 				  else RSSI_value[0] = in[1];
 
 				  if (in[2] > 2) estado_inhi[0] = 0;
 				  else estado_inhi[0] = in[2];
+				  eRx = 0;
 
 			  }
 			  else if(in[0] == 'B'){
-				  if (in[1] > 120 || in[1] < 18) RSSI_value[1] = 0;
+				  if (in[1] > 120 || in[1] < 10) RSSI_value[1] = 0;
 				  else RSSI_value[1] = in[1];
 
 				  if (in[2] > 2) estado_inhi[1] = 0;
 				  else estado_inhi[1] = in[2];
+				  eRx = 0;
 			  }
 			  else if(in[0] == 'C'){
-				  if (in[1] > 120 || in[1] < 18) RSSI_value[2] = 0;
+				  if (in[1] > 120 || in[1] < 10) RSSI_value[2] = 0;
 				  else RSSI_value[2] = in[1];
 
 				  if (in[2] > 2) estado_inhi[2] = 0;
 				  else estado_inhi[2] = in[2];
+				  eRx = 0;
 			  }
-			  if (err != 3)
+
+			  if(err == 3){  //si la recepcion resulta en timeout
+				  eRx++;
+				  if(eRx >= 3) //y el nodo no responde en reiterados intentos se denota como con falla
+					  salud_nodos[cRx] = 0;
+			  }
+
+
+
+			  if (eRx >= 5 || err != 3) {
 				  cRx++;
+				  eRx = 0;
+			  }
 
 			  if (cRx == 3){
 				  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2]) //desata alarma visual y sonora en la central
 					  HAL_TIM_Base_Start_IT(&htim4);
 
+				  salud_nodos[0] = salud_nodos[1] = salud_nodos[2] = 1;
 				  NextState = Reset_State;
 
 
@@ -231,6 +244,7 @@ int main(void)
 				  ch[1] = 2;
 
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+				  HAL_Delay(50);
 				  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 				  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
 				  HAL_Delay(50);
