@@ -58,7 +58,6 @@ uint8_t state = 0, i_rssi=0;
 uint16_t suma_RSSI = 90;
 uint8_t RSSI_val[10] = {90,90,90,90,90,90,90,90,90,90};
 
-
 //Different state of ATM machine
 
 uint8_t bInhibicion=0;
@@ -164,18 +163,31 @@ int main(void)
 		}
 
 		if(in[0] == 'A' && in[1] == 1){
-			gRSSI_value = RSSI_level();
+			gRSSI_value = RSSI_val[i_rssi-1 < 0 ? 9 : i_rssi-1];
 			HAL_TIM_Base_Stop_IT(&htim4);
 			Inte = 0;
 		}
 
 		else if (in[0] == 'A' && in[1] == 2){
+			for(int j = 0; j<10; j++){
+				RSSI_val[j] = 90;
+			}
 			HAL_TIM_Base_Start_IT(&htim4);
 			Inte = 1;
 			bInhibicion = 0;
 			gRSSI_value = 0;
 			ch[0] = ch[1] = ch[2] = 0;
 			in[0] = in[1] = 0;
+		}
+
+		if (in[1] == 1){
+			if (gRSSI_value == 0){
+				gRSSI_value = RSSI_val[i_rssi-1 < 0 ? 9 : i_rssi-1];
+			}
+			if (Inte == 1){
+				HAL_TIM_Base_Stop_IT(&htim4);
+				Inte = 0;
+			}
 		}
 
 		if(in[0] == ID_nodo && in[1] != 2){
@@ -491,8 +503,12 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 			if(i_rssi < 10){
 				RSSI_val[i_rssi] = RSSI_level(); 					//Llamo a función que devuelve el valor del rssi
-				if (RSSI_val[i_rssi] > 120 || RSSI_val[i_rssi] < 18) RSSI_val[i_rssi] = suma_RSSI;
+				if (RSSI_val[i_rssi] > 120 || RSSI_val[i_rssi] < 10)
+					RSSI_val[i_rssi] = suma_RSSI;
 				i_rssi++;
+
+				if(i_rssi >= 10)
+					i_rssi = 0;
 			}
 			else i_rssi = 0;
 
