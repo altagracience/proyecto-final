@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  30 OCT 2020 18:10
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  30 NOV 2020 19:37
 entering extended mode
 **"c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
 ("c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
@@ -489,7 +489,7 @@ LaTeX Info: Redefining \nameref on input line 27.
 \@outlinefile=\write4
 \openout4 = `ProyectoFinal.out'.
 
-<LogoUTN.png, id=66, 301.125pt x 301.125pt>
+<LogoUTN.png, id=70, 301.125pt x 301.125pt>
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
 Package pdftex.def Info: LogoUTN.png  used on input line 36.
@@ -562,7 +562,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 177.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
 [4]
-<sdr.png, id=147, 408.77719pt x 383.18156pt>
+<sdr.png, id=152, 408.77719pt x 383.18156pt>
 File: sdr.png Graphic file (type png)
 <use sdr.png>
 Package pdftex.def Info: sdr.png  used on input line 180.
@@ -572,12 +572,12 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 192.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [5 <./sdr.png>]
-<llaves.png, id=156, 651.18282pt x 557.08125pt>
+<llaves.png, id=161, 651.18282pt x 557.08125pt>
 File: llaves.png Graphic file (type png)
 <use llaves.png>
 Package pdftex.def Info: llaves.png  used on input line 195.
 (pdftex.def)             Requested size: 260.4685pt x 222.82855pt.
-<espectro_ASK.png, id=157, 875.52094pt x 670.00313pt>
+<espectro_ASK.png, id=162, 875.52094pt x 670.00313pt>
 File: espectro_ASK.png Graphic file (type png)
 <use espectro_ASK.png>
 Package pdftex.def Info: espectro_ASK.png  used on input line 202.
@@ -587,7 +587,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 226.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [6 <./llaves.png>]
-<fpb_jam.png, id=165, 328.97906pt x 228.10219pt>
+<fpb_jam.png, id=170, 328.97906pt x 228.10219pt>
 File: fpb_jam.png Graphic file (type png)
 <use fpb_jam.png>
 Package pdftex.def Info: fpb_jam.png  used on input line 229.
@@ -603,7 +603,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 258.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [8 <./fpb_jam.png>]
-<no_linealidad_e_tercer_orden.png, id=189, 367.3725pt x 688.07062pt>
+<no_linealidad_e_tercer_orden.png, id=194, 367.3725pt x 688.07062pt>
 File: no_linealidad_e_tercer_orden.png Graphic file (type png)
 <use no_linealidad_e_tercer_orden.png>
 Package pdftex.def Info: no_linealidad_e_tercer_orden.png  used on input line 277.
@@ -618,7 +618,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 314.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [10 <./no_linealidad_e_tercer_orden.png>]
-<tipos_de_jam.png, id=205, 353.06906pt x 387.69844pt>
+<tipos_de_jam.png, id=210, 353.06906pt x 387.69844pt>
 File: tipos_de_jam.png Graphic file (type png)
 <use tipos_de_jam.png>
 Package pdftex.def Info: tipos_de_jam.png  used on input line 331.
@@ -628,7 +628,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 346.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [11]
-<bloques_inh.png, id=215, 1023.825pt x 524.71031pt>
+<bloques_inh.png, id=220, 1023.825pt x 524.71031pt>
 File: bloques_inh.png Graphic file (type png)
 <use bloques_inh.png>
 Package pdftex.def Info: bloques_inh.png  used on input line 356.
@@ -638,7 +638,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 366.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [12 <./tipos_de_jam.png>]
-<BER_ask.png, id=222, 907.89188pt x 681.29532pt>
+<BER_ask.png, id=227, 907.89188pt x 681.29532pt>
 File: BER_ask.png Graphic file (type png)
 <use BER_ask.png>
 Package pdftex.def Info: BER_ask.png  used on input line 369.
@@ -653,7 +653,7 @@ File: LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: LogoUTN.png  used on input line 400.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [14 <./BER_ask.png>]
-<compresion_max.png, id=236, 604.50844pt x 320.69812pt>
+<compresion_max.png, id=241, 604.50844pt x 320.69812pt>
 File: compresion_max.png Graphic file (type png)
 <use compresion_max.png>
 Package pdftex.def Info: compresion_max.png  used on input line 403.
@@ -665,27 +665,45 @@ Package pdftex.def Info: LogoUTN.png  used on input line 426.
  [15 <./compresion_max.png>]
 File: LogoUTN.png Graphic file (type png)
 <use LogoUTN.png>
-Package pdftex.def Info: LogoUTN.png  used on input line 438.
+Package pdftex.def Info: LogoUTN.png  used on input line 428.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [16] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
+ [16]
+Cap\'{\i }tulo 2.
+
+Package hyperref Warning: Difference (2) between bookmark levels is greater 
+(hyperref)                than one, level fixed on input line 429.
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 431--435
+
+ []
+
+[17
+
+]
+File: LogoUTN.png Graphic file (type png)
+<use LogoUTN.png>
+Package pdftex.def Info: LogoUTN.png  used on input line 457.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [18] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
 Package rerunfilecheck Info: File `ProyectoFinal.out' has not changed.
-(rerunfilecheck)             Checksum: 0B42E4DF390F376DE68C1164530A791E;653.
+(rerunfilecheck)             Checksum: F74D1AEC2753D7E2F2D85E7B2B23C76F;734.
  ) 
 Here is how much of TeX's memory you used:
- 17811 strings out of 480236
- 346781 string characters out of 2880558
- 634801 words of memory out of 3000000
- 33941 multiletter control sequences out of 15000+200000
+ 17815 strings out of 480236
+ 346825 string characters out of 2880558
+ 634809 words of memory out of 3000000
+ 33942 multiletter control sequences out of 15000+200000
  540295 words of font info for 46 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,15n,99p,522b,865s stack positions out of 5000i,500n,10000p,200000b,50000s
 <C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (21 pages, 559425 bytes).
+Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (23 pages, 562818 bytes).
 PDF statistics:
- 287 PDF objects out of 1000 (max. 8388607)
- 62 named destinations out of 1000 (max. 500000)
- 231 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 300 PDF objects out of 1000 (max. 8388607)
+ 65 named destinations out of 1000 (max. 500000)
+ 239 words of extra memory for PDF output out of 10000 (max. 10000000)
 

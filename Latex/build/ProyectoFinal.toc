@@ -22,4 +22,5 @@
 \contentsline {subsubsection}{Potencia de la señal recibida}{14}{section*.19}%
 \contentsline {subsubsection}{Sensado temporal de portadora}{15}{section*.20}%
 \contentsline {subsubsection}{Ocupación del canal}{15}{section*.21}%
-\contentsline {section}{\numberline {1.2}Objetivos de la investigación}{16}{section.1.2}%
+\contentsline {chapter}{\numberline {2}Características generales del diseño}{17}{chapter.2}%
+\contentsline {subsection}{\numberline {2.0.1}Objetivos globales del sistema}{17}{subsection.2.0.1}%

@@ -59,6 +59,8 @@ void Error_Handler(void);
 
 /* Private defines -----------------------------------------------------------*/
 /* USER CODE BEGIN Private defines */
+void GSM_Init(void);
+void GSM_Send(void);
 
 /* USER CODE END Private defines */
 

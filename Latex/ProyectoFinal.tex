@@ -425,8 +425,27 @@ característica nos da una relación de bits en alto recibidos respecto a los me
 en el canal, usandola estratégicamente, nos puede dar mucha información de lo que está sucediendo.
 
 
-\section{Objetivos de la investigación}
-En base a la información recolectada establecemos los
+\chapter{Características generales del diseño}
+\subsection{Objetivos globales del sistema}
+
+En base a la información recolectada establecemos los requerimientos base del que se parte para el diseño del producto final. Creemos adecuado
+realizar la separación de requerimientos en primarios y secundarios, ya que el sistema a desarrollar está enmarcado en el proyecto final de la 
+carrera de grado de ingeniería electrónica donde, en conjunto con la cátedra, se intenta que los proyectos puedan culminarse en un plazo de 
+tiempo lógico para la obtención del título, dando la posibilidad de seguir explayándose en el mismo a posterior. \\
+
+De este modo, como objetivos primarios podemos establecer:
+
+\begin{itemize}
+    \item Identificar la presencia de señales con una potencia suficiente para inhibir la comunicación: como en el marco teórico se ha 
+    estudiado en profundidad, la etapa amplificadora receptora sufre una compresión de la ganancia cuando en su entrada hay presente 
+    una señal de alto nivel de potencia. Es por esto que se establece como requerimiento del sistema poder identificaruna señal que cumpla con
+    estas características.
+    \item Sensado temporal de portadora
+    \item Ocupación del canal
+
+\end{itemize}
+
+
 capacidad de detectar inhibicion de potencia o corrupcion
 Una forma de atacar la señal de un llavero es atascándola pasando datos basura dentro de la banda de paso del receptor RFID, 
 el área en la que el receptor está escuchando una señal válida (pagina 217 imagen)

@@ -24,6 +24,7 @@
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
 #include <stdbool.h>
+#include <string.h>
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -43,9 +44,11 @@ uint16_t contador1s = 0;
 /* USER CODE END PM */
 
 /* Private variables ---------------------------------------------------------*/
+TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
@@ -57,7 +60,6 @@ typedef enum
     Reset_State
 } eSystemState;
 
-TIM_HandleTypeDef htim4;
 
 /* USER CODE END PV */
 
@@ -66,12 +68,19 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM4_Init(void);
+static void MX_USART2_UART_Init(void);
+static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+
+uint8_t GSM_State = 0;
+uint8_t GSM_Data_In [2] = "";
+uint8_t GSM_Inited = 0;
+uint32_t GSM_Delay = 0, ticks;
 
 /* USER CODE END 0 */
 
@@ -105,22 +114,28 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_TIM4_Init();
+  MX_USART2_UART_Init();
+  MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
-  	eSystemState NextState;
-	uint8_t RSSI_value[3] = {0,0,0};
-	uint8_t estado_inhi[3] = {0,0,0};
-	uint8_t cRx = 0;
-	uint8_t err = 0, eRx = 0;
-	uint8_t i = 0;
-	char in[3] = {0, 0, 0};
-	char ch[2] = {0, 0};
-	uint8_t salud_nodos[3] = {1, 1, 1};
 
 
-	NextState = No_Inhibicion_State;
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
-	HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempoc
+  eSystemState NextState;
+  uint8_t RSSI_value[3] = {0,0,0};
+  uint8_t estado_inhi[3] = {0,0,0};
+  uint8_t cRx = 0;
+  uint8_t err = 0, eRx = 0;
+  uint8_t i = 0;
+  char in[3] = {0, 0, 0};
+  char ch[2] = {0, 0};
+  uint8_t salud_nodos[3] = {1, 1, 1};
 
+
+  NextState = No_Inhibicion_State;
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
+  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempoc
+
+
+  GSM_Init();
 
   /* USER CODE END 2 */
 
@@ -311,6 +326,51 @@ void SystemClock_Config(void)
 }
 
 /**
+  * @brief TIM3 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_TIM3_Init(void)
+{
+
+  /* USER CODE BEGIN TIM3_Init 0 */
+
+  /* USER CODE END TIM3_Init 0 */
+
+  TIM_ClockConfigTypeDef sClockSourceConfig = {0};
+  TIM_MasterConfigTypeDef sMasterConfig = {0};
+
+  /* USER CODE BEGIN TIM3_Init 1 */
+
+  /* USER CODE END TIM3_Init 1 */
+  htim3.Instance = TIM3;
+  htim3.Init.Prescaler = 1439;
+  htim3.Init.CounterMode = TIM_COUNTERMODE_UP;
+  htim3.Init.Period = 10;
+  htim3.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
+  htim3.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
+  if (HAL_TIM_Base_Init(&htim3) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sClockSourceConfig.ClockSource = TIM_CLOCKSOURCE_INTERNAL;
+  if (HAL_TIM_ConfigClockSource(&htim3, &sClockSourceConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  sMasterConfig.MasterOutputTrigger = TIM_TRGO_RESET;
+  sMasterConfig.MasterSlaveMode = TIM_MASTERSLAVEMODE_DISABLE;
+  if (HAL_TIMEx_MasterConfigSynchronization(&htim3, &sMasterConfig) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN TIM3_Init 2 */
+
+  /* USER CODE END TIM3_Init 2 */
+
+}
+
+/**
   * @brief TIM4 Initialization Function
   * @param None
   * @retval None
@@ -389,6 +449,39 @@ static void MX_USART1_UART_Init(void)
 }
 
 /**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 9600;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -433,6 +526,44 @@ static void MX_GPIO_Init(void)
 
 /* USER CODE BEGIN 4 */
 
+void GSM_Init(void){
+
+	HAL_Delay(500);
+	HAL_UART_Transmit(&huart2, (uint8_t*)"AT\n\r", strlen("AT\n\r"), HAL_MAX_DELAY);
+	HAL_Delay(4000);
+	HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,Contype,GPRS\n\r", strlen("AT+SAPBR=3,1,Contype,GPRS\n\r"), HAL_MAX_DELAY);
+	HAL_Delay(300);
+	HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,APN,datos.personal.com\n\r", strlen("AT+SAPBR=3,1,APN,datos.personal.com\n\r"), HAL_MAX_DELAY);
+	HAL_Delay(300);
+	HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,PWD,adgj\n\r", strlen("AT+SAPBR=3,1,PWD,adgj\n\r"), HAL_MAX_DELAY);
+	HAL_Delay(300);
+
+}
+
+
+
+
+void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
+
+	if(huart->Instance == USART2){
+		GSM_State++;
+		GSM_Delay = HAL_GetTick();
+	}
+
+}
+
+
+void GSM_Send(void){
+
+	if(GSM_State == 0)
+		GSM_Delay = HAL_GetTick();
+
+	HAL_TIM_Base_Start_IT(&htim4);
+
+}
+
+
+
 void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 
@@ -445,10 +576,60 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
 			contador1s = 0;
+			GSM_Send();
 			HAL_TIM_Base_Stop_IT(&htim4);
 		}
 
 	}
+
+
+	if(htim->Instance == TIM3){ //chequea que la interrupción sea la del timer adecuado
+
+		ticks = HAL_GetTick();
+
+		if(GSM_State == 0 && ticks == (GSM_Delay + 100))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+SAPBR =1,1\n\r", strlen("AT+SAPBR =1,1\n\r"));
+
+		if(GSM_State == 1 && ticks == (GSM_Delay + 100))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+SAPBR=2,1\n\r", strlen("AT+SAPBR=2,1\n\r"));
+
+		if(GSM_State == 2 && ticks == (GSM_Delay + 100))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPINIT\n\r", strlen("AT+HTTPINIT\n\r"));
+
+		if(GSM_State == 3 && ticks == (GSM_Delay + 100))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=CID,1\n\r", strlen("AT+HTTPPARA=CID,1\n\r"));
+
+		if(GSM_State == 4 && ticks == (GSM_Delay + 100))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=URL,http://jammer-detector.ml/cargar_info.php\n\r", strlen("AT+HTTPPARA=URL,http://jammer-detector.ml/cargar_info.php\n\r"));
+
+		if(GSM_State == 5 && ticks == (GSM_Delay + 100))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT\n\r", strlen("AT\n\r"));
+
+		if(GSM_State == 6 && ticks == (GSM_Delay + 100))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=CONTENT,application/x-www-form-urlencoded\n\r", strlen("AT+HTTPPARA=CONTENT,application/x-www-form-urlencoded\n\r"));
+
+		if(GSM_State == 7 && ticks == (GSM_Delay + 100))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPDATA=192,10000\n\r", strlen("AT+HTTPDATA=192,10000\n\r"));
+//
+////		GSM_Data_out = params='A','B','C','UTN', rssi, rssi2, rssi3, inhibicion, inhibicion2, inhibicion3)
+//
+//		if(GSM_State == 8 && ticks == (GSM_Delay + 100))
+//			HAL_UART_Transmit_IT(&huart2, GSM_Data_out, strlen(GSM_Data_out));
+//
+		if(GSM_State == 9 && ticks == (GSM_Delay + 5000))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPACTION=1\n\r", strlen("AT+HTTPACTION=1\n\r"));
+
+		if(GSM_State == 10 && ticks == (GSM_Delay + 5000))
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPREAD\n\r", strlen("AT+HTTPREAD\n\r"));
+
+		if(GSM_State == 11 && ticks == (GSM_Delay + 100)){
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPTERM\n\r", strlen("AT+HTTPTERM\n\r"));
+			GSM_State = 0;
+			HAL_TIM_Base_Stop_IT(&htim3);
+
+		}
+
+		}
 
 }
 
