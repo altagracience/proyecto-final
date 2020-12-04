@@ -85,7 +85,7 @@ En este documento se plasma el proceso de investigación y desarrollo de un sist
 inhibiciones en los sistemas de seguridad vehicular que funcionen en la frecuencia de 433,92MHz.\par
 El dispositivo planteado cuenta con tres unidades de recepción, las cuales denominamos nodos, y una central de procesamiento
 encargada de comunicarse y gestionar la información por estos recolectada. \par
-Para la comunicación entre los nodos y la central se utiliza el protocolo RS485, 
+Para la comunicación entre los nodos y la central se utiliza el protocolo RS485 
 y para comunicar la central con un servidor web, teniendo así los datos a disposición remotamente, se hace uso de un módulo GSM.
 
 
@@ -97,19 +97,19 @@ y para comunicar la central con un servidor web, teniendo así los datos a dispo
 
 \cleardoublepage
 % \addcontentsline{toc}{chapter}{Lista de tablas} % para que aparezca en el indice de contenidos
-\listoftables % indice de tablas
+% \listoftables % indice de tablas
 
 \pagenumbering{arabic}
 \chapter{Introducción}
-Hoy en día en muchos paises, y particularmente en la Argentina, se presenta una recurrente modalida de delincuencia que trata de 
+Hoy en día en muchos paises, y particularmente en la Argentina, se presenta una recurrente modalidad de delincuencia que trata de 
 inhibir los sistemas de seguridad vehicular, no permitiendo que estos se cierren y pudiendo tener completo acceso a su interior. Es 
 una metodología muy usada debido a que no se hace uso de la fuerza bruta para ingresar al vehículo y apela a la distracción del usuario.\par
 Siendo conscientes de esta problemática nos hemos empeñado en desarrollar un sistema de detección de los dispositivos utilizados
 con este fin. Como se verá más adelante se ha hecho un relevamiento de los dispositivos incautados por la policía a través de notas
 periodísticas y con vínculos internos a departamentos policiales que pusieron a disposición la información presente sobre estos.\par
 Los inhibidores pueden operar corrompiendo la trama de datos emitida por el llavero, no dejando así que el receptor del vehículo 
-pueda identificar el intento de comunicación y también lo pueden hacer saturando el receptor, cosa que de igual manera este no puede identificar
-la comunicación intentada. Creemos importante que el dispositivo a diseñar abarque estas dos posibilidades. \par
+pueda identificar el intento de comunicación y también lo pueden hacer saturando el receptor. Creemos importante que el dispositivo a diseñar 
+abarque estas dos posibilidades. \par
 Otra característica importante a la hora de encarar el proyecto es determinar la frecuencia de operación. Los controles remotos poseen transmisores
 de radio de corto alcance que operan en dos bandas posibles: 433,92 MHz para vehículos de origen europeo y asiático y 315 MHz para vehículos de origen 
 norteamericano. En la Argentina la mayor cantidad de sistemas de seguridad operan en 433,92 MHz por lo que nos pareció adecuado diseñar el
@@ -126,7 +126,7 @@ Esto sería emplazado en un estacionamiento utilizando una estrategia de disposi
 
 
 Es importante realizar un estudio profundo sobre el tema que vamos a abordar, ya que es necesario definir un método novedoso que satisfaga
-la necesidad de distinguir interferencias de señales legítimas generadas por un control remoto.
+la necesidad de distinguir señales legítimas generadas por un control remoto de interferencias.
 
 \subsection{Codificación en sistemas de seguridad vehicular}
 
@@ -156,9 +156,9 @@ Hay diversos tipos de encriptación de la comunicación; aquí solo mencionaremo
 
 El sistema por desafío es actualmente el más utilizado en autos de alta gama. En este caso el control remoto intenta comunicarse y
 el vehículo envía una pregunta desafío que tiene que ser respondida correctamente para validar la comunicación.\par
-En esta variante por lo que fpácilmente se puede observar es necesario que el control remoto y el vehículo tengan la capacidad de
+En esta variante se puede observar que es necesario que el control remoto y el vehículo tengan la capacidad de
 emitir y recibire datos, generando una comunicación bidireccional.
-Hay muchas variantes de desafío requerido por el vehículo, pero la más utilizada es la de validación de contraseña, donde el desafío pedido
+Hay diversas opciones de desafíos de requerimiento realizados por el vehículo, pero la más utilizada es la de validación de contraseña, donde el desafío pedido
 es pedir la contraseña y esta será o no validada. Esto en definitiva no impide que sea replicado el patrón de comienzo de comunicación y 
 la autenticación, por lo que hay modalidades más avanzadas como tener una tabla de códigos pseudoaleatorios definida en ambos dispositivos
 y asociada a un identificador, de modo que el vehículo requiera el código por medio de este no dando lugar a que un escucha externo pueda saber
@@ -207,7 +207,7 @@ la cual es una simulación en el software AWR de una transmisión de datos rando
 \subsection{Tipos de inhibiciones}
 
 Un inhibidor, o en inglés jammer, es un dispositivo desarrollado con el objetivo de deteriorar la comunicación en un enlace de 
-radiofrecuencia. Este objetivo puede ser logrado mediante dos estrategias:
+radiofrecuencia. Esto puede ser logrado mediante dos estrategias:
 
 \begin{itemize}
     \item Inhibición por corrupción de datos
@@ -220,7 +220,7 @@ radiofrecuencia. Este objetivo puede ser logrado mediante dos estrategias:
 El ataque más evidente que se presenta para inhibir una comunicación es el de inyectar en el canal que se desea perjudicar una señal con 
 datos aleatorios que perjudique la relación señal ruido (SNR) y dificulte la recepción para el sistema. \par
 En el caso particular de los vehículos, los receptores de radiofrecuencia que se utilizan y sobre los que basamos nuestro análisis
-son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se puede observar en [1].\par
+son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se analiza en [1].\par
 El ancho de banda de recepción da lugar a sumar ruido en el canal, alterando así los datos recibidos por el demodulador. Una figura
 ilustrativa se puede observa en la imagen \ref{fpb_jam} de [2].
 
@@ -246,8 +246,11 @@ etapas siguientes. Entre las especificaciones importantes de dichos amplificador
 intercepción de intermodulación de tercer orden.\par \todo[inline, inlinewidth=4cm, noinlinepar]{[6]-[7]}
 La influencia de grandes señales de interferencia se manifiesta de varias formas. Una de estas es en la intermodulación de tercer orden en 
 la que dos señales, una pequeña (de interés) y la interferente (de gran amplitud), se superponen. La interferente podría saturar el receptor
-de modo que la señal de interés presente una pequeña ganancia. Este efecto es causado por la no linealidad de tercer orden del sistema y la relación
-entrada salida está regida por \ref{eq:tercer_orden}.
+de modo que la señal de interés presente una pequeña ganancia. Este efecto es causado por la no linealidad de tercer orden del sistema.
+
+La saturación de un sistema suele tener un comportamiento de compresión  de la ganancia, decrementando la misma a medida de que la entrada aumenta.
+Este efecto puede ser cualificado como el punto de 1 dB de compresión el cual está definido como el punto en el que la amplitud de la señal de 
+entrada genera que la ganancia caiga 1 dB. Esto antes mencionado está claramente ilustrado en la figura \ref{eq:tercer_orden}.
 
 \begin{equation}\label{eq:tercer_orden}
     y(t) \approx  a_1 x(t) + a_2 x^{2}(t) + a_3 x^{3}(t) 
