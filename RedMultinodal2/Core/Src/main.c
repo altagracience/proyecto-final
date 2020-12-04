@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define ID_nodo  'C'
+#define ID_nodo  'A'
 
 /* USER CODE END PTD */
 
@@ -148,12 +148,12 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
-		HAL_Delay(50);
+
 
 		in[0] = in[1] = 0;
 		ch[0] = ch[1] = ch[2] = 0;
 
-		HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 200);
+		HAL_UART_Receive(&huart1, (uint8_t *)&in[0], 2, HAL_MAX_DELAY);
 
 	/*	if(in[1] == 0){
 			if (Inte == 0 ){
@@ -417,12 +417,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GDO0_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : CS_Pin */
-  GPIO_InitStruct.Pin = CS_Pin;
+  /*Configure GPIO pins : CS_Pin PA8 PA11 */
+  GPIO_InitStruct.Pin = CS_Pin|GPIO_PIN_8|GPIO_PIN_11;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(CS_GPIO_Port, &GPIO_InitStruct);
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB10 PB11 PB12 PB13
                            PB15 PB6 PB7 */
@@ -432,13 +432,6 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
-
-  /*Configure GPIO pins : PA8 PA11 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_11;
-  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
-  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
   /* EXTI interrupt init*/
   HAL_NVIC_SetPriority(EXTI3_IRQn, 0, 0);
