@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define ID_nodo  'A'
+#define ID_nodo  'C'
 
 /* USER CODE END PTD */
 
@@ -148,24 +148,36 @@ int main(void)
   /* USER CODE BEGIN WHILE */
 	while (1)
 	{
+		HAL_Delay(50);
+
 		in[0] = in[1] = 0;
 		ch[0] = ch[1] = ch[2] = 0;
 
 		HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 200);
 
-		if(in[1] == 0){
-			if (Inte == 0){
+	/*	if(in[1] == 0){
+			if (Inte == 0 ){
 				HAL_TIM_Base_Start_IT(&htim4);
 				bInhibicion = 0;
 				gRSSI_value = 0;
 				Inte = 1;
 			}
-		}
+		}*/
 
 		if(in[0] == 'A' && in[1] == 1){
 			gRSSI_value = RSSI_val[i_rssi-1 < 0 ? 9 : i_rssi-1];
 			HAL_TIM_Base_Stop_IT(&htim4);
 			Inte = 0;
+		}
+
+		if (in[1] == 1){
+			if (gRSSI_value == 0){
+				gRSSI_value = RSSI_val[i_rssi-1 < 0 ? 9 : i_rssi-1];
+			}
+			if (Inte == 1){
+				HAL_TIM_Base_Stop_IT(&htim4);
+				Inte = 0;
+			}
 		}
 
 		else if (in[0] == 'A' && in[1] == 2){
@@ -180,15 +192,7 @@ int main(void)
 			in[0] = in[1] = 0;
 		}
 
-		if (in[1] == 1){
-			if (gRSSI_value == 0){
-				gRSSI_value = RSSI_val[i_rssi-1 < 0 ? 9 : i_rssi-1];
-			}
-			if (Inte == 1){
-				HAL_TIM_Base_Stop_IT(&htim4);
-				Inte = 0;
-			}
-		}
+
 
 		if(in[0] == ID_nodo && in[1] != 2){
 
@@ -197,10 +201,9 @@ int main(void)
 			ch[2] = bInhibicion;
 
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			HAL_Delay(50);
-			HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 3, 10);
+			HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 3, HAL_MAX_DELAY);
 			HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-			HAL_Delay(50);
+
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 		}
 
@@ -386,14 +389,11 @@ static void MX_GPIO_Init(void)
   HAL_GPIO_WritePin(GPIOC, GPIO_PIN_13, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, CS_Pin|GPIO_PIN_11, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, CS_Pin|GPIO_PIN_8|GPIO_PIN_11, GPIO_PIN_RESET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_10|GPIO_PIN_11|GPIO_PIN_12|GPIO_PIN_13
                           |GPIO_PIN_15|GPIO_PIN_6, GPIO_PIN_RESET);
-
-  /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, GPIO_PIN_SET);
 
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7, GPIO_PIN_SET);
@@ -417,12 +417,12 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   HAL_GPIO_Init(GDO0_GPIO_Port, &GPIO_InitStruct);
 
-  /*Configure GPIO pins : CS_Pin PA11 */
-  GPIO_InitStruct.Pin = CS_Pin|GPIO_PIN_11;
+  /*Configure GPIO pin : CS_Pin */
+  GPIO_InitStruct.Pin = CS_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
-  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+  HAL_GPIO_Init(CS_GPIO_Port, &GPIO_InitStruct);
 
   /*Configure GPIO pins : PB10 PB11 PB12 PB13
                            PB15 PB6 PB7 */
@@ -433,10 +433,10 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOB, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PA8 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8;
+  /*Configure GPIO pins : PA8 PA11 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_11;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLUP;
+  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
@@ -488,7 +488,9 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 					promedio = (int) ((a_promediar * 100) / 3750); 	//calculo el promedio de unos en 150 ms
 					if(promedio > threshold){
 						bInhibicion = 1;
-						HAL_TIM_Base_Stop_IT(&htim4);}
+						HAL_TIM_Base_Stop_IT(&htim4);
+						Inte = 0;
+					}
 					contador150ms = 0; // 3750 cuentas equivalen a 150ms por la frecuencia de 25kHz de la interrupcion
 					state = 0;
 					a_promediar = 0;
@@ -522,6 +524,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			if(suma_RSSI <= 30) {
 				bInhibicion = 2;
 				HAL_TIM_Base_Stop_IT(&htim4);  // Si RSSI promedio es <= 30 es inhibicion por potencia
+				Inte = 0;
 			}
 			contador20ms_rssi = 0;
 
