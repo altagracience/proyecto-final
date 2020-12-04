@@ -127,7 +127,7 @@ int main(void)
   uint8_t salud_nodos[3] = {1, 1, 1};
 
 
-  NextState = No_Inhibicion_State;
+  NextState = Reset_State;
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0); // DE - Comunicacion RS485 - Se coloca en bajo para estar en modo recepcion
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempoc
 
@@ -144,7 +144,7 @@ int main(void)
 	  switch(NextState){
 	  	  case No_Inhibicion_State:
 
-	  		  HAL_Delay(200);
+	  		  HAL_Delay(100);
 
 	  		  ch[1] = 0;
 	  		  in[2] = 0;
@@ -164,7 +164,7 @@ int main(void)
 	  		  in[2] = in[1] = in[0] = 0;
 	  		  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 200);
 
-	  		  HAL_Delay(50);
+
 	  		  if (cRx >= 2)
 	  			  cRx = 0;
 
@@ -179,6 +179,8 @@ int main(void)
 
 	  	  case Inhibicion_State:
 
+	  		  HAL_Delay(1000);
+
 	  		  ch[1] = 1;
 	  		  in[0] = in[1] = in[2] = 0;
 
@@ -187,19 +189,19 @@ int main(void)
 	  		  else if (cRx == 1) ch[0] = 'B';
 	  		  else if (cRx == 2) ch[0] = 'C';
 
-	  		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
 
-	  		HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
-	  		HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
+	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
+	  		  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
 
-	  		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 			  in[2] = in[1] = in[0] = 0;
 
-			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
+			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 50);
 
 
-			  if(in[0] == 'A'){
+			  if(cRx == 0 && in[0] == 'A'){
 				  if (in[1] > 120 || in[1] < 10) RSSI_value[0] = 0;
 				  else RSSI_value[0] = in[1];
 
@@ -208,7 +210,7 @@ int main(void)
 				  eRx = 0;
 
 			  }
-			  else if(in[0] == 'B'){
+			  else if(cRx == 1 && in[0] == 'B'){
 				  if (in[1] > 120 || in[1] < 10) RSSI_value[1] = 0;
 				  else RSSI_value[1] = in[1];
 
@@ -216,7 +218,7 @@ int main(void)
 				  else estado_inhi[1] = in[2];
 				  eRx = 0;
 			  }
-			  else if(in[0] == 'C'){
+			  else if(cRx == 2 && in[0] == 'C'){
 				  if (in[1] > 120 || in[1] < 10) RSSI_value[2] = 0;
 				  else RSSI_value[2] = in[1];
 
@@ -227,7 +229,7 @@ int main(void)
 
 			  if(err == 3){  //si la recepcion resulta en timeout
 				  eRx++;
-				  if(eRx >= 3) //y el nodo no responde en reiterados intentos se denota como con falla
+				  if(eRx >= 5) //y el nodo no responde en reiterados intentos se denota como con falla
 					  salud_nodos[cRx] = 0;
 			  }
 
@@ -255,14 +257,14 @@ int main(void)
 
 	  		for(i = 0; i < 5; i++){
 
+	  			  HAL_Delay(200);
+
 	  			  ch[0] = 'A';
 				  ch[1] = 2;
 
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-				  HAL_Delay(50);
 				  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 				  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-				  HAL_Delay(50);
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 	  		  }
 
@@ -469,10 +471,17 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4|GPIO_PIN_6, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA8 PA11 */
-  GPIO_InitStruct.Pin = GPIO_PIN_8|GPIO_PIN_11;
+  /*Configure GPIO pin : PA8 */
+  GPIO_InitStruct.Pin = GPIO_PIN_8;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
-  GPIO_InitStruct.Pull = GPIO_PULLDOWN;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
+  GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_MEDIUM;
+  HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
+
+  /*Configure GPIO pin : PA11 */
+  GPIO_InitStruct.Pin = GPIO_PIN_11;
+  GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
+  GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
