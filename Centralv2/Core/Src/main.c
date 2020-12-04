@@ -48,7 +48,6 @@ TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
-UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
@@ -68,7 +67,6 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM4_Init(void);
-static void MX_USART2_UART_Init(void);
 static void MX_TIM3_Init(void);
 /* USER CODE BEGIN PFP */
 
@@ -114,7 +112,6 @@ int main(void)
   MX_GPIO_Init();
   MX_USART1_UART_Init();
   MX_TIM4_Init();
-  MX_USART2_UART_Init();
   MX_TIM3_Init();
   /* USER CODE BEGIN 2 */
 
@@ -135,7 +132,7 @@ int main(void)
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempoc
 
 
-  GSM_Init();
+  //GSM_Init();
 
   /* USER CODE END 2 */
 
@@ -158,16 +155,16 @@ int main(void)
 
 
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-	  		  HAL_Delay(50);
+
 	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 	  		  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-	  		  HAL_Delay(50);
+
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 	  		  in[2] = in[1] = in[0] = 0;
-	  		  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
+	  		  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 200);
 
-
+	  		  HAL_Delay(50);
 	  		  if (cRx >= 2)
 	  			  cRx = 0;
 
@@ -191,15 +188,16 @@ int main(void)
 	  		  else if (cRx == 2) ch[0] = 'C';
 
 	  		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-	  		HAL_Delay(50);
+
 	  		HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 	  		HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-	  		HAL_Delay(50);
+
 	  		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 			  in[2] = in[1] = in[0] = 0;
 
 			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
+
 
 			  if(in[0] == 'A'){
 				  if (in[1] > 120 || in[1] < 10) RSSI_value[0] = 0;
@@ -253,7 +251,9 @@ int main(void)
 
 	  	  case Reset_State:
 
-	  		  for(i = 0; i < 2; i++){
+	  		in[2] = in[1] = in[0] = 0;
+
+	  		for(i = 0; i < 5; i++){
 
 	  			  ch[0] = 'A';
 				  ch[1] = 2;
@@ -268,6 +268,7 @@ int main(void)
 
 	  		  estado_inhi[0] = estado_inhi[1] = estado_inhi[2] = 0;
 	  		  RSSI_value[0] = RSSI_value[1] = RSSI_value[2] = 0;
+	  		  cRx = 0;
 
 			  NextState = No_Inhibicion_State;
 			  break;
@@ -449,39 +450,6 @@ static void MX_USART1_UART_Init(void)
 }
 
 /**
-  * @brief USART2 Initialization Function
-  * @param None
-  * @retval None
-  */
-static void MX_USART2_UART_Init(void)
-{
-
-  /* USER CODE BEGIN USART2_Init 0 */
-
-  /* USER CODE END USART2_Init 0 */
-
-  /* USER CODE BEGIN USART2_Init 1 */
-
-  /* USER CODE END USART2_Init 1 */
-  huart2.Instance = USART2;
-  huart2.Init.BaudRate = 9600;
-  huart2.Init.WordLength = UART_WORDLENGTH_8B;
-  huart2.Init.StopBits = UART_STOPBITS_1;
-  huart2.Init.Parity = UART_PARITY_NONE;
-  huart2.Init.Mode = UART_MODE_TX_RX;
-  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
-  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
-  if (HAL_UART_Init(&huart2) != HAL_OK)
-  {
-    Error_Handler();
-  }
-  /* USER CODE BEGIN USART2_Init 2 */
-
-  /* USER CODE END USART2_Init 2 */
-
-}
-
-/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -525,7 +493,7 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-
+/*
 void GSM_Init(void){
 
 	HAL_Delay(500);
@@ -538,7 +506,7 @@ void GSM_Init(void){
 	HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,PWD,adgj\n\r", strlen("AT+SAPBR=3,1,PWD,adgj\n\r"), HAL_MAX_DELAY);
 	HAL_Delay(300);
 
-}
+}*/
 
 
 
@@ -558,7 +526,7 @@ void GSM_Send(void){
 	if(GSM_State == 0)
 		GSM_Delay = HAL_GetTick();
 
-	HAL_TIM_Base_Start_IT(&htim4);
+	HAL_TIM_Base_Start_IT(&htim3);
 
 }
 
@@ -576,13 +544,13 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
 			contador1s = 0;
-			GSM_Send();
+			//GSM_Send();
 			HAL_TIM_Base_Stop_IT(&htim4);
 		}
 
 	}
 
-
+/*
 	if(htim->Instance == TIM3){ //chequea que la interrupción sea la del timer adecuado
 
 		ticks = HAL_GetTick();
@@ -629,7 +597,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 		}
 
-		}
+		}*/
 
 }
 
