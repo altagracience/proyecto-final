@@ -82,9 +82,9 @@ la cual siempre se caracterizó por la buena organización y la búsqueda del bi
 \markboth{RESUMEN}{RESUMEN} % encabezado
 
 En este documento se plasma el proceso de investigación y desarrollo de un sistema multinodal pensado para detectar 
-inhibiciones en los sistemas de seguridad vehicular que funcionen en la frecuencia de 433,92MHz.\\
+inhibiciones en los sistemas de seguridad vehicular que funcionen en la frecuencia de 433,92MHz.\par
 El dispositivo planteado cuenta con tres unidades de recepción, las cuales denominamos nodos, y una central de procesamiento
-encargada de comunicarse y gestionar la información por estos recolectada. \\
+encargada de comunicarse y gestionar la información por estos recolectada. \par
 Para la comunicación entre los nodos y la central se utiliza el protocolo RS485, 
 y para comunicar la central con un servidor web, teniendo así los datos a disposición remotamente, se hace uso de un módulo GSM.
 
@@ -103,22 +103,22 @@ y para comunicar la central con un servidor web, teniendo así los datos a dispo
 \chapter{Introducción}
 Hoy en día en muchos paises, y particularmente en la Argentina, se presenta una recurrente modalida de delincuencia que trata de 
 inhibir los sistemas de seguridad vehicular, no permitiendo que estos se cierren y pudiendo tener completo acceso a su interior. Es 
-una metodología muy usada debido a que no se hace uso de la fuerza bruta para ingresar al vehículo y apela a la distracción del usuario.\\
+una metodología muy usada debido a que no se hace uso de la fuerza bruta para ingresar al vehículo y apela a la distracción del usuario.\par
 Siendo conscientes de esta problemática nos hemos empeñado en desarrollar un sistema de detección de los dispositivos utilizados
 con este fin. Como se verá más adelante se ha hecho un relevamiento de los dispositivos incautados por la policía a través de notas
-periodísticas y con vínculos internos a departamentos policiales que pusieron a disposición la información presente sobre estos.\\
+periodísticas y con vínculos internos a departamentos policiales que pusieron a disposición la información presente sobre estos.\par
 Los inhibidores pueden operar corrompiendo la trama de datos emitida por el llavero, no dejando así que el receptor del vehículo 
 pueda identificar el intento de comunicación y también lo pueden hacer saturando el receptor, cosa que de igual manera este no puede identificar
-la comunicación intentada. Creemos importante que el dispositivo a diseñar abarque estas dos posibilidades. \\
+la comunicación intentada. Creemos importante que el dispositivo a diseñar abarque estas dos posibilidades. \par
 Otra característica importante a la hora de encarar el proyecto es determinar la frecuencia de operación. Los controles remotos poseen transmisores
 de radio de corto alcance que operan en dos bandas posibles: 433,92 MHz para vehículos de origen europeo y asiático y 315 MHz para vehículos de origen 
 norteamericano. En la Argentina la mayor cantidad de sistemas de seguridad operan en 433,92 MHz por lo que nos pareció adecuado diseñar el
-detector para esta frecuencia. \\
+detector para esta frecuencia. \par
 Una vez definidos los requerimientos básicos del desarrollo es importante establecer el lugar en el que creemos adecuado que opere. Es así
 que surge la idea de tener al menos tres nodos receptores capaces de identificar si hay o no un inhibidor en las inmediaciones de este
 y que la información que recolecte sea enviada a una unidad de procesamiento, que denominamos ''central'', la cual se encargaría de 
 comunicarse con los nodos, recopilar la información y subirla a una base de datos, permitiendo la visualización remota de lo que está sucediendo 
-en tiempo real y, de ser posible, triangular la posición estimada del dispositivo inhibidor dentro del arreglo de receptores.\\
+en tiempo real y, de ser posible, triangular la posición estimada del dispositivo inhibidor dentro del arreglo de receptores.\par
 Esto sería emplazado en un estacionamiento utilizando una estrategia de disposición que se analizará más adelante
 
 
@@ -133,7 +133,7 @@ la necesidad de distinguir interferencias de señales legítimas generadas por u
 Desde los inicios de los sistemas remotos de apertura y control vehicular hasta ahora se ha transitado un largo camino. 
 El primer sistema de identificación por radiofrecuencia fue ingresado en el mercado por Renaul en el modelo Fuego en el año 1995.
 Todo este tiempo desde su puesta en uso hasta la fecha ha servido para definir y universalizar las metodologías usadas para comunicarse,
-intentando dar una mejora en cuanto a la seguridad y efectividad del sistema.\\
+intentando dar una mejora en cuanto a la seguridad y efectividad del sistema.\par
 
 \subsubsection{Sistemas de código fijo}
 
@@ -155,7 +155,7 @@ Hay diversos tipos de encriptación de la comunicación; aquí solo mencionaremo
 \subsubsection{Sistemas por desafío}
 
 El sistema por desafío es actualmente el más utilizado en autos de alta gama. En este caso el control remoto intenta comunicarse y
-el vehículo envía una pregunta desafío que tiene que ser respondida correctamente para validar la comunicación.\\
+el vehículo envía una pregunta desafío que tiene que ser respondida correctamente para validar la comunicación.\par
 En esta variante por lo que fpácilmente se puede observar es necesario que el control remoto y el vehículo tengan la capacidad de
 emitir y recibire datos, generando una comunicación bidireccional.
 Hay muchas variantes de desafío requerido por el vehículo, pero la más utilizada es la de validación de contraseña, donde el desafío pedido
@@ -167,13 +167,13 @@ a qué valor está asociado.
 \subsection{Estructura de transmisión}
 
 Tener noción previa de lo que esperamos recibir cuando hacemos un análisis de una señal es de gran importancia, por lo que en esta sección 
-analizaremos la estructura de transmisión de un control remoto de autos.\\
+analizaremos la estructura de transmisión de un control remoto de autos.\par
 Como antes fue mencionado no hay solo una frecuencia de operación, pero sí hay una que es ampliamente difundida en nuestro país y en esa nos 
 centraremos (433,92 MHz), la modulación utilizada en la mayor cantidad de estos dispositivos es ASK, por su fácil implementación. Con esta
-información ya seríamos capaces de demodular la señal y analizar la estructura.\\ 
+información ya seríamos capaces de demodular la señal y analizar la estructura.\par 
 Para la demodulación de la señal hemos utilizado un SDR (Software Defined Radio) como el que se puede observar en la figura \ref{SDR}, el cual
 fue facilitado por el centro de investigación G.In.T.E.A (Grupo de Investigación y Transferencia en Electrónica Avanzada) de la Universidad
-Tecnológica Nacional, facultad regional Córdoba.\\
+Tecnológica Nacional, facultad regional Córdoba.\par
 
 \begin{figure}[htb]
 	\centering
@@ -185,7 +185,7 @@ Tecnológica Nacional, facultad regional Córdoba.\\
 En la figura \ref{llaves} podemos observar las primeras mediciones tomadas. Aquí podemos distinguir la estrategia de transmisión que se
 utiliza. En un comienzo la señal posee un preámbulo, el cual es utilizado por el receptor para sincronizar el reloj del receptor  para 
 decodificar correctamente los paquetes del transmisor. Después del preámbulo hay una palabra de sincronización que se utiliza para evitar 
-choques con otros dispositivos que operan en esa banda y por último se encuentra la señal de código real.\\
+choques con otros dispositivos que operan en esa banda y por último se encuentra la señal de código real.\par
 Al presionar el botón del control remoto el preámbulo es enviado una única vez y luego se envía la palabra de sincronización y el
 comando de acción repetidamente hasta que se deje de accionar. El espectro de la señal transmitida se puede observar en la figura \ref{espectro_ASK},
 la cual es una simulación en el software AWR de una transmisión de datos random modulados ASK.
@@ -218,9 +218,9 @@ radiofrecuencia. Este objetivo puede ser logrado mediante dos estrategias:
 \subsubsection{Inhibición por corrupción de datos}
 
 El ataque más evidente que se presenta para inhibir una comunicación es el de inyectar en el canal que se desea perjudicar una señal con 
-datos aleatorios que perjudique la relación señal ruido (SNR) y dificulte la recepción para el sistema. \\
+datos aleatorios que perjudique la relación señal ruido (SNR) y dificulte la recepción para el sistema. \par
 En el caso particular de los vehículos, los receptores de radiofrecuencia que se utilizan y sobre los que basamos nuestro análisis
-son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se puede observar en [1].\\
+son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se puede observar en [1].\par
 El ancho de banda de recepción da lugar a sumar ruido en el canal, alterando así los datos recibidos por el demodulador. Una figura
 ilustrativa se puede observa en la imagen \ref{fpb_jam} de [2].
 
@@ -233,7 +233,7 @@ ilustrativa se puede observa en la imagen \ref{fpb_jam} de [2].
 
 Existen diversas alternativas para efectivizar este tipo de interferencias. En la figura \ref{fpb_jam} se observa que se ha inyectado una
 interferencia de ancho de banda angosto, pero también podría sumarse un tono, multitonos o sumar una señal de gran ancho de banda que 
-tape completamente el canal. \\
+tape completamente el canal. \par
 Las alternativas antes mencionadas hacen referencia a inhibidores no inteligentes, los cuales están metiendo ruido constantemente. Hay otras 
 alternativas de inhibiciones que de manera continua están escuchando el canal y cuando detectan una señal que 
 desean interferir comienzan a emitir el ruido. Estos casos serán detallados más adelante.
@@ -243,7 +243,7 @@ desean interferir comienzan a emitir el ruido. Estos casos serán detallados má
 Los receptores de radiofrecuencia usualmente están diseñados asumiendo que se recibirá una pequeña señal de entrada, por lo que la primer
 etapa presente es un amplificador de bajo ruido.  Este es clave para que el ruido del mezclador no afecte la relación señal ruido de las 
 etapas siguientes. Entre las especificaciones importantes de dichos amplificadores de RF se incluyen la figura de ruido, la ganancia y la 
-intercepción de intermodulación de tercer orden.\\ \todo[inline, inlinewidth=4cm, noinlinepar]{[6]-[7]}
+intercepción de intermodulación de tercer orden.\par \todo[inline, inlinewidth=4cm, noinlinepar]{[6]-[7]}
 La influencia de grandes señales de interferencia se manifiesta de varias formas. Una de estas es en la intermodulación de tercer orden en 
 la que dos señales, una pequeña (de interés) y la interferente (de gran amplitud), se superponen. La interferente podría saturar el receptor
 de modo que la señal de interés presente una pequeña ganancia. Este efecto es causado por la no linealidad de tercer orden del sistema y la relación
@@ -260,7 +260,7 @@ descripto, resulta:
     x(t)=V_1 cos(\omega_1 t)+ V_2 cos(\omega_2 t)
 \end{equation}
 
-\(V_1\) representando a la señal de interés y \(V_2\) a la interferente.\\
+\(V_1\) representando a la señal de interés y \(V_2\) a la interferente.\par
 Reemplazando en la ecuación \ref{eq:entrada} en \ref{eq:tercer_orden} y asumiendo que la interferencia es mucho más grande que la señal, 
 la salida del sistema en la frecuencia de interés \(\omega_1\) resulta ser \ref{eq:intermodulacion}.
 
@@ -289,7 +289,7 @@ hacer un análisis del ámbito de aplicación para elegir la más adecuada.
 \subsubsection{Inhibición por ruido de banda ancha}
 
 La característica principal de este tipo de estrategia es que introduce energía dentro de todo el ancho del espectro donde opera la comunicación.
-Es aplicable a cualquier tipo de señal y es ideal para inhibir comunicaciones que tienen destinada una gran parte del espectro de frecuencias.\\
+Es aplicable a cualquier tipo de señal y es ideal para inhibir comunicaciones que tienen destinada una gran parte del espectro de frecuencias.\par
 Este método tiene una fuerte desventaja y es que la potencia de interferencia aportada en el canal deseado tiene una muy baja densidad debido 
 a es aplicada a un gran ancho de banda.
 
@@ -322,7 +322,7 @@ la trama de datos.
 \subsubsection{Inhibición por barrido y seguimiento}
 
 Esta es una aplicación del ruido de banda parcial. Se realiza una variación rápida del posicionamiento espectral de la interferencia para inhibir
-un gran ancho de banda teniendo un mejor aprovechamiento de la potencia disponible.\\
+un gran ancho de banda teniendo un mejor aprovechamiento de la potencia disponible.\par
 De esta alternativa se desprende la capacidad de seguimiento de la señal inhibidora, permitiendo contrarestar estrategias de comunicación que 
 hacen uso de saltos de canales para ser efectivas.
 
@@ -337,7 +337,7 @@ hacen uso de saltos de canales para ser efectivas.
 \subsubsection{Simulación de inhibición por ruido de banda parcial}
 
 En este apartado se ha elegido la metodología de inyección de ruido de banda parcial para ser simulado y mostrar como decae la calidad de 
-comunicación y, por ende, la capacidad de recepción de la información. La simulación fue realizada con el software AWR de Cadence.\\
+comunicación y, por ende, la capacidad de recepción de la información. La simulación fue realizada con el software AWR de Cadence.\par
 El diagrama en bloques se puede observar en la figura \ref{bloques_inh}, este cuenta de 4 secciones principales:
 
 \begin{itemize}
@@ -392,7 +392,7 @@ Como antes se ha definido, el receptor sufre compresión de ganancia en su prime
 comparado a la potencia de señal que se espera recibir y para el que fue diseñado. Es por esto que resulta natural analizar los niveles de
 potencia recibidos, estableciendo un valor a partir del cual se señale como alarmante para la correcta recepción de la información. 
 En el caso particular de los dispositivos de control remoto en los sitemas de seguridad vehicular resulta más sencillo el análisis 
-debido a que los dispositivos emisores que se utilizan son de baja potencia comparado a la necesaria para saturar un receptor típico.\\
+debido a que los dispositivos emisores que se utilizan son de baja potencia comparado a la necesaria para saturar un receptor típico.\par
 En [7] se realiza el análisis del receptor MAX1470 [1], muy difundido en sistemas de control remoto tanto en el ámbito automotriz como también
 en sistemas de portones de apertura innalámbrica, sistemas de seguridad, sensores innalámbricos y mucho más. Este integrado es un receptor de 
 ASK superheterodíneo de bajo costo que posee un mezclador de rechazo de imagen que mezcla la señal a una frecuencia intermedia de 10,7 MHz. En
@@ -410,7 +410,7 @@ la figura \ref{compresion_max} se puede observar que la ganancia del sistema de 
 
 Esta es una estrategia muy utilizada en sistemas de comunicación en que se realiza un envío efectivo de paquetes cuando se detecta que el canal 
 de transmisión está desocupado. Esta característica hace sensible al sistema de ser engañado dejando presente una señal portadora de información
-que engañe a los dispositivos emisores de la red.\\
+que engañe a los dispositivos emisores de la red.\par
 En nuestro caso no nos detendremos a hacer un análisis profundo de esta metodología ya que es ajena a nuestro potencial mecanismo de detección
 debido a que, como se menciona en 3.1.2, el control remoto emite señal cuando es accionado un botón que este posee, haciendolo de manera continua
 hasta que deje de ser apretado. Es fácil ver que esta característica de la comunicación hace inútil aplicar esta estrategia de detección
@@ -426,29 +426,78 @@ en el canal, usandola estratégicamente, nos puede dar mucha información de lo 
 
 
 \chapter{Características generales del diseño}
-\subsection{Objetivos globales del sistema}
+\section{Objetivos globales del sistema}
 
 En base a la información recolectada establecemos los requerimientos base del que se parte para el diseño del producto final. Creemos adecuado
 realizar la separación de requerimientos en primarios y secundarios, ya que el sistema a desarrollar está enmarcado en el proyecto final de la 
 carrera de grado de ingeniería electrónica donde, en conjunto con la cátedra, se intenta que los proyectos puedan culminarse en un plazo de 
-tiempo lógico para la obtención del título, dando la posibilidad de seguir explayándose en el mismo a posterior. \\
+tiempo lógico para la obtención del título, dando la posibilidad de seguir explayándose en el mismo a posterior. \par
 
-De este modo, como objetivos primarios podemos establecer:
+De este modo, como objetivos primarios se establecen:
 
 \begin{itemize}
     \item Identificar la presencia de señales con una potencia suficiente para inhibir la comunicación: como en el marco teórico se ha 
     estudiado en profundidad, la etapa amplificadora receptora sufre una compresión de la ganancia cuando en su entrada hay presente 
     una señal de alto nivel de potencia. Es por esto que se establece como requerimiento del sistema poder identificaruna señal que cumpla con
     estas características.
-    \item Sensado temporal de portadora
-    \item Ocupación del canal
+    \item Medir la ocupación del canal: Ha quedado claro que la trama de comunicación de las llaves remotas con los receptores de los automóviles 
+    poseen características de espaciado entre paquetes de datos transmitidos, es por esto que el sensado de la ocupación del canal se vuelve 
+    una medida crucial para determinar si hay o no presencia de interferencias.
+    \item Activar alarmas sonoras y visuales en caso de estar en presencia de una inhibición: el sistema debe tener la capacidad de determinar 
+    si hay presente una inhibición en su área de operación y, de ser así, debe disponer de métodos para dar alerta local de lo que está sucediendo.
+    \item Disponer de comunicación a sistemas externos complementarios: un requisito del sistema es que posea la capacidad de enviar la información recolectada
+    a un lugar remoto. Se prefiere la utilización de una metodología de comunicación inhalámbrica y ampliamente distribuída.
+    \item Cargar los datos en una base de datos: es importante que la información de las inhibiciones detectadas sea subida a una base de datos
+    que permita visualizar de manera remota y en tiempo real lo que está sucediendo con los sistemas de seguridad activos, brindando la posibilidad 
+    de generar estadísticas y observar qué tipos de inhibidores están operando en la zona.
+    \item Orientar el diseño del proyecto a la optimización de costos y recursos: es muy importante para el curso del trabajo que el diseño 
+    se realice haciendo uso racional de los recursos disponibles, apuntando a la posibilidad de producir muchas unidades del sistema de seguridad
+    y obtener ganancias.
 
 \end{itemize}
 
+Como objetivo secundario se define:
 
-capacidad de detectar inhibicion de potencia o corrupcion
-Una forma de atacar la señal de un llavero es atascándola pasando datos basura dentro de la banda de paso del receptor RFID, 
-el área en la que el receptor está escuchando una señal válida (pagina 217 imagen)
+\begin{itemize}
+    \item Estimar la procedencia de la interferencia: el único objetivo secundario del sistema es que tenga la capacidad, mediante el método 
+    más conveniente, de determinar la posición estimada de la fuente de interferencia activa. Esto está planteado de esta manera debido a que 
+    se desconoce la factibilidad de su realización en el marco del proyecto de fin de grado de ingeniería electrónica.
+\end{itemize}
+
+\section{Esquema de funcionamiento}
+
+En la figura \ref{bloques_funcionamiento} se puede observar el sistema planteado para solucionar el desafío de detectar inhibiciones en los sitemas
+de seguridad vehicular. El mismo contará con nodos detectores que operarán en 433,92 MHz, un canal de comunicación hacia la central, haciendo
+uso de un protocolo que más adelante se detallará y una central de operación donde se decidirá si hay o no inhibición en su área de operación
+desatando las alarmas pertinentes y subiendo la información al servidor. \par
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.53]{bloques_funcionamiento.png}
+    \caption{Diagrama en bloques sobre el funcionamiento del sistema global}
+	\label{bloques_funcionamiento}
+\end{figure}
+
+\section{Subsistemas que lo componen}
+
+En esta sección únicamente se hará mención de los subsistemas que componen al producto final, más adelante se detallará en capítulos el funcionamiento 
+particular de cada uno de estos bloques.
+
+\begin{itemize}
+    \item Nodo receptor 
+    \begin{itemize}
+          \item Microcontrolador STM32F103C8T6.
+          \item Receptor de RF. 
+          \item Integrado para comunicación RS-485.
+    \end{itemize}
+    \item Central de procesamiento 
+    \begin{itemize}
+          \item Microcontrolador STM32F103C8T6.
+          \item Integrado para comunicación GSM. 
+          \item Integrado para comunicación RS-485.
+    \end{itemize}
+    
+\end{itemize}
 
 
 
