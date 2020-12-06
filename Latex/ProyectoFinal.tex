@@ -312,7 +312,7 @@ comunicaciones innalámbricas de banda angosta poseen un angosto filtrado.
 
 Se utiliza una señal constante que se modula con la portadora resultando una señal de muy angosto ancho de banda. En sistemas de comunicación 
 avanzados posee una alta eficiencia de interferencia ya que perjudica la recuperación de la sintonización a causa de que el receptor detecta 
-la señal como una segunda portadora y de que más potencia por Hertz (densidad de potencia espectral) gracias a que está más concentrado
+la señal como una segunda portadora y es la que más potencia por Hertz posee (densidad de potencia espectral) gracias a que está más concentrado
 en el canal, como profundamente se analiza en [8].
 
 \subsubsection{Inhibición por pulsos}
@@ -377,15 +377,15 @@ por cada diez mil recibidos.
 \subsection{Detección de inhibiciones}
 
 En esta sección trataremos los métodos que pueden utilizarse para detectar interferencias en enlaces de radiofrecuencia. Es importante que 
-sea robusta la detección, en principal que el funcionamiento del sistema que se pretende asegurar no pueda desatar una falsa alarma. En el caso
+sea robusta la detección, principalmente que el funcionamiento del sistema que se pretende asegurar no pueda desatar una falsa alarma. En el caso
 puntual de aplicación de este proyecto el sistema debería poder identificar una inhibición y no debería reaccionar a las señales de controles 
 remotos que van a estar funcionando en el área circundante. 
-Hay algunas características las cuales son naturales pensar como sensibles de analizar para detectar inhibiciones, y estas son: 
+Hay algunas características las cuales son naturales pensar como sensibles de analizar para detectar inhibiciones, estas son: 
 
 \begin{itemize}
-    \item Potencia de la señal recibida
-    \item Sensado temporal de portadora
-    \item Ocupación del canal
+    \item Potencia de la señal recibida.
+    \item Sensado temporal de portadora.
+    \item Ocupación del canal.
 
 \end{itemize}
 
@@ -489,15 +489,15 @@ particular de cada uno de estos bloques.
 \begin{itemize}
     \item Nodo receptor 
     \begin{itemize}
-          \item Microcontrolador STM32F103C8T6.
+          \item Microcontrolador.
           \item Receptor de RF. 
-          \item Integrado para comunicación RS-485.
+          \item Integrado para comunicación entre nodos y central.
     \end{itemize}
     \item Central de procesamiento 
     \begin{itemize}
-          \item Microcontrolador STM32F103C8T6.
-          \item Integrado para comunicación GSM. 
-          \item Integrado para comunicación RS-485.
+          \item Microcontrolador.
+          \item Integrado para comunicación a la base de datos. 
+          \item Integrado para comunicación entre nodos y central.
     \end{itemize}
     
 \end{itemize}
