@@ -179,7 +179,7 @@ int main(void)
 
 	  	  case Inhibicion_State:
 
-	  		  HAL_Delay(1000);
+	  		  HAL_Delay(200);
 
 	  		  ch[1] = 1;
 	  		  in[0] = in[1] = in[2] = 0;
@@ -198,7 +198,7 @@ int main(void)
 
 			  in[2] = in[1] = in[0] = 0;
 
-			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 50);
+			  err = HAL_UART_Receive(&huart1, (uint8_t *)in, 3, 100);
 
 
 			  if(cRx == 0 && in[0] == 'A'){
