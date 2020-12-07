@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define ID_nodo  'A'
+#define ID_nodo  'C'
 
 /* USER CODE END PTD */
 
@@ -153,7 +153,8 @@ int main(void)
 		in[0] = in[1] = 0;
 		ch[0] = ch[1] = ch[2] = 0;
 
-		HAL_UART_Receive(&huart1, (uint8_t *)&in[0], 2, HAL_MAX_DELAY);
+		HAL_Delay(25);
+		HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 100);
 
 	/*	if(in[1] == 0){
 			if (Inte == 0 ){
