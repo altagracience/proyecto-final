@@ -159,10 +159,8 @@ int main(void)
 
 
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-	  		  HAL_Delay(30);
 	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 	  		  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-	  		  HAL_Delay(30);
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 	  		  in[2] = in[1] = in[0] = 0;
@@ -194,10 +192,10 @@ int main(void)
 	  		  else if (cRx == 2) ch[0] = 'C';
 
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-	  		  HAL_Delay(30);
+
 	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 	  		  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-	  		  HAL_Delay(30);
+
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 			  in[2] = in[1] = in[0] = 0;
@@ -212,6 +210,7 @@ int main(void)
 				  if (in[2] > 2) estado_inhi[0] = 0;
 				  else estado_inhi[0] = in[2];
 				  eRx = 0;
+				  cRx++;
 
 			  }
 			  else if(cRx == 1 && in[0] == 'B'){
@@ -221,6 +220,7 @@ int main(void)
 				  if (in[2] > 2) estado_inhi[1] = 0;
 				  else estado_inhi[1] = in[2];
 				  eRx = 0;
+				  cRx++;
 			  }
 			  else if(cRx == 2 && in[0] == 'C'){
 				  if (in[1] > 120 || in[1] < 10) RSSI_value[2] = 0;
@@ -229,17 +229,16 @@ int main(void)
 				  if (in[2] > 2) estado_inhi[2] = 0;
 				  else estado_inhi[2] = in[2];
 				  eRx = 0;
+				  cRx++;
 			  }
 
-			  if(err == 3){  //si la recepcion resulta en timeout
+			  if(err == 3 || (cRx == 0 && in[0] != 'A') || (cRx == 1 && in[0] != 'B') || (cRx == 2 && in[0] != 'C')){  //si la recepcion resulta en timeout
 				  eRx++;
 				  if(eRx >= 5) //y el nodo no responde en reiterados intentos se denota como con falla
 					  salud_nodos[cRx] = 0;
 			  }
 
-
-
-			  if (eRx >= 5 || err != 3) {
+			  if (eRx >= 5) {
 				  cRx++;
 				  eRx = 0;
 			  }
@@ -271,10 +270,10 @@ int main(void)
 				  ch[1] = 2;
 
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-				  HAL_Delay(30);
+
 				  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 				  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-				  HAL_Delay(30);
+
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 	  		  }
