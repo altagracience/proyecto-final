@@ -28,7 +28,7 @@ Apenas ingresamos a la página podemos observar en la parte superior el logo y n
 \par En esta pestaña de inicio se coloco la tabla donde muestra la información recabada de todos los lugares donde está instalado el sistema y se encontró una inhibición. La información que posee la misma es: ubicación, ID de cada nodo, fecha y hora y el nivel de RSSI y tipo de inhibición detectada por cada uno de los nodos. En la figura \ref{web_inicio} podemos ver la misma. 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.3]{images/web/tabla-web.png}
+	\includegraphics[scale=0.32]{images/web/tabla-web.png}
     \caption{Página de inicio}
 	\label{web_inicio}
 \end{figure}
@@ -51,7 +51,9 @@ La sección de estadísticas, quizás la mas importante para los usuarios del si
 	\label{web_est}
 \end{figure}
 \subsubsection{Triangulación}
-\par Esta sección está dedicada al procesamiento y muestra de la triángulación de inhibiciones detectadas por corrupción de datos con baja potencia. En la figura \ref{web_triangulacion} vemos cada vértice del triángulo que corresponde a los nodos y las intersecciones de las rectas rojas que representan los límites del área donde está ocurriendo una inhibición. 
+\par Esta sección está dedicada al procesamiento y muestra de la triángulación de inhibiciones detectadas por corrupción de
+ datos con baja potencia. En la figura \ref{web_triangulacion} vemos cada vértice del triángulo que corresponde a los nodos 
+ y las intersecciones de las rectas rojas que representan los límites del área donde está ocurriendo una inhibición. 
 \todo[inline]{ la seccion habla de las lineas en el gráfica.. pensamos sacarlas y que haya un punto}
 
 \begin{figure}[h!]
@@ -70,6 +72,7 @@ Finalmente la ultima pestaña es la de contacto, la cual tiene el fin de que cua
 \end{figure}
 \section{Base de datos}
 La base de datos esta realizada y gestionada en phpMySQL y cuenta con una tabla con el mismo contenido que la que podemos ver en la figura \ref{web_inicio}. \par 
-Es el lugar en el cual se almacena cada inhibición detectada y luego, mediante un enlace con la página web, todo su contenido es visualizado en esta la misma. 
+Es el lugar en el cual se almacena cada inhibición detectada y luego, mediante un enlace con la página web, todo su 
+contenido es visualizado en esta la misma. 
 \subsection{Carga de datos}
 \par El enlace desde el servidor web con la central instalada en cada lugar se realiza mediante el acceso a una pestaña oculta de la web, en la cual se interactúa con la central mediante un algoritmo de http-POST-request para cargar cada uno de los datos de los nodos correspondientes a cada lugar, para luego procesarlos y obtener los gráficos ya mencionados, la triangulación en caso de ser posible y otras utilidades que se le puedan dar. 
