@@ -154,6 +154,8 @@ int main(void)
 		ch[0] = ch[1] = ch[2] = 0;
 
 		HAL_Delay(25);
+		HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+
 		HAL_UART_Receive(&huart1, (uint8_t *)in, 2, 100);
 
 	/*	if(in[1] == 0){
@@ -202,10 +204,12 @@ int main(void)
 			ch[2] = bInhibicion;
 
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+			HAL_Delay(30);
 			HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 3, HAL_MAX_DELAY);
 			HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-
+			HAL_Delay(30);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+
 		}
 
 

@@ -48,6 +48,7 @@ TIM_HandleTypeDef htim3;
 TIM_HandleTypeDef htim4;
 
 UART_HandleTypeDef huart1;
+UART_HandleTypeDef huart2;
 
 /* USER CODE BEGIN PV */
 
@@ -68,6 +69,7 @@ static void MX_GPIO_Init(void);
 static void MX_USART1_UART_Init(void);
 static void MX_TIM4_Init(void);
 static void MX_TIM3_Init(void);
+static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
 
 /* USER CODE END PFP */
@@ -78,7 +80,8 @@ static void MX_TIM3_Init(void);
 uint8_t GSM_State = 0;
 uint8_t GSM_Data_In [2] = "";
 uint8_t GSM_Inited = 0;
-uint32_t GSM_Delay = 0, ticks;
+uint32_t ticks;
+uint8_t bTx_command = 1, bFin_GPRS=1;
 
 /* USER CODE END 0 */
 
@@ -113,6 +116,7 @@ int main(void)
   MX_USART1_UART_Init();
   MX_TIM4_Init();
   MX_TIM3_Init();
+  MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
 
 
@@ -132,7 +136,7 @@ int main(void)
   HAL_GPIO_WritePin(GPIOA, GPIO_PIN_11, 0); // RE - Comunicacion RS485 - Se coloca en bajo para escuchar todo el tiempoc
 
 
-  //GSM_Init();
+  GSM_Init();
 
   /* USER CODE END 2 */
 
@@ -155,10 +159,10 @@ int main(void)
 
 
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-
+	  		  HAL_Delay(30);
 	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 	  		  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-
+	  		  HAL_Delay(30);
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 	  		  in[2] = in[1] = in[0] = 0;
@@ -190,10 +194,10 @@ int main(void)
 	  		  else if (cRx == 2) ch[0] = 'C';
 
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-
+	  		  HAL_Delay(30);
 	  		  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 	  		  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-
+	  		  HAL_Delay(30);
 	  		  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 			  in[2] = in[1] = in[0] = 0;
@@ -241,8 +245,12 @@ int main(void)
 			  }
 
 			  if (cRx == 3){
-				  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2]) //desata alarma visual y sonora en la central
-					  HAL_TIM_Base_Start_IT(&htim4);
+				  if(estado_inhi[0] || estado_inhi[1] || estado_inhi[2]){ //desata alarma visual y sonora en la central
+					  if(bFin_GPRS==1){
+						  HAL_TIM_Base_Start_IT(&htim4);
+						  GSM_Send();
+					  }
+				  }
 
 				  salud_nodos[0] = salud_nodos[1] = salud_nodos[2] = 1;
 				  NextState = Reset_State;
@@ -263,9 +271,12 @@ int main(void)
 				  ch[1] = 2;
 
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
+				  HAL_Delay(30);
 				  HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 2, 50);
 				  HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
+				  HAL_Delay(30);
 				  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
+
 	  		  }
 
 	  		  estado_inhi[0] = estado_inhi[1] = estado_inhi[2] = 0;
@@ -452,6 +463,39 @@ static void MX_USART1_UART_Init(void)
 }
 
 /**
+  * @brief USART2 Initialization Function
+  * @param None
+  * @retval None
+  */
+static void MX_USART2_UART_Init(void)
+{
+
+  /* USER CODE BEGIN USART2_Init 0 */
+
+  /* USER CODE END USART2_Init 0 */
+
+  /* USER CODE BEGIN USART2_Init 1 */
+
+  /* USER CODE END USART2_Init 1 */
+  huart2.Instance = USART2;
+  huart2.Init.BaudRate = 9600;
+  huart2.Init.WordLength = UART_WORDLENGTH_8B;
+  huart2.Init.StopBits = UART_STOPBITS_1;
+  huart2.Init.Parity = UART_PARITY_NONE;
+  huart2.Init.Mode = UART_MODE_TX_RX;
+  huart2.Init.HwFlowCtl = UART_HWCONTROL_NONE;
+  huart2.Init.OverSampling = UART_OVERSAMPLING_16;
+  if (HAL_UART_Init(&huart2) != HAL_OK)
+  {
+    Error_Handler();
+  }
+  /* USER CODE BEGIN USART2_Init 2 */
+
+  /* USER CODE END USART2_Init 2 */
+
+}
+
+/**
   * @brief GPIO Initialization Function
   * @param None
   * @retval None
@@ -502,20 +546,14 @@ static void MX_GPIO_Init(void)
 }
 
 /* USER CODE BEGIN 4 */
-/*
+
 void GSM_Init(void){
+	char in[20]="00000000000000000000";
 
-	HAL_Delay(500);
-	HAL_UART_Transmit(&huart2, (uint8_t*)"AT\n\r", strlen("AT\n\r"), HAL_MAX_DELAY);
-	HAL_Delay(4000);
-	HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,Contype,GPRS\n\r", strlen("AT+SAPBR=3,1,Contype,GPRS\n\r"), HAL_MAX_DELAY);
-	HAL_Delay(300);
-	HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,APN,datos.personal.com\n\r", strlen("AT+SAPBR=3,1,APN,datos.personal.com\n\r"), HAL_MAX_DELAY);
-	HAL_Delay(300);
-	HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,PWD,adgj\n\r", strlen("AT+SAPBR=3,1,PWD,adgj\n\r"), HAL_MAX_DELAY);
-	HAL_Delay(300);
 
-}*/
+	GSM_State = 0;
+
+}
 
 
 
@@ -524,19 +562,29 @@ void HAL_UART_TxCpltCallback(UART_HandleTypeDef *huart){
 
 	if(huart->Instance == USART2){
 		GSM_State++;
-		GSM_Delay = HAL_GetTick();
+		ticks = HAL_GetTick();
+		bTx_command = 1;
 	}
 
 }
 
 
 void GSM_Send(void){
-
-	if(GSM_State == 0)
-		GSM_Delay = HAL_GetTick();
-
-	HAL_TIM_Base_Start_IT(&htim3);
-
+	if(bFin_GPRS==1){
+		bFin_GPRS=0;
+		HAL_Delay(500);
+		HAL_UART_Transmit(&huart2, (uint8_t*)"AT\n\r", strlen("AT\n\r"), HAL_MAX_DELAY);
+		HAL_Delay(4000);
+		HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,Contype,GPRS\n\r", strlen("AT+SAPBR=3,1,Contype,GPRS\n\r"), HAL_MAX_DELAY);
+		HAL_Delay(300);
+		HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,APN,datos.personal.com\n\r", strlen("AT+SAPBR=3,1,APN,datos.personal.com\n\r"),HAL_MAX_DELAY);
+		HAL_Delay(300);
+		HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,PWD,adgj\n\r", strlen("AT+SAPBR=3,1,PWD,adgj\n\r"),HAL_MAX_DELAY);
+		HAL_Delay(300);
+		GSM_State = 0;
+		ticks = HAL_GetTick();
+		HAL_TIM_Base_Start_IT(&htim3);
+	}
 }
 
 
@@ -553,60 +601,70 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4, 0);
 			HAL_GPIO_WritePin(GPIOB, GPIO_PIN_6, 0);
 			contador1s = 0;
-			//GSM_Send();
 			HAL_TIM_Base_Stop_IT(&htim4);
 		}
 
 	}
 
-/*
+
 	if(htim->Instance == TIM3){ //chequea que la interrupción sea la del timer adecuado
 
-		ticks = HAL_GetTick();
-
-		if(GSM_State == 0 && ticks == (GSM_Delay + 100))
+		if(GSM_State == 0 && bTx_command == 1){
+			bTx_command = 0;
 			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+SAPBR =1,1\n\r", strlen("AT+SAPBR =1,1\n\r"));
-
-		if(GSM_State == 1 && ticks == (GSM_Delay + 100))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+SAPBR=2,1\n\r", strlen("AT+SAPBR=2,1\n\r"));
-
-		if(GSM_State == 2 && ticks == (GSM_Delay + 100))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPINIT\n\r", strlen("AT+HTTPINIT\n\r"));
-
-		if(GSM_State == 3 && ticks == (GSM_Delay + 100))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=CID,1\n\r", strlen("AT+HTTPPARA=CID,1\n\r"));
-
-		if(GSM_State == 4 && ticks == (GSM_Delay + 100))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=URL,http://jammer-detector.ml/cargar_info.php\n\r", strlen("AT+HTTPPARA=URL,http://jammer-detector.ml/cargar_info.php\n\r"));
-
-		if(GSM_State == 5 && ticks == (GSM_Delay + 100))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT\n\r", strlen("AT\n\r"));
-
-		if(GSM_State == 6 && ticks == (GSM_Delay + 100))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=CONTENT,application/x-www-form-urlencoded\n\r", strlen("AT+HTTPPARA=CONTENT,application/x-www-form-urlencoded\n\r"));
-
-		if(GSM_State == 7 && ticks == (GSM_Delay + 100))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPDATA=192,10000\n\r", strlen("AT+HTTPDATA=192,10000\n\r"));
-//
-////		GSM_Data_out = params='A','B','C','UTN', rssi, rssi2, rssi3, inhibicion, inhibicion2, inhibicion3)
-//
-//		if(GSM_State == 8 && ticks == (GSM_Delay + 100))
-//			HAL_UART_Transmit_IT(&huart2, GSM_Data_out, strlen(GSM_Data_out));
-//
-		if(GSM_State == 9 && ticks == (GSM_Delay + 5000))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPACTION=1\n\r", strlen("AT+HTTPACTION=1\n\r"));
-
-		if(GSM_State == 10 && ticks == (GSM_Delay + 5000))
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPREAD\n\r", strlen("AT+HTTPREAD\n\r"));
-
-		if(GSM_State == 11 && ticks == (GSM_Delay + 100)){
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPTERM\n\r", strlen("AT+HTTPTERM\n\r"));
-			GSM_State = 0;
-			HAL_TIM_Base_Stop_IT(&htim3);
-
 		}
 
-		}*/
+		if(GSM_State == 1 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+SAPBR=2,1\n\r", strlen("AT+SAPBR=2,1\n\r"));
+		}
+		if(GSM_State == 2 && ((HAL_GetTick() - ticks) >= (2000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPINIT\n\r", strlen("AT+HTTPINIT\n\r"));
+		}
+		if(GSM_State == 3 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=CID,1\n\r", strlen("AT+HTTPPARA=CID,1\n\r"));
+		}
+		if(GSM_State == 4 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=URL,http://jammer-detector.ml/cargar_info.php\n\r", strlen("AT+HTTPPARA=URL,http://jammer-detector.ml/cargar_info.php\n\r"));
+		}
+		if(GSM_State == 5 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT\n\r", strlen("AT\n\r"));
+		}
+		if(GSM_State == 6 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPPARA=CONTENT,application/x-www-form-urlencoded\n\r", strlen("AT+HTTPPARA=CONTENT,application/x-www-form-urlencoded\n\r"));
+		}
+		if(GSM_State == 7 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPDATA=192,10000\n\r", strlen("AT+HTTPDATA=192,10000\n\r"));
+		}
+		//GSM_Data_out = "params='A','B','C','UTN',98,97,96,0,1,2)";
+
+		if(GSM_State == 8 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"params='A','B','C','UTN',98,97,96,0,1,2)\n\r", strlen("params='A','B','C','UTN',98,97,96,0,1,2)\n\r"));
+		}
+		if(GSM_State == 9 && ((HAL_GetTick() - ticks) >= (10000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPACTION=1\n\r", strlen("AT+HTTPACTION=1\n\r"));
+		}
+		if(GSM_State == 10 && ((HAL_GetTick() - ticks) >= (5000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPREAD\n\r", strlen("AT+HTTPREAD\n\r"));
+		}
+		if(GSM_State == 11 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
+			bTx_command = 0;
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"AT+HTTPTERM\n\r", strlen("AT+HTTPTERM\n\r"));
+			GSM_State = 0;
+			bFin_GPRS=1;
+			HAL_TIM_Base_Stop_IT(&htim3);
+		}
+
+		}
 
 }
 
