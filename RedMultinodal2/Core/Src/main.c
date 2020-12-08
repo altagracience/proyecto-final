@@ -30,7 +30,7 @@
 /* Private typedef -----------------------------------------------------------*/
 /* USER CODE BEGIN PTD */
 
-#define ID_nodo  'C'
+#define ID_nodo  'B'
 
 /* USER CODE END PTD */
 
@@ -199,15 +199,16 @@ int main(void)
 
 		if(in[0] == ID_nodo && in[1] != 2){
 
+			if(in[1] == 0) ch[1] = 0;
+			else ch[1] = gRSSI_value;
+
 			ch[0] = ID_nodo;
-			ch[1] = gRSSI_value;
+
 			ch[2] = bInhibicion;
 
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 1);
-			HAL_Delay(30);
 			HAL_UART_Transmit(&huart1, (uint8_t *)&ch, 3, HAL_MAX_DELAY);
 			HAL_UART_Receive(&huart1, (uint8_t *)in, 1, 10);
-			HAL_Delay(30);
 			HAL_GPIO_WritePin(GPIOA, GPIO_PIN_8, 0);
 
 		}
