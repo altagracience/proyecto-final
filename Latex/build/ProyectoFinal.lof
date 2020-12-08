@@ -4,10 +4,16 @@
 \contentsline {figure}{\numberline {1.2}{\ignorespaces Demodulación ASK de señales de controles remotos en 433,92 MHz}}{5}{figure.1.2}%
 \contentsline {figure}{\numberline {1.3}{\ignorespaces Espectro de señal random bits modulada ASK en 433,92 MHz }}{6}{figure.1.3}%
 \contentsline {figure}{\numberline {1.4}{\ignorespaces Presencia de inhibidor en ancho de banda de recepción}}{7}{figure.1.4}%
-\contentsline {figure}{\numberline {1.5}{\ignorespaces Compresión de la ganancia por no linealidad de tercer orden}}{9}{figure.1.5}%
+\contentsline {figure}{\numberline {1.5}{\ignorespaces Compresión de la ganancia}}{9}{figure.1.5}%
 \contentsline {figure}{\numberline {1.6}{\ignorespaces Donde a) es el canal a inhibir, b) inhibición por ruido de banda ancha, c) inhibición por ruido de banda parcial continuo, d) inhibición por ruido de banda parcial discontinuo, e) inhibición por ruido de banda angosta, f) inhibición por tono }}{11}{figure.1.6}%
 \contentsline {figure}{\numberline {1.7}{\ignorespaces Diagrama en bloques de sistema de comunicación ASK inhibido}}{12}{figure.1.7}%
 \contentsline {figure}{\numberline {1.8}{\ignorespaces Bit Error Rate para comunicación ASK inhibida.}}{13}{figure.1.8}%
 \contentsline {figure}{\numberline {1.9}{\ignorespaces Curva de ganancia de MAX1470}}{14}{figure.1.9}%
 \addvspace {10\p@ }
 \contentsline {figure}{\numberline {2.1}{\ignorespaces Diagrama en bloques sobre el funcionamiento del sistema global}}{18}{figure.2.1}%
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Página de inicio}}{21}{figure.3.1}%
+\contentsline {figure}{\numberline {3.2}{\ignorespaces Presentación de grupo de trabajo}}{21}{figure.3.2}%
+\contentsline {figure}{\numberline {3.3}{\ignorespaces Gráficos de estadísticas}}{22}{figure.3.3}%
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Pestaña de triangulación}}{23}{figure.3.4}%
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Formulario de contacto}}{23}{figure.3.5}%

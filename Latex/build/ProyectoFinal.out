@@ -10,3 +10,9 @@
 \BOOKMARK [1][-]{section.2.1}{Objetivos globales del sistema}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.2}{Esquema de funcionamiento}{chapter.2}% 11
 \BOOKMARK [1][-]{section.2.3}{Subsistemas que lo componen}{chapter.2}% 12
+\BOOKMARK [0][-]{chapter.3}{Desarrollo de servidor web}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Objetivos}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{P\341gina web}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.2.1}{Pesta\361as}{section.3.2}% 16
+\BOOKMARK [1][-]{section.3.3}{Base de datos}{chapter.3}% 17
+\BOOKMARK [2][-]{subsection.3.3.1}{Carga de datos}{section.3.3}% 18
