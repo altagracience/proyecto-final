@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  8 DEC 2020 18:33
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  10 DEC 2020 19:28
 entering extended mode
 **"c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
 ("c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
@@ -739,7 +739,7 @@ File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 112.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [24] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
+ [24] (chapter-conlusion.tex) ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
@@ -747,10 +747,10 @@ Package rerunfilecheck Info: File `ProyectoFinal.out' has not changed.
 (rerunfilecheck)             Checksum: 4D3E2AB24BD797F9F826B34AAACF4EA7;1246.
  ) 
 Here is how much of TeX's memory you used:
- 17912 strings out of 480236
- 349327 string characters out of 2880558
+ 17916 strings out of 480236
+ 349482 string characters out of 2880558
  635195 words of memory out of 3000000
- 33998 multiletter control sequences out of 15000+200000
+ 33999 multiletter control sequences out of 15000+200000
  540632 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
  89i,16n,99p,618b,866s stack positions out of 5000i,500n,10000p,200000b,50000s
