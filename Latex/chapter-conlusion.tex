@@ -1,5 +1,55 @@
 \chapter{Conclusiones y trabajo futuro} \par
-De acuerdo al trabajo previamente expuesto, en este capítulo haremos mención de las conclusiones que pudimos extraer al finalizarlo. \par
+
+De acuerdo al trabajo previamente expuesto en este capítulo haremos mención de las conclusiones que pudimos extraer al 
+finalizarlo y se evaluarán posibilidades de desarrollos futuros. \par
+
 \section{Conlcusiones} \par 
 
+En primera instancia nos parece importante dar nuestra perspectiva respecto a la viabilidad del proyecto. El mismo fue
+enfocado con carácter de costos minimizados buscando que el uso de los recursos monetarios disponibles sea el más eficiente
+posible. De esta manera nos encontramos con un producto finalizado que luce muy adecuado para la fabricación en cantidad aunque 
+se reconoce que la utilización de módulos prefabricados -como previamente se analiza- es muy beneficiosa para la producción
+de los prototipos y primeros sistemas, pero en la posibilidad de producir en serie debería hacerse una adaptación de esto a
+un sistema que integre todo los bloques en fabricación propia. En las primeras instancias de fabricación se observa que
+muchos de los componentes utilizados precisan ser importados y, debido a la situación actual del país y a la alta carga impositiva
+que esto implica, resulta no ser conveniente la compra de un pequeño número de dispositivos en el exterior, quedando así 
+avalado el uso de algunos bloques componentes. \par 
+Desde el punto de vista económico el sistema planteado cuenta con un punto débil el cual está definido en los requerimientos del
+mismo. Se busca que el sistema de seguridad no pueda ser inhibido por un agente externo por lo que los nodos y 
+la central se comunican entre sí de manera cableada. Resulta ser que el cableado debe ser de calidad que asegure la comunicación
+RS485 y en el mismo la alimentación para los nodos. Es por esto que en la aplicación del sistema planteado la mayor 
+cantidad de gastos reside en las tiradas de cable necesarias para emplazar el sistema en el lugar de operación. Esto podría
+solucionarse con una metodología de comunicación inalámbrica pero daría lugar a altas vulnerabilidades. \par
+La seguridad en la detección de inhibiciones en sistemas de seguridad de alarma de auto fue el eje central del desarrollo, por 
+lo que siempre se buscó eliminar las vulnerabilidades que pudieran ocurrir. Es por esto que al momento de presentar el sistema
+podemos decir que posee un sistema de detección robusto. Las pruebas de campo han sido muy variadas y han buscado eliminar
+cualquier falla en el funcionamiento, ahora restaría el realizar un análisis en largo plazo de operación con una realimentación
+del cliente que fuera a utilizarlo. \par
+Como cierre, podemos decir que se ha consegudio un sistema que es capaz de detectar en fracciones de segundos señales que 
+alteren el funcionamiento de seguridad inhalámbricos en la frecuencia de 433,92 MHz. El área de operación segura para que las
+señales de baja potencia puedan ser trianguladas se estima que es de 50m a la redonda desde el punto central de una disposición
+en forma triangular de los tres nodos, de igual modo esto podría ser ampliado con la penalización de que no todos los nodos en 
+simultáneo alcancen a medir un valor de intensidad de señal en una inhibición por corrupción de datos. \par
+
+
+\section{Trabajo futuro} \par
+
+Después de terminar el trabajo enmarcado en el proyecto final de grado de ingeniería electrónica hemos podido divisar algunos
+puntos sobre los cuales nos parece importante realizar mejoras en un futuro:
+
+\begin{itemize}
+    \item Frecuencia de operación: nuestro sistema fue diseñado para una única frecuencia de operación; como previamente fue
+    expuesto existen dos principales en las que funcionan los receptores vehiculares, por lo que a futuro creemos importante
+    que el sistema tenga la capacidad de detectar en ambas las inhibiciones presentes.
+    \item Las inhibiciones y las estrategias de inhibición son diferentes para cada sistema de comunicación, por lo que creemos 
+    interesante evaluar la posibilidad de detectar inhibiciones en diversos sistemas, aplicando e invetigando
+    sobre métodos para determinar las inhibiciones particularmente para cada comunicación.
+    \item El sistema de detección fue elaborado con tres nodos distribuidos espacialmente para tener la capacidad de predecir la
+    procedencia de la señal. En nuestros planes cabe la posibilidad de desarrollar un sistema único portable que
+    detecte inhibiciones a su alrededor, dando lugar a la venta de un producto para particulares. Este debería disponer de
+    alarmas locales y un sistema de memoria de datos recolectados que puedan ser descargados por el usuario.
+    \item Como antes fue mencionado es importante que en un futuro el diseño del sistema sea completamente integrado a una
+    placa única, esto nos daría la posibilidad de reducir los tamaños y tener un sistema más redituable para ventas en cantidad. 
+
+\end{itemize}
 
