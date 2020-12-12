@@ -1,5 +1,5 @@
 # Fdb version 3
-["pdflatex"] 1607814547 "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex" "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/build/ProyectoFinal.pdf" "ProyectoFinal" 1607814547
+["pdflatex"] 1607814574 "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex" "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/build/ProyectoFinal.pdf" "ProyectoFinal" 1607814574
   "C:/Users/teto_/AppData/Local/MiKTeX/miktex/data/le/pdftex/pdflatex.fmt" 1603237531 10259605 e3df54a6280df87aa02dc760f93d0987 ""
   "C:/Users/teto_/AppData/Local/MiKTeX/pdftex/config/pdftex.map" 1603238381 82507 a9eef8696c92627b87e9975edea03b2a ""
   "C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/tfm/jknappen/ec/tcrm1200.tfm" 993062508 1444 95ffe0f19b974d50849790c8225c7ef7 ""
@@ -138,11 +138,11 @@
   "C:/Users/teto_/AppData/Local/Programs/MiKTeX/tex/latex/url/url.sty" 1388490452 12796 8edb7d69a20b857904dd0ea757c14ec9 ""
   "C:/Users/teto_/AppData/Local/Programs/MiKTeX/tex/latex/xcolor/xcolor.sty" 1463135581 57049 34128738f682d033422ca125f82e5d62 ""
   "C:/Users/teto_/AppData/Local/Programs/MiKTeX/tex/latex/xkeyval/xkeyval.sty" 1419270738 5114 9c1069474ff71dbc47d5006555e352d3 ""
-  "ProyectoFinal.tex" 1607814540 3995 4bf9e16d10385642704809e6d8fd7b7a ""
+  "ProyectoFinal.tex" 1607814567 3996 8215e6da852574d018ff1c6f7ce41912 ""
   "build/ProyectoFinal.aux" 0 -1 0 "pdflatex"
   "build/chapter-ensayos.tex" 0 -1 0 ""
-  "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex" 1607814540 3995 4bf9e16d10385642704809e6d8fd7b7a ""
-  "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/build/ProyectoFinal.aux" 1607814547 9 a94a2480d3289e625eea47cd1b285758 ""
+  "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex" 1607814567 3996 8215e6da852574d018ff1c6f7ce41912 ""
+  "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/build/ProyectoFinal.aux" 1607814574 9 a94a2480d3289e625eea47cd1b285758 ""
   "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/build/chapter-ensayos.tex" 0 -1 0 ""
   "chapter-caracteristicas.tex" 1607282895 4888 6924731b75fe9646f9c5ed970d49a7df ""
   "chapter-central.tex" 1607641677 0 d41d8cd98f00b204e9800998ecf8427e ""
@@ -163,9 +163,9 @@
   "images/tipos_de_jam.png" 1607282895 51984 325988fc9656f9da42898aaa1acdff3f ""
   (generated)
   "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/build/ProyectoFinal.pdf"
+  "build/ProyectoFinal.log"
+  "build/ProyectoFinal.toc"
   "c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/build/ProyectoFinal.log"
   "build/ProyectoFinal.out"
-  "build/ProyectoFinal.aux"
-  "build/ProyectoFinal.log"
   "build/ProyectoFinal.lof"
-  "build/ProyectoFinal.toc"
+  "build/ProyectoFinal.aux"
