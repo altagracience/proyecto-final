@@ -1,7 +1,7 @@
 \chapter{Desarrollo de servidor web}
 \par En este capítulo se describirán los objetivos, el diseño, las prestaciones y la forma en que se llevó a cabo el montaje del servidor web.
 \section{Objetivos}
-\par Los objetivos de tener un servidor web que disponga de una base de datos y una interfaz visual, como lo es la pagina web son:
+\par Los objetivos de tener un servidor web que disponga de una base de datos y una interfaz visual, como lo es la pagina web, son:
 
     \begin{itemize}
         \item Recabar la información brindada por cada lugar en donde se instale el sistema.
@@ -54,8 +54,8 @@ la aplicación cliente, sin acceso a funciones del servidor generar gráficas a 
 
 \subsection{Pestañas}
 \subsubsection{Inicio}
-Apenas ingresamos a la página podemos observar en la parte superior el logo y nombre del proyecto, y sobre la misma barra en la parte derecha, vemos el menú.
-\par En esta pestaña de inicio se coloco la tabla donde muestra la información recabada de todos los lugares donde está instalado el sistema y se encontró 
+Apenas ingresamos a la página podemos observar en la parte superior el logo y nombre del proyecto y sobre la misma barra en la parte derecha vemos el menú.
+\par En esta pestaña de inicio se colocó la tabla donde muestra la información recabada de todos los lugares donde está instalado el sistema y se encontró 
 una inhibición. La información que posee la misma es: ubicación, ID de cada nodo, fecha y hora y el nivel de RSSI y tipo de inhibición detectada por cada uno
  de los nodos. En la figura \ref{web_inicio} podemos ver la misma. 
 \begin{figure}[h!]
@@ -106,19 +106,19 @@ Operando con la ecuación \ref{eq:rel_potencias} para una misma señal recibida 
 
 \par Esta relación de distancias nos establece un punto en la recta que une cada nodo entre si (estos se encuentran en los vértices del triangulo azul como se 
 ve en la figura \ref{web_triangulacion}), del cual trazando una linea perpendicular a ella, tenemos la linea de acción del inhibidor.
-\par Haciendo esta relación entre todos los nodos tenemos 3 lineas que conforman un triangulo por la intersección entre ellas, donde luego obtiene la 
+\par Haciendo esta relación entre todos los nodos tenemos 3 lineas que conforman un triángulo por la intersección entre ellas, donde luego obtiene la 
 intersección de dos de las mediatrices de estas rectas que nos determinan el centro de la circunferencia que une los 3 puntos encontrados. El punto central, 
 con un radio de 8 metros es el área donde se encuentra la inhibición detectada. 
 
 
 \begin{figure}[h!]
 	\centering
-	\includegraphics[scale=0.45]{images/web/triangulacion-web.png}
+	\includegraphics[scale=0.35]{images/web/triangulacion-web.png}
     \caption{Pestaña de triangulación}
 	\label{web_triangulacion}
 \end{figure}
 \subsubsection{Contacto}
-Finalmente la ultima pestaña es la de contacto, la cual tiene el fin de que cualquier persona que entre a la página y tenga alguna duda o sugerencia, 
+Finalmente la última pestaña es la de contacto, la cual tiene el fin de que cualquier persona que entre a la página y tenga alguna duda o sugerencia
 pueda tener un contacto rápido con cada uno de nosotros (figura \ref{web_contacto}).
 \begin{figure}[h!]
 	\centering

@@ -29,14 +29,14 @@
 \contentsline {chapter}{\numberline {3}Desarrollo de servidor web}{19}{chapter.3}%
 \contentsline {section}{\numberline {3.1}Objetivos}{19}{section.3.1}%
 \contentsline {section}{\numberline {3.2}Página web}{20}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Pestañas}{20}{subsection.3.2.1}%
-\contentsline {subsubsection}{Inicio}{20}{section*.21}%
-\contentsline {subsubsection}{Nosotros}{20}{section*.22}%
-\contentsline {subsubsection}{Estadísticas}{21}{section*.23}%
-\contentsline {subsubsection}{Triangulación}{22}{section*.24}%
-\contentsline {subsubsection}{Contacto}{22}{section*.26}%
-\contentsline {section}{\numberline {3.3}Base de datos}{24}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Carga de datos}{24}{subsection.3.3.1}%
-\contentsline {chapter}{\numberline {4}Conclusiones y trabajo futuro}{25}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Conlcusiones}{25}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Trabajo futuro}{26}{section.4.2}%
+\contentsline {subsection}{\numberline {3.2.1}Pestañas}{22}{subsection.3.2.1}%
+\contentsline {subsubsection}{Inicio}{22}{section*.20}%
+\contentsline {subsubsection}{Nosotros}{22}{section*.21}%
+\contentsline {subsubsection}{Estadísticas}{23}{section*.22}%
+\contentsline {subsubsection}{Triangulación}{24}{section*.23}%
+\contentsline {subsubsection}{Contacto}{24}{section*.24}%
+\contentsline {section}{\numberline {3.3}Base de datos}{26}{section.3.3}%
+\contentsline {subsection}{\numberline {3.3.1}Carga de datos}{26}{subsection.3.3.1}%
+\contentsline {chapter}{\numberline {4}Conclusiones y trabajo futuro}{27}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Conlcusiones}{27}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Trabajo futuro}{28}{section.4.2}%
