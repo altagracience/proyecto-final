@@ -21,7 +21,12 @@ dos modelos distintos de nodo. En un comienzo se buscó que el mismo tenga una r
 por lo que, además de procesar las señales mediante las estrategias de detección establecidas, se asignaron salidas en seis leds
 que se encargaban de indicar la potencia de RF medida con el RSSI como se puede observar en la figura \ref{prototipo_nodo}. \par 
 
-\todo[inline]{agregar imagen de nodo viejo}
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.53]{images/nodos/prototipo_nodo.png}
+    \caption{Primer placa del nodo armada}
+	\label{prototipo_nodo}
+\end{figure}
 
 Como se puede observar el prototipo es bastante rudimentario, las placas fueron fabricadas de manera casera y sin tener grandes
 cuidados en los detalles. De igual modo este diseño bastó para pulir las imperfecciones que poseía en camino al desarrollo final.\par 
@@ -127,4 +132,11 @@ de datos y 2 para inhibición por saturación.
     \caption{Estados de comunicación en nodo}
 	\label{comunicacion_nodo}
 \end{figure}
+
+
+\subsection{Hardware}
+
+En el nodo de recepción se hace uso del mismo MCU que en la central, de modo que las características de hardware antes mencionadas
+tienen completa validez aquí también. Comunicado por SPI y comunicación serial se encuentra el módulo CC1101, luego mediante
+comunicación serial asíncrona también tenemos el SN75176  
 

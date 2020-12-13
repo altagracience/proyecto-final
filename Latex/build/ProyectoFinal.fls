@@ -906,6 +906,13 @@ INPUT .\chapter-nodos.tex
 INPUT .\chapter-nodos.tex
 INPUT .\chapter-nodos.tex
 INPUT chapter-nodos.tex
+INPUT .\images\nodos\prototipo_nodo.png
+INPUT .\images\nodos\prototipo_nodo.png
+INPUT images\nodos\prototipo_nodo.png
+INPUT .\images\nodos\prototipo_nodo.png
+INPUT .\images\nodos\prototipo_nodo.png
+INPUT .\images\nodos\prototipo_nodo.png
+INPUT .\images\nodos\prototipo_nodo.png
 INPUT .\images\nodos\asignacion_pines.png
 INPUT .\images\nodos\asignacion_pines.png
 INPUT images\nodos\asignacion_pines.png
@@ -913,6 +920,10 @@ INPUT .\images\nodos\asignacion_pines.png
 INPUT .\images\nodos\asignacion_pines.png
 INPUT .\images\nodos\asignacion_pines.png
 INPUT .\images\nodos\asignacion_pines.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
 INPUT .\images\LogoUTN.png
 INPUT .\images\LogoUTN.png
 INPUT images\LogoUTN.png
