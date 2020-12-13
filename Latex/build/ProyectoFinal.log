@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  13 DEC 2020 03:52
+This is pdfTeX, Version 3.14159265-2.6-1.40.21 (MiKTeX 20.7) (preloaded format=pdflatex 2020.10.20)  13 DEC 2020 16:25
 entering extended mode
 **"c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
 ("c:/Users/teto_/Documents/FACULTAD_2020/Proyecto final/proyecto-final/Latex/ProyectoFinal.tex"
@@ -489,7 +489,7 @@ LaTeX Info: Redefining \nameref on input line 27.
 \@outlinefile=\write4
 \openout4 = `ProyectoFinal.out'.
 
-<images/LogoUTN.png, id=134, 301.125pt x 301.125pt>
+<images/LogoUTN.png, id=174, 301.125pt x 301.125pt>
 File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 36.
@@ -522,14 +522,18 @@ Package pdftex.def Info: images/LogoUTN.png  used on input line 94.
  [4] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof"
 LaTeX Info: Redefining \. on input line 1.
 LaTeX Info: Redefining \% on input line 1.
-)
-\tf@lof=\write6
-\openout6 = `ProyectoFinal.lof'.
-
  [5
 
 
-] (chapter-introduccion.tex
+])
+\tf@lof=\write6
+\openout6 = `ProyectoFinal.lof'.
+
+File: images/LogoUTN.png Graphic file (type png)
+<use images/LogoUTN.png>
+Package pdftex.def Info: images/LogoUTN.png  used on input line 98.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [6] (chapter-introduccion.tex
 Cap\'{\i }tulo 1.
 pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has been already used, duplicate ignored
 <to be read again> 
@@ -549,17 +553,17 @@ File: images/LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: images/LogoUTN.png  used on input line 68.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [3]
-<images/sdr.png, id=249, 408.77719pt x 383.18156pt>
+<images/sdr.png, id=313, 408.77719pt x 383.18156pt>
 File: images/sdr.png Graphic file (type png)
 <use images/sdr.png>
 Package pdftex.def Info: images/sdr.png  used on input line 77.
 (pdftex.def)             Requested size: 163.50797pt x 153.2699pt.
-<images/llaves.png, id=253, 651.18282pt x 557.08125pt>
+<images/llaves.png, id=317, 651.18282pt x 557.08125pt>
 File: images/llaves.png Graphic file (type png)
 <use images/llaves.png>
 Package pdftex.def Info: images/llaves.png  used on input line 92.
 (pdftex.def)             Requested size: 260.4685pt x 222.82855pt.
-<images/espectro_ASK.png, id=254, 875.52094pt x 670.00313pt>
+<images/espectro_ASK.png, id=318, 875.52094pt x 670.00313pt>
 File: images/espectro_ASK.png Graphic file (type png)
 <use images/espectro_ASK.png>
 Package pdftex.def Info: images/espectro_ASK.png  used on input line 99.
@@ -574,7 +578,7 @@ File: images/LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: images/LogoUTN.png  used on input line 123.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [5 <./images/llaves.png>]
-<images/fpb_jam.png, id=267, 328.97906pt x 228.10219pt>
+<images/fpb_jam.png, id=331, 328.97906pt x 228.10219pt>
 File: images/fpb_jam.png Graphic file (type png)
 <use images/fpb_jam.png>
 Package pdftex.def Info: images/fpb_jam.png  used on input line 126.
@@ -589,7 +593,7 @@ File: images/LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: images/LogoUTN.png  used on input line 152.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [7 <./images/fpb_jam.png>]
-<images/no_linealidad_e_tercer_orden.png, id=287, 365.86688pt x 649.67719pt>
+<images/no_linealidad_e_tercer_orden.png, id=351, 365.86688pt x 649.67719pt>
 File: images/no_linealidad_e_tercer_orden.png Graphic file (type png)
 <use images/no_linealidad_e_tercer_orden.png>
 Package pdftex.def Info: images/no_linealidad_e_tercer_orden.png  used on input line 175.
@@ -604,7 +608,7 @@ File: images/LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: images/LogoUTN.png  used on input line 211.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [9 <./images/no_linealidad_e_tercer_orden.png>]
-<images/tipos_de_jam.png, id=306, 353.06906pt x 387.69844pt>
+<images/tipos_de_jam.png, id=370, 353.06906pt x 387.69844pt>
 File: images/tipos_de_jam.png Graphic file (type png)
 <use images/tipos_de_jam.png>
 Package pdftex.def Info: images/tipos_de_jam.png  used on input line 228.
@@ -614,7 +618,7 @@ File: images/LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: images/LogoUTN.png  used on input line 243.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [10]
-<images/bloques_inh.png, id=316, 1023.825pt x 524.71031pt>
+<images/bloques_inh.png, id=380, 1023.825pt x 524.71031pt>
 File: images/bloques_inh.png Graphic file (type png)
 <use images/bloques_inh.png>
 Package pdftex.def Info: images/bloques_inh.png  used on input line 253.
@@ -624,7 +628,7 @@ File: images/LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: images/LogoUTN.png  used on input line 263.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [11 <./images/tipos_de_jam.png>]
-<images/BER_ask.png, id=323, 907.89188pt x 681.29532pt>
+<images/BER_ask.png, id=387, 907.89188pt x 681.29532pt>
 File: images/BER_ask.png Graphic file (type png)
 <use images/BER_ask.png>
 Package pdftex.def Info: images/BER_ask.png  used on input line 266.
@@ -639,7 +643,7 @@ File: images/LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: images/LogoUTN.png  used on input line 297.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [13 <./images/BER_ask.png>]
-<images/compresion_max.png, id=337, 604.50844pt x 320.69812pt>
+<images/compresion_max.png, id=401, 604.50844pt x 320.69812pt>
 File: images/compresion_max.png Graphic file (type png)
 <use images/compresion_max.png>
 Package pdftex.def Info: images/compresion_max.png  used on input line 300.
@@ -664,7 +668,7 @@ File: images/LogoUTN.png Graphic file (type png)
 Package pdftex.def Info: images/LogoUTN.png  used on input line 45.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
  [17]
-<images/bloques_funcionamiento.png, id=358, 734.745pt x 330.48468pt>
+<images/bloques_funcionamiento.png, id=422, 734.745pt x 330.48468pt>
 File: images/bloques_funcionamiento.png Graphic file (type png)
 <use images/bloques_funcionamiento.png>
 Package pdftex.def Info: images/bloques_funcionamiento.png  used on input line 49.
@@ -674,16 +678,93 @@ File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 109.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [18 <./images/bloques_funcionamiento.png>] (chapter-componentes.tex) (chapter-central.tex) (chapter-nodos.tex
+ [18 <./images/bloques_funcionamiento.png>] (chapter-componentes.tex) (chapter-central.tex
 Cap\'{\i }tulo 3.
+Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 16.
 
-LaTeX Warning: Reference `prototipo_nodo' on page 19 undefined on input line 22.
+LaTeX Warning: Reference `com_rs485' on page 19 undefined on input line 17.
 
 [19
 
 ]
-Package hyperref Info: bookmark level for unknown todo defaults to 0 on input line 24.
-<images/nodos/asignacion_pines.png, id=371, 904.1278pt x 609.77812pt>
+
+LaTeX Warning: Reference `sim800' on page 20 undefined on input line 24.
+
+<images/central/placa-prot-central-superior.png, id=437, 324.0739pt x 364.39294pt>
+File: images/central/placa-prot-central-superior.png Graphic file (type png)
+<use images/central/placa-prot-central-superior.png>
+Package pdftex.def Info: images/central/placa-prot-central-superior.png  used on input line 32.
+(pdftex.def)             Requested size: 170.71652pt x 191.95969pt.
+<images/central/placa-prot-central-inferior.png, id=438, 301.6068pt x 338.7054pt>
+File: images/central/placa-prot-central-inferior.png Graphic file (type png)
+<use images/central/placa-prot-central-inferior.png>
+Package pdftex.def Info: images/central/placa-prot-central-inferior.png  used on input line 33.
+(pdftex.def)             Requested size: 170.71652pt x 191.72034pt.
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+
+Overfull \hbox (11.80281pt too wide) in paragraph at lines 42--45
+\OT1/cmr/m/n/12 pa-ra sua-vi-zar el arran-que del mis-mo, ya que al co-nec-tar-se a una red GSM/GPRS
+ []
+
+File: images/LogoUTN.png Graphic file (type png)
+<use images/LogoUTN.png>
+Package pdftex.def Info: images/LogoUTN.png  used on input line 46.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+[20]
+<images/central/maquina-estado-central.png, id=447, 727.518pt x 419.166pt>
+File: images/central/maquina-estado-central.png Graphic file (type png)
+<use images/central/maquina-estado-central.png>
+Package pdftex.def Info: images/central/maquina-estado-central.png  used on input line 55.
+(pdftex.def)             Requested size: 385.5827pt x 222.15692pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: images/LogoUTN.png Graphic file (type png)
+<use images/LogoUTN.png>
+Package pdftex.def Info: images/LogoUTN.png  used on input line 66.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+[21 <./images/central/placa-prot-central-superior.png> <./images/central/placa-prot-central-inferior.png>]
+<images/central/modelo-3d-central-frente.png, id=457, 479.7925pt x 499.8675pt>
+File: images/central/modelo-3d-central-frente.png Graphic file (type png)
+<use images/central/modelo-3d-central-frente.png>
+Package pdftex.def Info: images/central/modelo-3d-central-frente.png  used on input line 69.
+(pdftex.def)             Requested size: 170.71652pt x 177.86226pt.
+<images/central/modelo-3d-central-atras.png, id=458, 382.42876pt x 388.45125pt>
+File: images/central/modelo-3d-central-atras.png Graphic file (type png)
+<use images/central/modelo-3d-central-atras.png>
+Package pdftex.def Info: images/central/modelo-3d-central-atras.png  used on input line 70.
+(pdftex.def)             Requested size: 174.98444pt x 177.74136pt.
+
+
+LaTeX Warning: `!h' float specifier changed to `!ht'.
+
+File: images/LogoUTN.png Graphic file (type png)
+<use images/LogoUTN.png>
+Package pdftex.def Info: images/LogoUTN.png  used on input line 77.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+[22 <./images/central/maquina-estado-central.png>]
+<images/central/modelo-3d-central-separado.png, id=468, 402.00188pt x 307.1475pt>
+File: images/central/modelo-3d-central-separado.png Graphic file (type png)
+<use images/central/modelo-3d-central-separado.png>
+Package pdftex.def Info: images/central/modelo-3d-central-separado.png  used on input line 80.
+(pdftex.def)             Requested size: 213.05997pt x 162.78738pt.
+)
+File: images/LogoUTN.png Graphic file (type png)
+<use images/LogoUTN.png>
+Package pdftex.def Info: images/LogoUTN.png  used on input line 116.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [23 <./images/central/modelo-3d-central-frente.png> <./images/central/modelo-3d-central-atras.png> <./images/central/modelo-3d-central-separado.png>] (chapter-nodos.tex
+Cap\'{\i }tulo 4.
+
+LaTeX Warning: Reference `prototipo_nodo' on page 24 undefined on input line 22.
+
+[24
+
+]
+<images/nodos/asignacion_pines.png, id=484, 904.1278pt x 609.77812pt>
 File: images/nodos/asignacion_pines.png Graphic file (type png)
 <use images/nodos/asignacion_pines.png>
 Package pdftex.def Info: images/nodos/asignacion_pines.png  used on input line 34.
@@ -692,53 +773,63 @@ File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 41.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [20 <./images/nodos/asignacion_pines.png>]
+ [25 <./images/nodos/asignacion_pines.png>]
 File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 74.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [21]
-<images/nodos/estrategia_datos.png, id=383, 551.1792pt x 457.71pt>
+ [26]
+<images/nodos/estrategia_datos.png, id=496, 551.1792pt x 457.71pt>
 File: images/nodos/estrategia_datos.png Graphic file (type png)
 <use images/nodos/estrategia_datos.png>
 Package pdftex.def Info: images/nodos/estrategia_datos.png  used on input line 99.
 (pdftex.def)             Requested size: 237.00243pt x 196.81146pt.
-<images/nodos/estrategia_rssi.png, id=384, 647.41875pt x 408.02437pt>
+<images/nodos/estrategia_rssi.png, id=497, 647.41875pt x 408.02437pt>
 File: images/nodos/estrategia_rssi.png Graphic file (type png)
 <use images/nodos/estrategia_rssi.png>
 Package pdftex.def Info: images/nodos/estrategia_rssi.png  used on input line 106.
 (pdftex.def)             Requested size: 278.38463pt x 175.44705pt.
+File: images/LogoUTN.png Graphic file (type png)
+<use images/LogoUTN.png>
+Package pdftex.def Info: images/LogoUTN.png  used on input line 115.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [27]
+File: images/LogoUTN.png Graphic file (type png)
+<use images/LogoUTN.png>
+Package pdftex.def Info: images/LogoUTN.png  used on input line 115.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [28 <./images/nodos/estrategia_datos.png> <./images/nodos/estrategia_rssi.png>]
+<images/nodos/comunicacion_nodo.png, id=511, 539.1342pt x 62.634pt>
+File: images/nodos/comunicacion_nodo.png Graphic file (type png)
+<use images/nodos/comunicacion_nodo.png>
+Package pdftex.def Info: images/nodos/comunicacion_nodo.png  used on input line 125.
+(pdftex.def)             Requested size: 231.82318pt x 26.93208pt.
 )
 File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 119.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [22]
-File: images/LogoUTN.png Graphic file (type png)
-<use images/LogoUTN.png>
-Package pdftex.def Info: images/LogoUTN.png  used on input line 119.
-(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [23 <./images/nodos/estrategia_datos.png> <./images/nodos/estrategia_rssi.png>] (chapter-ensayos.tex) (chapter-server-web.tex
-Cap\'{\i }tulo 4.
-[24
+ [29 <./images/nodos/comunicacion_nodo.png>] (chapter-ensayos.tex) (chapter-server-web.tex
+Cap\'{\i }tulo 5.
+[30
 
 ]
 File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 39.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [25]
+ [31]
 File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 58.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [26]
-<images/web/tabla-web.png, id=411, 980.66376pt x 632.3625pt>
+ [32]
+<images/web/tabla-web.png, id=532, 980.66376pt x 632.3625pt>
 File: images/web/tabla-web.png Graphic file (type png)
 <use images/web/tabla-web.png>
 Package pdftex.def Info: images/web/tabla-web.png  used on input line 63.
 (pdftex.def)             Requested size: 313.81882pt x 202.36014pt.
-<images/web/nosotros-web.png, id=413, 1060.96375pt x 658.46pt>
+<images/web/nosotros-web.png, id=534, 1060.96375pt x 658.46pt>
 File: images/web/nosotros-web.png Graphic file (type png)
 <use images/web/nosotros-web.png>
 Package pdftex.def Info: images/web/nosotros-web.png  used on input line 72.
@@ -751,8 +842,8 @@ File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 79.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
-[27 <./images/web/tabla-web.png>]
-<images/web/est-web.png, id=422, 1195.46625pt x 485.815pt>
+[33 <./images/web/tabla-web.png>]
+<images/web/est-web.png, id=543, 1195.46625pt x 485.815pt>
 File: images/web/est-web.png Graphic file (type png)
 <use images/web/est-web.png>
 Package pdftex.def Info: images/web/est-web.png  used on input line 83.
@@ -761,17 +852,17 @@ File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 90.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [28 <./images/web/nosotros-web.png> <./images/web/est-web.png>]
-<images/web/triangulacion-web.png, id=434, 1004.75375pt x 657.45625pt>
+ [34 <./images/web/nosotros-web.png> <./images/web/est-web.png>]
+<images/web/triangulacion-web.png, id=555, 743.77875pt x 418.56375pt>
 File: images/web/triangulacion-web.png Graphic file (type png)
 <use images/web/triangulacion-web.png>
 Package pdftex.def Info: images/web/triangulacion-web.png  used on input line 116.
-(pdftex.def)             Requested size: 351.66908pt x 230.11313pt.
+(pdftex.def)             Requested size: 260.32646pt x 146.4995pt.
 
 
 LaTeX Warning: `!h' float specifier changed to `!ht'.
 
-<images/web/contacto-web.png, id=436, 1024.82875pt x 655.44875pt>
+<images/web/contacto-web.png, id=557, 1024.82875pt x 655.44875pt>
 File: images/web/contacto-web.png Graphic file (type png)
 <use images/web/contacto-web.png>
 Package pdftex.def Info: images/web/contacto-web.png  used on input line 125.
@@ -783,56 +874,53 @@ File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 131.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
-[29]
-
-LaTeX Warning: Text page 30 contains only floats.
-
-File: images/LogoUTN.png Graphic file (type png)
-<use images/LogoUTN.png>
-Package pdftex.def Info: images/LogoUTN.png  used on input line 131.
-(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
-[30 <./images/web/triangulacion-web.png> <./images/web/contacto-web.png>])
+[35])
 File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 125.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [31] (chapter-conlusion.tex
-Cap\'{\i }tulo 5.
-[32
+ [36 <./images/web/triangulacion-web.png> <./images/web/contacto-web.png>]
+File: images/LogoUTN.png Graphic file (type png)
+<use images/LogoUTN.png>
+Package pdftex.def Info: images/LogoUTN.png  used on input line 125.
+(pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
+ [37] (chapter-conlusion.tex
+Cap\'{\i }tulo 6.
+[38
 
 ]
 File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 47.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [33])
+ [39])
 File: images/LogoUTN.png Graphic file (type png)
 <use images/LogoUTN.png>
 Package pdftex.def Info: images/LogoUTN.png  used on input line 128.
 (pdftex.def)             Requested size: 28.45274pt x 28.45094pt.
- [34] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
+ [40] ("c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.aux"
 LaTeX Info: Redefining \. on input line 25.
 LaTeX Info: Redefining \% on input line 25.
 )
 Package rerunfilecheck Info: File `ProyectoFinal.out' has not changed.
-(rerunfilecheck)             Checksum: 353F91BB15183F538A920C7F6208148B;1737.
+(rerunfilecheck)             Checksum: 31BD97669212204DBF1C03C9D3B12079;2366.
 
 
 LaTeX Warning: There were undefined references.
 
  ) 
 Here is how much of TeX's memory you used:
- 17996 strings out of 480236
- 351207 string characters out of 2880558
- 635467 words of memory out of 3000000
- 34037 multiletter control sequences out of 15000+200000
+ 18095 strings out of 480236
+ 353768 string characters out of 2880558
+ 635862 words of memory out of 3000000
+ 34093 multiletter control sequences out of 15000+200000
  540632 words of font info for 47 fonts, out of 3000000 for 9000
  1141 hyphenation exceptions out of 8191
- 89i,16n,99p,618b,862s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 89i,16n,99p,618b,863s stack positions out of 5000i,500n,10000p,200000b,50000s
  <C:\Users\teto_\AppData\Local\MiKTeX\fonts/pk/ljfour/jknappen/ec/dpi600\tcrm1200.pk><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi6.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Users/teto_/AppData/Local/Programs/MiKTeX/fonts/type1/public/amsfonts/cm/cmti12.pfb>
-Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (40 pages, 1373287 bytes).
+Output written on "c:/Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.pdf" (47 pages, 1835789 bytes).
 PDF statistics:
- 542 PDF objects out of 1000 (max. 8388607)
- 116 named destinations out of 1000 (max. 500000)
- 412 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 670 PDF objects out of 1000 (max. 8388607)
+ 151 named destinations out of 1000 (max. 500000)
+ 527 words of extra memory for PDF output out of 10000 (max. 10000000)
 

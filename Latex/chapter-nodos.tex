@@ -86,7 +86,7 @@ los errores de funcionamiento que son inadmisibles son:
 	comunicando un dispositivo que sí es apto para hacerlo, como por ejemplo una llave de auto.
 	\item Falsos negativos: que el sistema sea incapaz de reconocer una señal que sea perjudicial para el sistema de seguridad
 	dded un automóvil.
-\end{itemize}
+\end{itemize} 
 
 Antes se ha profundizado en las estrategias de inhibición y se ha llegado a la conclusión de que existen dos métodos posibles
 para inhibir una comunicación, un método es saturación de la etapa receptora y el otro es por corrupción de la trama de datos.
@@ -107,3 +107,24 @@ y \ref{estrategia_datos} se demuestra en bloques el funcionamiento de la estrate
     \caption{Estrategia de detección por saturación de etapa receptora}
 	\label{estrategia_rssi}
 \end{figure}
+
+\subsubsection{Comunicación con la central}
+
+Para el corriente funcionamiento del sistema se precisa que este se mantenga comunicado, dando información los nodos a la 
+central de lo que cada uno están recibiendo, esta encargándose de manejar las alertas y los requerimientos a cada uno de los 
+receptores. \par 
+Para que la comunicación sea lo más efectiva posible se decidió que respete siempre una estructura de comunicación constante
+en la que únicamente se cambirán los parámetros a enviar. La comunicación es del tipo master -la central- esclavos -los nodos-
+y cada uno de los esclavos responderán por turno con peticiones independientes. \par
+Como antes se mencionó la trama de comunicación es única y puede observarses en la figura \ref{comunicacion_nodo}, donde 
+ID Nodo hace referencia al identificador propio del nodo en la red, Valor RSSI al valor de intensidad de señal recibido por cada
+nodo y Estado hace referencia al estado de inhibición detectado, siendo 0 para no inhibición, 1 para inhibicion por corrupción
+de datos y 2 para inhibición por saturación.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.43]{images/nodos/comunicacion_nodo.png}
+    \caption{Estados de comunicación en nodo}
+	\label{comunicacion_nodo}
+\end{figure}
+
