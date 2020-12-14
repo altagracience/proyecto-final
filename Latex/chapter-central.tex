@@ -1,9 +1,9 @@
 \chapter{Central de procesamiento}
 \section{Descripción general}
-\par El diseño general del sistema se pensó como tres nodos de escucha que son comandados y
+\par El diseño general del sistema se pensó como tres nodos de escucha que son comandados
 por medio de una central de procesamiento. Los requerimientos de la misma se
-basan en las funcionalidades para establecer una comunicación estable y segura con cada uno
-de los nodos, donde en caso de detectar una inhibición por parte de cualquiera de ellos, requerir
+establecen para lograr una comunicación estable y segura con cada uno
+de los nodos, donde en caso de detectar una inhibición por parte de cualquiera de ellos, requiera
 el estado de los otros dos para así activar las alarmas correspondientes, comunicarse al
 servidor web y volver a iniciar el sistema de cero una vez que se haya terminado el proceso
 correctamente, dando también un reporte del estado de salud de cada nodo en particular.
