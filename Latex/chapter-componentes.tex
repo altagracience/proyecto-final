@@ -6,7 +6,7 @@ posibilidades que tuvimos en cuenta en el proceso de selección de los mismos. \
 En el momento de comenzar este proyecto, rápidamente nos vimos ante la necesidad de seleccionar los componentes de nuestro sistema. 
 En este proceso tuvimos en cuenta los objetivos y el diagrama de funcionamiento general que se trató en el capítulo de características que precede,
 además de otras consideraciones como el costo, los conocimientos previos del equipo sobre el componente, disponibilidad, etc. 
-Para poder explicar como fue este proceso, dividimos el sistema en tres etapas: Recepción, Procesamiento y alarmas, y comunicación.
+Para poder explicar como fue este proceso, dividimos el sistema en tres etapas: Recepción, procesamiento, y comunicación.
 
 \section{Etapa receptora de RF} \par
 De acuerdo al planteamiento del sistema, una parte crucial en el funcionamiento del mismo es la recepción de la señal de interés.
@@ -25,7 +25,7 @@ La recepción debe cumplir con las siguientes características:
 
     \item Medición de RSSI. La medición del nivel de potencia de la señal recibida es crucial para poder identificar adecuadamente
     a los inhibidores. También cumple un rol indispensable en uno de los objetivos secundarios mas desafiantes del sistema como lo es la obtención
-    de la posición del elemento inhibidor mediante la triangulación.
+    de la posición del elemento inhibidor mediante triangulación.
 
     \item Comunicación con microcontrolador. Es importante tener en cuenta las posibilidades que nos ofrece esta etapa a la hora de comunicarse
     con la siguiente. Los datos obtenidos de la recepción de la señal serán procesados por un microcontrolador.
@@ -34,7 +34,7 @@ La recepción debe cumplir con las siguientes características:
 
 Luego de estudiar las mejores opciones llegamos a una que consiste en utilizar un esquema como el que vemos en la figura
 \ref{EtapaReceptora1}. En primer lugar elegimos utilizar una antena omnidireccional, es la opción que nos permite reducir los precios
-y simplificar el sistema al evitar sistemas de matrices antenas o antenas con rotación.
+y simplificar el proyecto al evitar sistemas de matrices antenas o antenas con rotación.
 El inconveniente de esta elección, es que la antena omnidireccional no nos entrega información referida al ángulo en que recibe la señal, por lo que
 complica la obtención de la posición. Sin embargo, todavía es posible comparando la lectura del nivel de RSSI de cada nodo.
 Luego encontramos un divisor de potencia de RF que se encarga de entregar la señal al demodulador ASK, y al medidor de potencia. \par
@@ -68,7 +68,7 @@ En la sección \ref{cap:cc1101} se exponen en detalle las características del m
 
 \subsection{CC1101} \label{cap:cc1101}
 \subsubsection{Transceptor}
-\paragraph{Descripción del componente}
+\paragraph{Descripción del componente} \par
 
 
 \begin{figure}[htb]
@@ -78,14 +78,14 @@ En la sección \ref{cap:cc1101} se exponen en detalle las características del m
 	\label{fig:cc1101}
 \end{figure}
 
-CC1101 es un transceptor para frecuencia inferiores a 1GHz de bajo costo para aplicaciones inalámbricas de baja potencia. Está destinado principalmente
+CC1101 es un transceptor de frecuencias inferiores a 1GHz de bajo costo para aplicaciones inalámbricas de baja potencia. Está destinado principalmente
 a aplicaciones ISM (industrial, científico y médico) y bandas de frecuencia SRD (Dispositivo de corto alcance) a 315, 433, 868 y 915Mhz, pero puedo ser programado 
-para funcionar en otros bandas. EL transceptor RF está integrado con un módem de banda base configurable que admite varios formatos de modulación.\par 
+para funcionar en otras bandas. El transceptor RF está integrado con un módem de banda base configurable que admite varios formatos de modulación.\par 
 CC1101 proporciona un amplio soporte de hardware para manejo de paquetes, almacenamiento en búfer de datos, transmisiones de ráfagas, evaluación de canal,
 indicación de calidad de enlace y wake-on-radio. \par 
-En un típico sistema, el CC1101 se utilizará junto con un microcontrolador y algunos componentes pasivos adicionales.
+En un típico sistema, el CC1101 se utiliza junto con un microcontrolador y algunos componentes pasivos adicionales.
 
-\paragraph{Características generales}
+\paragraph{Características generales} \par
 
 En este apartado mostramos algunas características importantes del CC1101 sin extendernos demasiado. Si se quiere mas información sobre este integrado ver \todo 
 
@@ -105,8 +105,8 @@ En este apartado mostramos algunas características importantes del CC1101 sin e
 \subsubsection{Módulo}
 
 El modulo aporta simplicidad al sistema, ya que contiene los componentes pasivos necesarios para el funcionamiento del CC1101. También permite mejor acceso a los pines 
-del integrado y tiene conexión SMA para antena. En nuestro caso particular, este módulo fue necesario debido a que soldamos los componentes de forma manual y porque
-tiene un gran disponibilidad en el mercado.
+del integrado y tiene conexión SMA para antena. En nuestro caso particular, este módulo fue necesario debido a que simplifica la soldadura manual y porque
+tiene una gran disponibilidad en el mercado.
 
 En la figura \ref{fig:sch_cc1101} podemos ver el esquemático del módulo y en la figura \ref{fig:module_cc1101} podemos ver el aspecto físico.
 
@@ -126,7 +126,7 @@ Se puede observar en el esquemático, que el módulo es muy simple en cuanto a l
 	\label{fig:module_cc1101}
 \end{figure}
 
-\section{Comunicación Serial}
+\section{Comunicación}
 
 La comunicación se puede dividir en dos partes, la primera referida a la comunicación entre los nodos y la central y la otra, referida a la comunicación
 de la central con un servidor web.
@@ -159,7 +159,7 @@ Las especificaciones de este estándar son:
     \item Conexión multipunto
     \item Alimentación de 5V
     \item Hasta 32 estaciones 
-    \item velocidad Máxima de 10Mbit/s (a 12 metros)
+    \item Velocidad Máxima de 10Mbit/s (a 12 metros)
     \item Longitud máxima de alcance de 1200 metro (a 100kbit/s)
     \item Rango de bus de -7V a +12V
 
@@ -253,7 +253,7 @@ A continuación se listan algunas características importantes de este módulo. 
 \section{Procesamiento} \par
 
 Tanto en los nodos como en la central, es indispensable el uso de un microcontrolador. En el caso del nodo, se encarga de comunicarse con la etapa receptora,
-procesar la información y decidir si la señal recibida proviene de un inhibidor, luego debe ser capaz de comunicarse con el MAX485 para establecer la comunicación
+procesar la información y decidir si la señal recibida proviene de un inhibidor, luego, debe ser capaz de comunicarse con el MAX485 para establecer la comunicación
 RS485 con el resto del sistema. En la central, el microcontrolador es el encargado de recibir la información de nodos a través del MAX485 y,
 en caso de la presencia de un inhibidor, activar las alarmas correspondientes y actualizar la información en el servidor web mediante el módulo sim800l. \par
 
@@ -287,11 +287,11 @@ En la sección \ref{cap:stm32} ahondamos mas sobre este módulo y el microcontro
 \subsection{Blue Pill STM32} \label{cap:stm32}
 \subsubsection{stm32f103c8t6}
 
-Es un microcontrolador perteneciente a la linea de rendimiento medio de la familia STM. Incorpora el npucleo RISC ARM Cortex de 32 bits de alto rendimiento,
+Es un microcontrolador perteneciente a la linea de rendimiento medio de la familia STM. Incorpora el nucleo RISC ARM Cortex de 32 bits de alto rendimiento,
 posee memorias integradas de alta velocidad y una amplia gama de entradas y salidas. Este dispositivo ofrece dos ADC de 12bits, tres temporizadores de 16bits
-de uso general mas un temporizador PWM, asi como diversas interfaces de comunicación.\par 
+de uso general mas un temporizador PWM, así como diversas interfaces de comunicación.\par 
 Este microcontrolador es apto para gran variedad de aplicaciones, como unidades de motor, control de aplicaciones, equipos médicos y portátiles, periféricos
-de PC y juegos, plataformas GPS, aplicaciones industriales, PLC, inversores, impresoras, escáneres. , sistemas de alarma, videoporteros y HVAC.
+de PC y juegos, plataformas GPS, aplicaciones industriales, PLC, inversores, impresoras, escáneres , sistemas de alarma, videoporteros y HVAC.
 
 A continuación se listan algunas de las características que nos parecen mas importantes de este microcontrolador:
 
