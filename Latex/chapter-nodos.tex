@@ -138,5 +138,31 @@ de datos y 2 para inhibición por saturación.
 
 En el nodo de recepción se hace uso del mismo MCU que en la central, de modo que las características de hardware antes mencionadas
 tienen completa validez aquí también. Comunicado por SPI y comunicación serial se encuentra el módulo CC1101, luego mediante
-comunicación serial asíncrona también tenemos el SN75176  
+comunicación serial asíncrona tenemos el SN75176. En la figura \ref{schema_nodo} podemos observar los tres bloques principales
+que lo componen. \par 
+
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.3]{images/nodos/schema_nodo.png}
+    \caption{Esquemático del nodo receptor}
+	\label{schema_nodo}
+\end{figure}
+
+Tenemos de derecha a izquierda en el esquemático los pines de conección del CC1101, el cual está unido al MCU por seis pines, los 
+cuales pueden ser seguidos por las etiquetas que este y el microcontrolador poseen y por último tenemos el esquemático para 
+la comunicación RS485. \par 
+
+El diseño 3D de la placa terminada lo podemos observar en la figura \ref{3d_nodo}. En las perforaciones que se observan van 
+instalados los módulos utilizados que en el apartado de selección de componentes se mencionan.
+
+\begin{figure}
+	\centering
+	\includegraphics[scale=0.4]{images/nodos/3d_nodo.png}
+    \caption{Diseño 3D del nodo receptor}
+	\label{3d_nodo}
+\end{figure}
+
+\subsection{Gabinete}
+
 

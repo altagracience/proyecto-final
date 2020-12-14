@@ -38,31 +38,36 @@
 \contentsline {subsection}{\numberline {3.2.2}Problemas surgidos}{20}{subsection.3.2.2}%
 \contentsline {section}{\numberline {3.3}Diseño final}{21}{section.3.3}%
 \contentsline {subsection}{\numberline {3.3.1}Software}{21}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Hardware}{22}{subsection.3.3.2}%
-\contentsline {subsubsection}{Esquemático}{22}{section*.25}%
-\contentsline {subsubsection}{PCB}{22}{section*.26}%
-\contentsline {subsubsection}{Modelo 3D}{22}{section*.27}%
-\contentsline {section}{\numberline {3.4}Gabinete}{22}{section.3.4}%
-\contentsline {chapter}{\numberline {4}Nodos de recepción}{24}{chapter.4}%
-\contentsline {section}{\numberline {4.1}Descripción general}{24}{section.4.1}%
-\contentsline {section}{\numberline {4.2}Prototipo}{24}{section.4.2}%
-\contentsline {section}{\numberline {4.3}Diseño final}{27}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Software}{27}{subsection.4.3.1}%
-\contentsline {subsubsection}{Recepción RF}{27}{section*.28}%
-\contentsline {subsubsection}{Estrategia de detección de inhibiciones}{28}{section*.29}%
-\contentsline {subsubsection}{Comunicación con la central}{28}{section*.30}%
-\contentsline {subsection}{\numberline {4.3.2}Hardware}{30}{subsection.4.3.2}%
-\contentsline {chapter}{\numberline {5}Desarrollo de servidor web}{31}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Objetivos}{31}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Página web}{32}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Pestañas}{34}{subsection.5.2.1}%
-\contentsline {subsubsection}{Inicio}{34}{section*.31}%
-\contentsline {subsubsection}{Nosotros}{34}{section*.32}%
-\contentsline {subsubsection}{Estadísticas}{35}{section*.33}%
-\contentsline {subsubsection}{Triangulación}{36}{section*.34}%
-\contentsline {subsubsection}{Contacto}{36}{section*.35}%
-\contentsline {section}{\numberline {5.3}Base de datos}{37}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Carga de datos}{38}{subsection.5.3.1}%
-\contentsline {chapter}{\numberline {6}Conclusiones y trabajo futuro}{39}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Conlcusiones}{39}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Trabajo futuro}{40}{section.6.2}%
+\contentsline {subsubsection}{Comunicación con nodos}{22}{section*.25}%
+\contentsline {subsubsection}{Salud de nodos}{23}{section*.26}%
+\contentsline {subsubsection}{Alarma sonora y visual}{23}{section*.27}%
+\contentsline {subsubsection}{Subida de datos al servidor web}{23}{section*.28}%
+\contentsline {subsection}{\numberline {3.3.2}Hardware}{24}{subsection.3.3.2}%
+\contentsline {subsubsection}{Esquemático}{24}{section*.29}%
+\contentsline {subsubsection}{PCB}{25}{section*.30}%
+\contentsline {subsubsection}{Modelo 3D}{26}{section*.31}%
+\contentsline {section}{\numberline {3.4}Gabinete}{28}{section.3.4}%
+\contentsline {chapter}{\numberline {4}Nodos de recepción}{30}{chapter.4}%
+\contentsline {section}{\numberline {4.1}Descripción general}{30}{section.4.1}%
+\contentsline {section}{\numberline {4.2}Prototipo}{30}{section.4.2}%
+\contentsline {section}{\numberline {4.3}Diseño final}{33}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Software}{33}{subsection.4.3.1}%
+\contentsline {subsubsection}{Recepción RF}{33}{section*.32}%
+\contentsline {subsubsection}{Estrategia de detección de inhibiciones}{34}{section*.33}%
+\contentsline {subsubsection}{Comunicación con la central}{34}{section*.34}%
+\contentsline {subsection}{\numberline {4.3.2}Hardware}{36}{subsection.4.3.2}%
+\contentsline {subsection}{\numberline {4.3.3}Gabinete}{37}{subsection.4.3.3}%
+\contentsline {chapter}{\numberline {5}Desarrollo de servidor web}{38}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Objetivos}{38}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Página web}{39}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Pestañas}{41}{subsection.5.2.1}%
+\contentsline {subsubsection}{Inicio}{41}{section*.35}%
+\contentsline {subsubsection}{Nosotros}{41}{section*.36}%
+\contentsline {subsubsection}{Estadísticas}{42}{section*.37}%
+\contentsline {subsubsection}{Triangulación}{43}{section*.38}%
+\contentsline {subsubsection}{Contacto}{43}{section*.39}%
+\contentsline {section}{\numberline {5.3}Base de datos}{44}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Carga de datos}{45}{subsection.5.3.1}%
+\contentsline {chapter}{\numberline {6}Conclusiones y trabajo futuro}{46}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Conlcusiones}{46}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Trabajo futuro}{47}{section.6.2}%
