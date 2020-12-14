@@ -1,30 +1,30 @@
 
 \chapter{Selección de componentes}
 En este capítulo se procede a exponer las características mas importantes  de los componentes del sistema, así como las consideraciones y 
-posibildades que tuvimos en cuenta en el proceso de selección de los mismos. \par
+posibilidades que tuvimos en cuenta en el proceso de selección de los mismos. \par
 
-En el momento de comenzar este proyecto, rapidamente nos vimos ante la necesidad de seleccionar los componentes de nuestro sistema. 
+En el momento de comenzar este proyecto, rápidamente nos vimos ante la necesidad de seleccionar los componentes de nuestro sistema. 
 En este proceso tuvimos en cuenta los objetivos y el diagrama de funcionamiento general que se trató en el capítulo de características que precede,
 además de otras consideraciones como el costo, los conocimientos previos del equipo sobre el componente, disponibilidad, etc. 
 Para poder explicar como fue este proceso, dividimos el sistema en tres etapas: Recepción, Procesamiento y alarmas, y comunicación.
 
 \section{Etapa receptora de RF} \par
-De acuerdo al plantemiento del sistema, una parte crucial en el funcionamiento del mismo es la recepción de la señal de interés.
+De acuerdo al planteamiento del sistema, una parte crucial en el funcionamiento del mismo es la recepción de la señal de interés.
 Vale recordar que la etapa de recepción se encuentra presente en todos los nodos del sistema, por lo que las diferencias de costos
 en este apartado se ven multiplicadas.\par
 La recepción debe cumplir con las siguientes características:
 
 \begin{itemize}
     \item Antena para 433MHz. Es el primer componente a tener en cuenta cuando hablamos de comunicaciones inalámbricas. En este caso, 
-    este transductor nos servirá para obtener la energía electrica que podemos entender y analizar, a partir de la ondas electromagnéticas
-    emitidas por la llave de automovil y por los inhibidores. Planteamos la posibilidad de utilizar dos tipos de antenas, del tipo 
+    este transductor nos servirá para obtener la energía eléctrica que podemos entender y analizar, a partir de la ondas electromagnéticas
+    emitidas por la llave de automóvil y por los inhibidores. Planteamos la posibilidad de utilizar dos tipos de antenas, del tipo 
     omnidireccional o una con la capacidad de generar un barrido, característica importante si se quiere obtener la posición del inhibidor.
 
     \item Demodulación de señales ASK en 433MHz. Es el principal requerimiento de la recepción debido a las características de las 
     comunicaciones presentes en los sistemas de seguridad de vehículos.
 
     \item Medición de RSSI. La medición del nivel de potencia de la señal recibida es crucial para poder identificar adecuadamente
-    a los inhibidores. También cumple un rol indispensable en uno de los objetivos secundarios mas desafientes del sistema como lo es la obtención
+    a los inhibidores. También cumple un rol indispensable en uno de los objetivos secundarios mas desafiantes del sistema como lo es la obtención
     de la posición del elemento inhibidor mediante la triangulación.
 
     \item Comunicación con microcontrolador. Es importante tener en cuenta las posibilidades que nos ofrece esta etapa a la hora de comunicarse
@@ -35,7 +35,7 @@ La recepción debe cumplir con las siguientes características:
 Luego de estudiar las mejores opciones llegamos a una que consiste en utilizar un esquema como el que vemos en la figura
 \ref{EtapaReceptora1}. En primer lugar elegimos utilizar una antena omnidireccional, es la opción que nos permite reducir los precios
 y simplificar el sistema al evitar sistemas de matrices antenas o antenas con rotación.
-El inconveniente de esta elección, es que la antena omnidireccional no nos entrega informacion referida al angulo en que recibe la señal, por lo que
+El inconveniente de esta elección, es que la antena omnidireccional no nos entrega información referida al ángulo en que recibe la señal, por lo que
 complica la obtención de la posición. Sin embargo, todavía es posible comparando la lectura del nivel de RSSI de cada nodo.
 Luego encontramos un divisor de potencia de RF que se encarga de entregar la señal al demodulador ASK, y al medidor de potencia. \par
 
@@ -48,7 +48,7 @@ Luego encontramos un divisor de potencia de RF que se encarga de entregar la se�
 
 
 Vemos que este diagrama cumple con las características anteriormente expuestas. Sin embargo, al final nos decantamos por otra opción, 
-esta consiste en utlizar un módulo transceptor CC1101. La incorporación de este módulo, nos permite reducir mucho los costos y simplificar
+esta consiste en utilizar un módulo transceptor CC1101. La incorporación de este módulo, nos permite reducir mucho los costos y simplificar
 el sistema sin sacrificar características importantes. \par
 En la figura \ref{EtapaReceptora2} vemos como resulta el nuevo diagrama de la etapa receptora. \par
 
@@ -66,9 +66,9 @@ esto provoca que señales de gran potencia saturen nuestro receptor y nos imposi
 de la posición es un objetivo secundario. \par
 En la sección \ref{cap:cc1101} se exponen en detalle las características del módulo.\par
 
-\section{CC1101} \label{cap:cc1101}
-\subsection{Transceptor}
-\subsubsection{Descripción del componente}
+\subsection{CC1101} \label{cap:cc1101}
+\subsubsection{Transceptor}
+\paragraph{Descripción del componente}
 
 
 \begin{figure}[htb]
@@ -85,9 +85,9 @@ CC1101 proporciona un amplio soporte de hardware para manejo de paquetes, almace
 indicación de calidad de enlace y wake-on-radio. \par 
 En un típico sistema, el CC1101 se utilizará junto con un microcontrolador y algunos componentes pasivos adicionales.
 
-\subsubsection{Características generales}
+\paragraph{Características generales}
 
-En este apartado mostramos algunas caracteristicas importantes del CC1101 sin extendernos demasiado. Si se quiere mas información sobre este integrado ver \todo 
+En este apartado mostramos algunas características importantes del CC1101 sin extendernos demasiado. Si se quiere mas información sobre este integrado ver \todo 
 
 \begin{itemize}
     \item Alimentación de 3.3V
@@ -102,7 +102,7 @@ En este apartado mostramos algunas caracteristicas importantes del CC1101 sin ex
     \item Filtro digital de banda ancha programable. 58-812kHz.
 \end{itemize}
 
-\subsection{Módulo}
+\subsubsection{Módulo}
 
 El modulo aporta simplicidad al sistema, ya que contiene los componentes pasivos necesarios para el funcionamiento del CC1101. También permite mejor acceso a los pines 
 del integrado y tiene conexión SMA para antena. En nuestro caso particular, este módulo fue necesario debido a que soldamos los componentes de forma manual y porque
@@ -130,13 +130,15 @@ Se puede observar en el esquemático, que el módulo es muy simple en cuanto a l
 
 La comunicación se puede dividir en dos partes, la primera referida a la comunicación entre los nodos y la central y la otra, referida a la comunicación
 de la central con un servidor web.
+
+
 \subsection{Comunicación local}
 
 Según nuestros objetivos, la comunicación debe reunir las siguientes características:
 
 \begin{itemize}
     \item Resistencia a ataques de inhibidores. Es importante que la comunicación local no sea vulnerable a los mismos ataques que intentamos identificar, ya que
-    si fallara la comunicaciónn entre los nodos y la central el sistema no puede dar aviso de la presencia de una señal interferente.
+    si fallara la comunicación entre los nodos y la central el sistema no puede dar aviso de la presencia de una señal interferente.
     \item Comunicación bidireccional. Para establecer una red multinodal adecuada necesitamos un sistema de comunicación half-duplex o full-duplex, ya que 
     la central comandará a los nodos, los cuales le responden con la información que la central les requiere.
     \item Distancia mayor a 1000m. Es probable que el sistema sea instalado en lugares abiertos como estacionamientos, por lo que necesitamos un protocolo de 
@@ -147,10 +149,10 @@ Según nuestros objetivos, la comunicación debe reunir las siguientes caracter�
 
 \end{itemize}
 
-Teniendo en cuenta las necesidades y analizando las opciones, determinamos que la mejor opción para nuestra aplicación es usar el estandar de comunicación RS485. 
+Teniendo en cuenta las necesidades y analizando las opciones, determinamos que la mejor opción para nuestra aplicación es usar el estándar de comunicación RS485. 
 Este está definido como un sistema de bus diferencial multipunto, ideal para transmitir a altas velocidades sobre largas distancias y a través de canales ruidosos.
 El medio físico de transmisión es un par trenzado con una longitud máxima de 1200 metros operando entre 300 y 19200 bit/s y la comunicación semiduplex.\par
-Las especificaciones de este estandar son:
+Las especificaciones de este estándar son:
 
 \begin{itemize}
     \item Interfaz diferencial
@@ -164,8 +166,28 @@ Las especificaciones de este estandar son:
 \end{itemize}
 
 Para nuestra aplicación usaremos el RS485 en combinación de la UART de nuestro microcontrolador, por lo que necesitaremos utilizar un transceptor MAX485 
-(ver sección \ref{cap:max485}). Utilizaremos uno en cada nodo y en la central. El MAX485 tiene la capacidad de transformar los datos de la UART al estandar
+(ver sección \ref{cap:max485}). Utilizaremos uno en cada nodo y en la central. El MAX485 tiene la capacidad de transformar los datos de la UART al estándar
 RS485 y viceversa. \par
+
+\subsection{MAX485} \label{cap:max485}
+
+MAX 485 es un transceptor de baja potencia para comunicación RS-485 y RS-422. Cada integrado contiene un controlador y un receptor.\par 
+La velocidad de respuesta del controlador del MAX485 no está limitada, lo que les permite transmitir hasta 2,5 Mbps. Estos transceptores
+consumen entre 120 µA y 500 µA de corriente de suministro cuando están descargados o completamente cargados con controladores desactivados.
+Todas las piezas funcionan con un solo suministro de 5V. 
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.5]{images/max485.jpg}
+    \caption{Max 485}
+	\label{fig:max485}
+\end{figure}
+
+Los controladores tienen limitación de corriente de cortocircuito y están protegidos
+contra una disipación de energía excesiva mediante un circuito de apagado térmico que coloca las salidas del controlador en un estado de alta 
+impedancia. La entrada del receptor tiene una característica a prueba de fallas que garantiza una salida lógica alta si la entrada está en 
+circuito abierto. El MAX485 está diseñado para aplicaciones semidúplex.
+
 
 \subsection{Comunicación con Servidor Web}
 
@@ -194,30 +216,12 @@ Nosotros elegimos el módulo sim800l por dos razones, la primera es el bajo prec
 que disponíamos con este módulo.
 En la sección \ref{cap:sim800l} se detallan las características de este componente.
 
-\section{MAX485} \label{cap:max485}
 
-MAX 485 es un transceptor de baja potencia para comunicación RS-485 y RS-422. Cada integrado contiene un controlador y un receptor.\par 
-La velocidad de respuesta del controlador del MAX485 no está limitada, lo que les permite transmitir hasta 2,5 Mbps. Estos transceptores
-consumen entre 120 µA y 500 µA de corriente de suministro cuando están descargados o completamente cargados con controladores desactivados.
-Todas las piezas funcionan con un solo suministro de 5V. 
+\subsection{SIM800L} \label{cap:sim800l}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.5]{images/max485.jpg}
-    \caption{Max 485}
-	\label{fig:max485}
-\end{figure}
+\subsubsection{Descripción del componente}
 
-Los controladores tienen limitación de corriente de cortocircuito y están protegidos
-contra una disipación de energía excesiva mediante un circuito de apagado térmico que coloca las salidas del controlador en un estado de alta 
-impedancia. La entrada del receptor tiene una característica a prueba de fallas que garantiza una salida lógica alta si la entrada está en 
-circuito abierto. El MAX485 está diseñado para aplicaciones semidúplex.
-
-\section{SIM800L} \label {cap:sim800l}
-
-\subsection{Descripción del componente}
-
-Utilizamos el SIM800L a través de un módulo del mismo nombre, como se suele utilizar normalmente. El módulo nos permite accesar a los pines 
+Utilizamos el SIM800L a través de un módulo del mismo nombre, como se suele utilizar normalmente. El módulo nos permite acceder a los pines 
 mas importantes del SIM800L para manejarlo desde un microcontrolador.\par
 Consiste en un módulo cuatribanda que permite agregar funcionalidades avanzadas de comunicación a través de la red celular, como mandar mensajes de texto,
 datos o realizar llamadas en un tamaño sumamente compacto. 
@@ -229,7 +233,7 @@ datos o realizar llamadas en un tamaño sumamente compacto.
 	\label{fig:sim800l}
 \end{figure}
 
-\subsection{Caracteísticas Generales}
+\subsubsection{Características Generales}
 
 A continuación se listan algunas características importantes de este módulo. Sin embargo, si se quiere ver en mayor profundidad ver \todo
 
@@ -253,9 +257,9 @@ procesar la información y decidir si la señal recibida proviene de un inhibido
 RS485 con el resto del sistema. En la central, el microcontrolador es el encargado de recibir la información de nodos a través del MAX485 y,
 en caso de la presencia de un inhibidor, activar las alarmas correspondientes y actualizar la información en el servidor web mediante el módulo sim800l. \par
 
-El microcontrolador que utilizamos tanto para los nodos como en la central es el stm32f103c8t6. La decisión de utilizar este microncontrolador se tomó debido 
+El microcontrolador que utilizamos tanto para los nodos como en la central es el stm32f103c8t6. La decisión de utilizar este microcontrolador se tomó debido 
 a sus características, el bajo precio y sobre todo porque ya contábamos con experiencia en su uso.
-En este caso, decidimos utilizar un módulo de desarrollo llamado "Blue Pill". Las características de esta placa la podemos ver en la sección \ref{cap:bluepill}
+En este caso, decidimos utilizar un módulo de desarrollo llamado "Blue Pill". Las características de esta placa la podemos ver en la sección \ref{cap:stm32}
 
 En la tabla \ref{tab:uC} podemos ver una comparación entre nuestro microcontrolador y otras opciones similares de otros marcas.
 
@@ -264,10 +268,10 @@ En la tabla \ref{tab:uC} podemos ver una comparación entre nuestro microcontrol
         \begin{tabular}{ | m{3cm} | m{3cm} | m{3cm} | m{3cm} | }
         \hline  & Blue Pill & Arduino Nano & PIC18F4520  \\ \hline
         Procesador & ARM 32 bits & AVG 8bits & PIC 8bits \\ \hline
-        Frecuencia de Funionamiento & 72MHz &20MHz & 8MHz \\ \hline
+        Frecuencia de Funcionamiento & 72MHz &20MHz & 8MHz \\ \hline
         Memoria FLASH & 64 o 128kb & 32kb & 32kb\\ \hline
         SRAM & 20Kb & 2Kb & 2Kb \\ \hline
-        comunicacion & USB. SPI. I2C. USARTs &  USB. SPI. I2C. USARTs & EUSART. SPP. USB. SPI. I2C\\ \hline
+        comunicación & USB. SPI. I2C. USARTs &  USB. SPI. I2C. USARTs & EUSART. SPP. USB. SPI. I2C\\ \hline
         Precio & 6,20 usd &  6,67 usd & 13,39 usd\\ \hline
         
         \end{tabular}
@@ -280,8 +284,8 @@ Es importante añadir que podemos programar la Blue Pill mediante un programador
 utilizar el programa STM32CubeIDE del fabricante para debuggear el sistema, característica que fue muy importante en el desarrollo del proyecto.\par
 En la sección \ref{cap:stm32} ahondamos mas sobre este módulo y el microcontrolador en cuestión. 
 
-\section{Blue Pill STM32} \label{cap:stm32}
-\subsection{stm32f103c8t6}
+\subsection{Blue Pill STM32} \label{cap:stm32}
+\subsubsection{stm32f103c8t6}
 
 Es un microcontrolador perteneciente a la linea de rendimiento medio de la familia STM. Incorpora el npucleo RISC ARM Cortex de 32 bits de alto rendimiento,
 posee memorias integradas de alta velocidad y una amplia gama de entradas y salidas. Este dispositivo ofrece dos ADC de 12bits, tres temporizadores de 16bits
@@ -302,7 +306,7 @@ A continuación se listan algunas de las características que nos parecen mas im
     \item Dos ADC de 10 canales.
 \end{itemize}
 
-\subsection{Módulo Blue Pill} \label{cap:bluepill}
+\subsubsection{Módulo Blue Pill}
 
 En nuestro sistema utilizamos la placa de desarrollo llamaba Blue Pill. Esta placa incorpora al stm32f103c8t6 y aporta los componentes pasivos
 adecuados para su uso, también incorpora dos cristales, entrada microUSB, leds indicadores, boton de reset e integrado para regulación de tensión. \par
@@ -316,3 +320,4 @@ En la figura \ref{fig:sch_bluepill} vemos el esquemático de esta placa.
     \caption{Esquemático de Blue Pill}
 	\label{fig:sch_bluepill}
 \end{figure}
+
