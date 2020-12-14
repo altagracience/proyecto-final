@@ -1,0 +1,83 @@
+\chapter{Ensayos}
+
+En este capítulo hablaremos sobre los ensayos que se han realizado a lo largo del desarrollo del proyecto. Se llevaron a cabo diversas pruebas
+sobre las diferentes partes que componen el sistema, en cada sección de este capítulo se exponen los ensayos realizados a cada una de esas partes
+o subsistemas.
+
+\section {Anális de llaves e inhibidores} 
+
+El primer conjunto de ensayos que realizamos fueron enfocados a conocer la naturaleza de las comunicaciones de los sistemas de seguridad vehicular
+y de los inhibidores. En esta instancia fue muy importante el uso de un SDR (Radio definida por software) para analizar el espectro de las señales y
+llevar a cabo la demodulación, como ya explicamos en la sección 1.1.2. \par 
+Las primeras mediciones, las realizamos a distintas llaves, como podemos observar en la figura \ref{llaves}. Los datos obtenidos mediante el SDR
+fueron de gran importancia para conocer en profundiad la estructura de la comunicación de las llaves, información indispensable para establecer 
+métodos de inhibición adecuados.
+Como ya lo mencionamos en 1.1.3, hay dos tipos de inhibiciones, por lo cual fue necesario obtener al menos dos inhibidores que ataquen al sistema 
+de seguridad de esas dos maneras. \par
+El primer inhibidor que usamos, consiste sencillamente en un handie (o transceptor de radio portátil) que es capaz
+de emitir en la misma frecuencia que las llaves de los autos. Debido a la potencia que posee logra saturar la etapa receptora de los automóviles.
+Para lograr inhibir por corrupción de datos, fabricamos nuestro propio inhibidor, el cual emite un pulso de baja potencia dentro del ancho de banda
+del receptor, logrando corromper la trama de comunicación.\par 
+
+Los ensayos realizados con los inhibidores consistieron en conocer la vulnerbilidad de los sistemas de seguridad de los vehículos así como las
+distancias y potencias que se requerían para inhibir. En el caso del handie, es capaz de lograr interferir en la comuncaicpon de la llave y el auto a
+distancias grandes, debido a su alta potencia, mientras que en el caso del inhibidor por corrupción de datos, necesitaba situarce a distancias
+cortas del vehículo. Esta información es muy importante para plantear un sistema realista y desarrollar una adecuada estrategia de detección.
+
+\section {Pruebas y configuración del CC1101}
+
+Una vez analizadas las características de las señales de interés con ayuda de un SDR, estábamos listos para probar el integrado elegido para la
+recepción. En este ensayo utilizamos la Blue Pill para configurar los registros del CC1101 mediante comunicación SPI.
+La primer prueba consistió simplemente en constatar que la comunicación SPI funcionada, esto se hizo configurando los registros con valores predeterminados 
+y posteriormente requiriendo el valor de alguno de ellos desde la Blue Pill.\par 
+Con la comunicación funcionando procedimos a encontrar los valores adecuados para los registros de configuración del CC1101.
+Lo que se buscaba en este punto era configurar el integrado para que nos entregue la demodulación y el valor de RSSI de la señal que recibía, 
+así como también dar con los valores adecuados de sensibilidad y ancho de banda. Para calcular los valores de los registros nos ayudamos del datasheet del CC1101
+y del software SmartRF Studio, que recomienda el fabricante.
+
+\section{Ensayos de las estrategias de detección}
+
+En esta instancia, ya éramos capaces de extraer los datos relevantes de la señal recibida y accederlos mediante la Blue Pill, por lo que se procedió a
+desarrollar un algoritmo que, mediante estos datos, pueda decidir si la señal recibida se trata de una interferencia emitida por un inhibidor.\par
+En primer lugar se creo un mecanismo simple y, gracias a ensayos utilizando llaves y nuestros propios inhibidores, fuimos mejorando nuestras estrategias
+de detección hasta volver al sistema confiable. La lógica de funcionamiento la podemos ver en las figuras \ref{estrategia_datos} y \ref{estrategia_rssi}\par 
+Hasta ahora, la blue pill la utilizamos conectada a una computadora para poder debuggear los programas que ensayábamos y así encontrar fallos de forma
+rápida. Sin embargo, en un producto final, debía ser capaz de actuar independiente, es por esto que en este punto desarrollamos el primer
+prototipo de nodo, que ya mostramos en la figura \ref{prototipo_nodo}). Sobre este primer prototipo se realizaron diversos ensayos para terminar
+de afinar la detección. \par
+
+\section{Servidor Web y conexión a internet}
+
+Paralelo al desarrollo del nodo, trabajamos en contruir un sitio web propio, capaz de recibir información y plasmarla en tablas y gráficos.
+En una primer instancia, se ensayó el servidor web subiendo datos de forma manual, lo que nos permtía ver como oganizaba y mostraba los datos. \par
+Una vez funcionando bien el sitio web, procedimos a realizar pruebas sobre el SIM800L. Recordemos que este módulo, es el responsable de dar a la central conexión
+a internet mediante 2G.
+El SIM800L se comunica mediante comandos AT, por lo que lo usamos en conjunto con la Blue Pill para relizar los ensayos. En primer lugar solamente
+buscábamos que el sim800L logre conectarse a la red gracias a una SIM que le insertamos. Puede parece un paso simple, pero debido a que este módulo
+posee requerimientos particulares en cuanto a la alimentación, fue importante realizar pruebas para desarrollar una fuente adecuada para el mismo.
+Cuando logramos que el SIM800L se conecte con la red, ensayamos la capacidad que tenía de subir datos al servior mediante las órdenes recibidas desde 
+la Blue Pill a través de los comandos AT.\par 
+
+\section{Desarrollo de la comunicación serial del sistema}
+
+En este punto ya logramos tener un nodo capaz de recibir señales y de detectar inhibiciones y un servidor web funcional al cual podemos subir datos
+mediante el sim800l y una blue pill. El siguiente paso, era desarrollar una comunicación robusta entre nodos y la central. Fue en este momento que decidimos
+usar el MAX485 para comunicar el sistema mediante RS485.\par
+Al añadir el MAX485 al conjunto de sim800l y bluepill, queda conformado el primer prototipo en protoboard de nuestra central.\par
+Los primeros ensayos consistieron simplemente en comunicar dos Blue Pill aisladas, esto era necesario para conocer el estandar de comunicación en cuestión
+y familiarizarnos con el manejo de la UART del nuestro microcontrolador. El siguiente paso, fue añadir el prototipo del nodo con el agregado de un max485
+y nuestro prototipo de central. En este punto todavía no estábamos enviando datos de recepción a través de la comunicación, solamente envíabamos datos
+sin importancia para entender como conformar un red de rs485. Estos ensayos nos permitieron desarrollar una estrategia de comunicación confiable.\par
+Fue en este momento, cuando desarrollamos nuestra trama de comunicación, y luego de varios ensayos definir por completo como se iban a comunicar los nodos
+y la central. En este punto se realizaron numerosos ensayos del sistema funcionando en conjunto, desde la detección de la inhibición y la comunicación de los nodos
+a la central, hasta encender alarmas y subir los datos a la web.
+Cabe aclarar que todas las pruebas de comunicación realizadas hasta el momento se hicierona a cortas distancias con un par trensado telefónico.
+
+\section{Ensayos Finales}
+
+Al quedar ya conformado el formato de nuestro sistema, diseñamos nuestras placas definitivas y las mandamos a fabricar. Con nuestros nodos y la central,
+llevamos a cabo los últimos ensayos, esta vez utilizando un cable de mayor longitud y situandonós en un espacio de gran tamaño.
+Gracias a estas pruebas realizamos los últimos ajustes, para lograr un sistema robusto y funcional. \par
+Por último se puso a pruebas el sistema en un estacionamiento real, obteniendo excelentes resultados.
+
+
