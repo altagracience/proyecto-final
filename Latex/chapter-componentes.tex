@@ -1,4 +1,3 @@
-
 \chapter{Selección de componentes}
 En este capítulo se procede a exponer las características mas importantes  de los componentes del sistema, así como las consideraciones y 
 posibilidades que tuvimos en cuenta en el proceso de selección de los mismos. \par
@@ -48,7 +47,7 @@ Luego encontramos un divisor de potencia de RF que se encarga de entregar la se�
 
 
 Vemos que este diagrama cumple con las características anteriormente expuestas. Sin embargo, al final nos decantamos por otra opción, 
-esta consiste en utilizar un módulo transceptor CC1101. La incorporación de este módulo, nos permite reducir mucho los costos y simplificar
+que consiste en utilizar el circuito integrado CC1101 (transceptor de RF hasta 1GHz). La incorporación de este nos permite reducir mucho los costos y simplificar
 el sistema sin sacrificar características importantes. \par
 En la figura \ref{EtapaReceptora2} vemos como resulta el nuevo diagrama de la etapa receptora. \par
 
@@ -61,8 +60,8 @@ En la figura \ref{EtapaReceptora2} vemos como resulta el nuevo diagrama de la et
 
 A simple vista podemos apreciar que se reducen la cantidad de componentes. Esto se debe a que el módulo CC1101 es capaz de demodular la señal y
 entregar la secuencia de bits mediante un pin de GPIO, así como también medir la potencia de la señal y comunicar el valor mediante comunicación SPI.
-La unica desventaja de esta opción es que el módulo posee peor rango de RSSI que un componente medidor de potencia específico para ese fin,
-esto provoca que señales de gran potencia saturen nuestro receptor y nos imposibilite triangular de manera correcta, sin embargo la determacion 
+La única desventaja de esta opción es que posee peor rango de RSSI que un componente medidor de potencia específico para ese fin,
+esto provoca que señales de gran potencia saturen nuestro receptor y nos imposibilite triangular de manera correcta, sin embargo la determinación 
 de la posición es un objetivo secundario. \par
 En la sección \ref{cap:cc1101} se exponen en detalle las características del módulo.\par
 
@@ -78,16 +77,16 @@ En la sección \ref{cap:cc1101} se exponen en detalle las características del m
 	\label{fig:cc1101}
 \end{figure}
 
-CC1101 es un transceptor de frecuencias inferiores a 1GHz de bajo costo para aplicaciones inalámbricas de baja potencia. Está destinado principalmente
+El integrado CC1101 es un transceptor de frecuencias inferiores a 1GHz de bajo costo para aplicaciones inalámbricas de baja potencia. Está destinado principalmente
 a aplicaciones ISM (industrial, científico y médico) y bandas de frecuencia SRD (Dispositivo de corto alcance) a 315, 433, 868 y 915Mhz, pero puedo ser programado 
 para funcionar en otras bandas. El transceptor RF está integrado con un módem de banda base configurable que admite varios formatos de modulación.\par 
-CC1101 proporciona un amplio soporte de hardware para manejo de paquetes, almacenamiento en búfer de datos, transmisiones de ráfagas, evaluación de canal,
+Proporciona un amplio soporte de hardware para manejo de paquetes, almacenamiento en búffer de datos, transmisiones de ráfagas, evaluación de canal,
 indicación de calidad de enlace y wake-on-radio. \par 
 En un típico sistema, el CC1101 se utiliza junto con un microcontrolador y algunos componentes pasivos adicionales.
 
 \paragraph{Características generales} \par
 
-En este apartado mostramos algunas características importantes del CC1101 sin extendernos demasiado. Si se quiere mas información sobre este integrado ver \todo 
+En este apartado mostramos algunas características importantes del CC1101 sin extendernos demasiado. Si se quiere mas información sobre este integrado ver \ref{bib:cc1101}.
 
 \begin{itemize}
     \item Alimentación de 3.3V
@@ -108,7 +107,7 @@ El modulo aporta simplicidad al sistema, ya que contiene los componentes pasivos
 del integrado y tiene conexión SMA para antena. En nuestro caso particular, este módulo fue necesario debido a que simplifica la soldadura manual y porque
 tiene una gran disponibilidad en el mercado.
 
-En la figura \ref{fig:sch_cc1101} podemos ver el esquemático del módulo y en la figura \ref{fig:module_cc1101} podemos ver el aspecto físico.
+En la figura \ref{fig:sch_cc1101} podemos ver el esquemático del módulo y en la figura \ref{fig:module_cc1101} podemos ver su aspecto físico.
 
 \begin{figure}[htb]
 	\centering
@@ -117,7 +116,7 @@ En la figura \ref{fig:sch_cc1101} podemos ver el esquemático del módulo y en l
 	\label{fig:sch_cc1101}
 \end{figure}
 
-Se puede observar en el esquemático, que el módulo es muy simple en cuanto a los componentes que posee. Pero aún así es muy util en nuestra aplicación.
+Se puede observar en el esquemático, que el módulo es muy simple en cuanto a los componentes que posee. Pero aún así es muy útil para nuestra aplicación.
 
 \begin{figure}[htb]
 	\centering
@@ -143,7 +142,7 @@ Según nuestros objetivos, la comunicación debe reunir las siguientes caracter�
     la central comandará a los nodos, los cuales le responden con la información que la central les requiere.
     \item Distancia mayor a 1000m. Es probable que el sistema sea instalado en lugares abiertos como estacionamientos, por lo que necesitamos un protocolo de 
     comunicación capaz de funcionar a largas distancias.
-    \item Buena velocidad de comunicacion. No requerimos de velocidades muy altas, sin embargo es una característica a tener en cuenta.
+    \item Buena velocidad de comunicación. No requerimos de velocidades muy altas, sin embargo es una característica a tener en cuenta.
     \item Cableado de bajo costo. Como ya mencionamos, es probable que la distancia entre nodos sea grande, por lo que el precio del cableado debe ajustarse 
     a nuestros objetivos.
 
@@ -166,7 +165,7 @@ Las especificaciones de este estándar son:
 \end{itemize}
 
 Para nuestra aplicación usaremos el RS485 en combinación de la UART de nuestro microcontrolador, por lo que necesitaremos utilizar un transceptor MAX485 
-(ver sección \ref{cap:max485}). Utilizaremos uno en cada nodo y en la central. El MAX485 tiene la capacidad de transformar los datos de la UART al estándar
+(ver sección \ref{cap:max485}). Se dispone uno en cada nodo y en la central. El MAX485 tiene la capacidad de transformar los datos de la UART al estándar
 RS485 y viceversa. \par
 
 \subsection{MAX485} \label{cap:max485}
@@ -193,8 +192,8 @@ circuito abierto. El MAX485 está diseñado para aplicaciones semidúplex.
 
 Una de las características mas importantes del proyecto, es la capacidad de subir la información a un Servidor Web, por lo que es indispensable que la central disponga
 de conexión a internet.\par
-Debido a que no podemos asegurar que en el lugar donde se instale el sistema cuente con conexión a internet cableada o WiFi, decidimos utilizar conexión GSM mediante 2G. \par
-En el mercado podemos encontrar varios módulos para conexiones GSM/GPRS. En la tabla \ref{tab:gsm} podemos ver algunas opciones.
+Debido a que no podemos asegurar que en el lugar donde se instale el sistema cuente con conexión a internet cableada o WiFi, decidimos utilizar conexión GPRS/2G. \par
+En el mercado podemos encontrar varios módulos para este tipo de conexiones. En la tabla \ref{tab:gsm} podemos ver algunas opciones.
 
 \begin{table}[t]
     \begin{center}
@@ -203,11 +202,11 @@ En el mercado podemos encontrar varios módulos para conexiones GSM/GPRS. En la 
         Velocidad de transmisión & 1200 bp - 115200 bp. & 1200bp - 115200bp. & 1200bp - 115200bp. \\ \hline
         Tensión de operación & 3.4V - 4.4V & 9V - 20V & 3.3V - 4.2V \\ \hline
         Corriente & Hasta 2A & Hasta 2A & Hasta 2A\\ \hline
-        Comunicación & Comunicación serial &Comunicación UART & Comunicación serial\\ \hline
+        Comunicación & Comunicación serial & Comunicación UART & Comunicación serial\\ \hline
         Precio & 13,39 usd &  48,70 usd & 18,26 usd\\ \hline
         
         \end{tabular}
-        \caption{Módulos GSM disponibles en el mercado}
+        \caption{Módulos GSM/GPRS disponibles en el mercado}
         \label{tab:gsm}   
     \end{center}
 \end{table}
@@ -223,7 +222,7 @@ En la sección \ref{cap:sim800l} se detallan las características de este compon
 
 Utilizamos el SIM800L a través de un módulo del mismo nombre, como se suele utilizar normalmente. El módulo nos permite acceder a los pines 
 mas importantes del SIM800L para manejarlo desde un microcontrolador.\par
-Consiste en un módulo cuatribanda que permite agregar funcionalidades avanzadas de comunicación a través de la red celular, como mandar mensajes de texto,
+Consiste en un circuito integrado cuatribanda que permite agregar funcionalidades avanzadas de comunicación a través de la red celular, como mandar mensajes de texto,
 datos o realizar llamadas en un tamaño sumamente compacto. 
 
 \begin{figure}[htb]
@@ -235,7 +234,7 @@ datos o realizar llamadas en un tamaño sumamente compacto.
 
 \subsubsection{Características Generales}
 
-A continuación se listan algunas características importantes de este módulo. Sin embargo, si se quiere ver en mayor profundidad ver \todo
+A continuación se listan algunas características importantes de este módulo. Sin embargo, si se quiere ver en mayor profundidad ver \ref{bib:sim800}.
 
 \begin{itemize}
     \item Tensión de operación: 3.4V - 4.4V
@@ -253,13 +252,13 @@ A continuación se listan algunas características importantes de este módulo. 
 \section{Procesamiento} \par
 
 Tanto en los nodos como en la central, es indispensable el uso de un microcontrolador. En el caso del nodo, se encarga de comunicarse con la etapa receptora,
-procesar la información y decidir si la señal recibida proviene de un inhibidor, luego, debe ser capaz de comunicarse con el MAX485 para establecer la comunicación
+procesar la información y decidir si la señal recibida proviene de un inhibidor, luego debe ser capaz de comunicarse con el MAX485 para establecer la comunicación
 RS485 con el resto del sistema. En la central, el microcontrolador es el encargado de recibir la información de nodos a través del MAX485 y,
-en caso de la presencia de un inhibidor, activar las alarmas correspondientes y actualizar la información en el servidor web mediante el módulo sim800l. \par
+en caso de la presencia de una inhibición, activar las alarmas correspondientes y actualizar la información en el servidor web mediante el módulo sim800l. \par
 
-El microcontrolador que utilizamos tanto para los nodos como en la central es el stm32f103c8t6. La decisión de utilizar este microcontrolador se tomó debido 
+El microcontrolador que utilizamos, tanto para los nodos como en la central, es el STM32F103C8T6. La decisión de utilizar este se tomó debido 
 a sus características, el bajo precio y sobre todo porque ya contábamos con experiencia en su uso.
-En este caso, decidimos utilizar un módulo de desarrollo llamado "Blue Pill". Las características de esta placa la podemos ver en la sección \ref{cap:stm32}
+En este caso, decidimos utilizar un módulo de desarrollo llamado "Blue Pill". Las características de esta placa la podemos ver en la sección \ref{cap:stm32}.
 
 En la tabla \ref{tab:uC} podemos ver una comparación entre nuestro microcontrolador y otras opciones similares de otros marcas.
 
@@ -280,20 +279,20 @@ En la tabla \ref{tab:uC} podemos ver una comparación entre nuestro microcontrol
     \end{center}
 \end{table}
 
-Es importante añadir que podemos programar la Blue Pill mediante un programador stlink v2, que tiene precio bajo comparado a otros programadores, y
+Es importante añadir que podemos programar la Blue Pill mediante un programador STLINK v2, que tiene un precio bajo comparado a otros programadores, y
 utilizar el programa STM32CubeIDE del fabricante para debuggear el sistema, característica que fue muy importante en el desarrollo del proyecto.\par
 En la sección \ref{cap:stm32} ahondamos mas sobre este módulo y el microcontrolador en cuestión. 
 
 \subsection{Blue Pill STM32} \label{cap:stm32}
-\subsubsection{stm32f103c8t6}
+\subsubsection{STM32F103C8T6}
 
-Es un microcontrolador perteneciente a la linea de rendimiento medio de la familia STM. Incorpora el nucleo RISC ARM Cortex de 32 bits de alto rendimiento,
+Es un microcontrolador perteneciente a la linea de rendimiento medio de la familia STM. Incorpora el núcleo RISC ARM Cortex de 32 bits de alto rendimiento,
 posee memorias integradas de alta velocidad y una amplia gama de entradas y salidas. Este dispositivo ofrece dos ADC de 12bits, tres temporizadores de 16bits
 de uso general mas un temporizador PWM, así como diversas interfaces de comunicación.\par 
-Este microcontrolador es apto para gran variedad de aplicaciones, como unidades de motor, control de aplicaciones, equipos médicos y portátiles, periféricos
+Es apto para gran variedad de aplicaciones, como unidades de motor, control de aplicaciones, equipos médicos y portátiles, periféricos
 de PC y juegos, plataformas GPS, aplicaciones industriales, PLC, inversores, impresoras, escáneres , sistemas de alarma, videoporteros y HVAC.
 
-A continuación se listan algunas de las características que nos parecen mas importantes de este microcontrolador:
+A continuación se listan algunas de las características que nos parecen mas importantes:
 
 \begin{itemize}
     \item Tensión de operación: 2 a 3,6V
@@ -301,15 +300,15 @@ A continuación se listan algunas de las características que nos parecen mas im
     \item Memorias integradas de alta velocidad
     \subitem Memoria Flash de 128Kbytes
     \subitem Memoria SRAM de hasta 20Kbytes
-    \item Interfaces de comunicación: Dos I2C y SPI, tres USART, un USB y un Candiani
+    \item Interfaces de comunicación: Dos I2C y SPI, tres USART y un USB.
     \item 37 GPIOs
     \item Dos ADC de 10 canales.
 \end{itemize}
 
 \subsubsection{Módulo Blue Pill}
 
-En nuestro sistema utilizamos la placa de desarrollo llamaba Blue Pill. Esta placa incorpora al stm32f103c8t6 y aporta los componentes pasivos
-adecuados para su uso, también incorpora dos cristales, entrada microUSB, leds indicadores, boton de reset e integrado para regulación de tensión. \par
+En nuestro sistema utilizamos la placa de desarrollo llamaba Blue Pill. Esta placa incorpora al STM32F103C8T6 y aporta los componentes pasivos
+adecuados para su uso, además de dos cristales, entrada microUSB, leds indicadores, botón de reset e integrado para regulación de tensión. \par
 Incorporar esta placa simplifica el diseño de nuestros PCB, ya que nos facilita el acceso a los pines del microcontrolador y posibilita la conexión
 con el programador, además nos permite desarrollar un proyecto donde soldemos de forma manual los componentes, reduciendo costos.\par
 En la figura \ref{fig:sch_bluepill} vemos el esquemático de esta placa.
@@ -320,4 +319,3 @@ En la figura \ref{fig:sch_bluepill} vemos el esquemático de esta placa.
     \caption{Esquemático de Blue Pill}
 	\label{fig:sch_bluepill}
 \end{figure}
-
