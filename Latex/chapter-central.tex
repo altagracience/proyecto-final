@@ -13,15 +13,15 @@ un gabinete.
 \subsection{Funcionamiento}
 \par El funcionamiento de la misma se podría dividir en tres partes interconectadas que se detallan a continuación.
 \subsubsection{Comunicación con nodos}
-\todo[inline]{poner referencias a sección de comunicación rs y con sim800}
-\par Como ya se detallo en el apartado \ref{com_rs485}, la comunicación optada para la interconexión de los 4 dispositivos es RS485 por su forma de transmisión diferencial y largo alcance. 
+
+\par Como ya se detallo en el apartado \ref{cap:max485}, la comunicación optada para la interconexión de los 4 dispositivos es RS485 por su forma de transmisión diferencial y largo alcance. 
 \par Al inicio del sistema la central (funcionando como el maestro en la comunicación) requiere el estado de cada uno, del cual si detecta una inhibición alguno de ellos comenzaría el proceso para ver los demás nodos y comenzar a activar alarmas.
 
 \subsubsection{Alarmas locales}
 \par Una vez detectada la inhibición y procesado el estado del sistema en general, se dan las alarmas visuales y sonoras en la central misma para dar aviso al personal de seguridad que se encuentra en el lugar. 
 
 \subsubsection{Comunicación remota al servidor web}
-\par Como ya vimos en el apartado \ref{sim800}, la comunicación con el servidor web se hace de manera remota mediante GPRS una vez que se encuentra el sistema en un estado de alarma, cargando en el mismo la ubicación, ID de nodos, entre otros que se detallaran en las siguientes secciones. 
+\par Como ya vimos en el apartado \ref{cap:sim800l}, la comunicación con el servidor web se hace de manera remota mediante GPRS una vez que se encuentra el sistema en un estado de alarma, cargando en el mismo la ubicación, ID de nodos, entre otros que se detallaran en las siguientes secciones. 
 
 \section{Prototipo}
 \subsection{Diseño}
@@ -60,7 +60,7 @@ fueron grandes los cambios realizados.
 \subsubsection{Comunicación con nodos}
 \par Comenzamos nombrado esta etapa ya que es la tarea mas importante que ocurre en el dispositivo, un buen esquema de comunicación determina el buen funcionamiento del sistema en fin ya que, si bien los nodos son los encargados de detectar las inhibiciones, la central es el maestro que activa o no las alarmas y avisos. 
 \par Para entender el funcionamiento podemos ver la imagen \ref{im:maq-est-central} en donde se observan 3 columnas correspondientes cada una a un estado de funcionamiento.
-Como ya se nombro en la sección \ref{com_rs485}, la comunicación RS485 es half-duplex y debe existir un dispositivo maestro (en nuestro caso es el que se esta desarrollando), el cual es el encargado de generar requerimientos a cada dispositivo de la red y si es necesario esperar una respuesta de estos. 
+Como ya se nombro en la sección \ref{cap:max485}, la comunicación RS485 es half-duplex y debe existir un dispositivo maestro (en nuestro caso es el que se esta desarrollando), el cual es el encargado de generar requerimientos a cada dispositivo de la red y si es necesario esperar una respuesta de estos. 
 En el estado 0, la comunicación es continua y rige un ciclo de un requerimiento de nodo por ves. La palabra es de 2 bytes, donde el primero corresponde al ID del nodo requerido y el segundo indica el estado que ocurre, esperando una respuesta por parte del nodo de una trama de 3 bytes designada de al forma que el primer byte corresponde nuevamente al ID del nodo, el segundo byte en este caso es 0 y el tercero el nodo reporta su estado de inhibición (0 para decir que no detecto inhibición, 1 y 2 para alertar a la central que hay una inhibición ocurriendo). En caso de que el tercer byte de respuesta sea distinto de 0, pasaremos al estado siguiente.
 \par En el estado 1, los requerimientos nuevamente es de un nodo a la vez y solo se volverá a ejecutar en el momento que un nodo no responda y deba chequear que solo fue una desincronización o que este se encuentre fallando. Aquí la palabra que envía la central es de 2 bytes indicando en el primero el ID del nodo y en el segundo un 1, correspondiente al estado que se encuentra, esperando recibir una respuesta de cada nodo con 3 bytes (ID de nodo, valor de RSSI medido y estado de inhibición). Al tener la respuesta o no de cada nodo se actualizan las banderas de presencia de inhibición, salud de los nodos, comienza la activación de alarmas y carga de datos al servidor web. 
 \par Posterior al comienzo de carga de datos al servidor, se pasa al estado 2 el cual envía repetidas veces en poco tiempo la palabra de 2 bytes "A2" correspondiente al reset del sistema para volver a ponerse en modo de escucha y comenzar el ciclo nuevamente. 
@@ -188,3 +188,4 @@ El modelo 3D de la placa la podemos observar en la figura \ref{im:mod-3d-central
     \caption{Partes para el armado del gabinete de central.}
 	\label{im:impresion-central}
 \end{figure}
+
