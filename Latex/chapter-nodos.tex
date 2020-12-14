@@ -10,7 +10,7 @@ para determinar si hay o no inhibición según estrategias más adelante detalla
 comunicación mediante el protocolo RS485 con la central de procesamientos. Integrado en el nodo se utilizan tres protocolos 
 de comunicación: en primer lugar tenemos la comunicación SPI que se encarga de la interacción entre el microcontrolador y 
 el receptor seleccionado; esta comunicación se utiliza para configurar los registros del CC1101 para establecer el modo de
-trabajo deseado. En segunda instancia tenemos comunicación serial asíncrona entre un pin de salida del receptor por el cual 
+trabajo deseado. En segunda instancia tenemos comunicación serial asíncrona con un pin de salida del receptor por el cual 
 se mandan los datos RAW de demodulación en el canal seleccionado y en último lugar tenemos el protocolo RS485 para la comunicación
 de la red armada. 
 
@@ -28,7 +28,7 @@ que se encargaban de indicar la potencia de RF medida con el RSSI como se puede 
 	\label{prototipo_nodo}
 \end{figure}
 
-Visualmente el prototipo es bastante rudimentario, las placas fueron fabricadas de manera casera y sin tener grandes
+El prototipo es bastante rudimentario, las placas fueron fabricadas de manera casera y sin tener grandes
 cuidados en los detalles. De igual modo este diseño bastó para pulir las imperfecciones que poseía en camino al desarrollo final.\par 
 Para el diseño del esquemático nos hemos basado en las prestaciones que nos brinda el microcontrolador STM32F106C8T6. El mismo
 cuenta con comunicación SPI y serial integradas, por lo que haciendo uso del entorno de programación propio del fabricante 
@@ -73,7 +73,7 @@ aspectos.
 
 \subsubsection{Recepción RF}
 
-El desarrollo de software en este aspecto cumple la necesidad que presenta el integrado receptor que utilizamos de ser 
+El desarrollo de software en este aspecto satisface la necesidad que presenta el integrado receptor que utilizamos de ser 
 configurado cada vez que este comienza a operar. Como previamente es analizado debemos establecer al dispositivo, que por
 características es un transceptor, en modo de recepción. Además se debe configurar la frecuencia de operación, el modo de 
 demodulación, el tipo de salida de datos, entre otras muchas cosas que son cargadas en un total de 46 registros. \par 
@@ -116,11 +116,11 @@ y \ref{estrategia_datos} se demuestra en bloques el funcionamiento de la estrate
 \subsubsection{Comunicación con la central}
 
 Para el corriente funcionamiento del sistema se precisa que los nodos se mantengan comunicados a la central, dando información  
-de lo que cada uno están recibiendo y esta encargándose de manejar las alertas y los requerimientos a cada uno de los 
+de lo que cada uno está recibiendo y esta encargándose de manejar las alertas y los requerimientos a cada uno de los 
 receptores. \par 
 Para que la comunicación sea lo más efectiva posible se decidió que respete siempre una estructura de comunicación constante
-en la que únicamente se cambirán los parámetros a enviar. La comunicación es del tipo master -la central- esclavos -los nodos-
-y cada uno de los esclavos responderán por turno con peticiones independientes. \par
+en la que únicamente se cambirán los parámetros a enviar. La comunicación se base en un maestro -la central- que genera peticiones 
+por turnos a cada uno de los esclavos -los nodos-. \par
 Como antes se mencionó la trama de comunicación es única y puede observarses en la figura \ref{comunicacion_nodo}, donde 
 ID Nodo hace referencia al identificador propio del nodo en la red, Valor RSSI al valor de intensidad de señal recibido por cada
 nodo y Estado hace referencia al estado de inhibición detectado, siendo 0 para no inhibición, 1 para inhibicion por corrupción
@@ -149,7 +149,7 @@ que lo componen. \par
 	\label{schema_nodo}
 \end{figure}
 
-Tenemos de derecha a izquierda en el esquemático los pines de conección del CC1101, el cual está unido al MCU por seis pines, los 
+Tenemos de izquierda a derecha en el esquemático los pines de conexión del CC1101, el cual está unido al MCU por seis pines, los 
 cuales pueden ser seguidos por las etiquetas que este y el microcontrolador poseen y por último tenemos el esquemático para 
 la comunicación RS485. \par 
 
@@ -170,8 +170,8 @@ instalados los módulos utilizados que en el apartado de selección de component
 \subsection{Gabinete}
 
 El diseño del gabinete del nodo fue realizado con un diseño minimalista y con características cúbicas, separado en tres secciones que facilitan
-la impersión y el armado. El diseño terminado se muestra en la imagen \ref{gabinete_nodo}. \par 
-EL gabinete no posee realimentación visual del estado 
+la impresión y el armado. El diseño terminado se muestra en la imagen \ref{gabinete_nodo}. \par 
+El gabinete no posee realimentación visual del estado 
 de funcionamiento, a simple vista es un cubo flotante con la antena de 433,92MHz asomando por uno de sus lados al que se ha buscado que no 
 sea visible de qué manera ingresan los cables y la ficha GXS al sistema, para mayor estética. Está impreso en PLA negro, al igual que la central de 
 procesamientos y tiene orificios para cuatro tornillos de modo que pueda ser instalado en una superficie plana.  \par 

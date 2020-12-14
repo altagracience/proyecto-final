@@ -1,27 +1,27 @@
 \chapter{Central de procesamiento}
 \section{Descripción general}
-\par El diseño general del sistema se pensó como tres nodos de escucha que son comandados y
+\par El diseño general del sistema se pensó como tres nodos de escucha que son comandados
 por medio de una central de procesamiento. Los requerimientos de la misma se
-basan en las funcionalidades para establecer una comunicación estable y segura con cada uno
-de los nodos, donde en caso de detectar una inhibición por parte de cualquiera de ellos, requerir
+establecen para lograr una comunicación estable y segura con cada uno
+de los nodos, donde en caso de detectar una inhibición por parte de cualquiera de ellos, requiera
 el estado de los otros dos para así activar las alarmas correspondientes, comunicarse al
 servidor web y volver a iniciar el sistema de cero una vez que se haya terminado el proceso
 correctamente, dando también un reporte del estado de salud de cada nodo en particular.
-\par En este capitulo se presentará la forma en que se llevo a cabo el desarrollo de la
+\par En este capítulo se presentará la forma en que se llevó a cabo el desarrollo de la
 misma, indicando su funcionamiento, primer prototipo, diseño final y la implementación de
 un gabinete. 
 \subsection{Funcionamiento}
-\par El funcionamiento de la misma se podría dividir en tres partes interconectadas que se detallan a continuación.
+\par El funcionamiento de la centrañ se podría dividir en tres partes interconectadas que se detallan a continuación.
 \subsubsection{Comunicación con nodos}
 
-\par Como ya se detallo en el apartado \ref{cap:max485}, la comunicación optada para la conexión de los 4 dispositivos es RS485 por su forma de transmisión diferencial y largo alcance. 
-\par Al inicio del sistema la central (funcionando como el maestro en la comunicación) requiere el estado de cada uno, del cual si alguno detecta una inhibición comenzaría el proceso para ver el estado de los demás nodos y comenzar a activar alarmas.
+\par Como ya se detalló en el apartado \ref{cap:max485}, la comunicación optada para la conexión de los 4 dispositivos es RS485 por su forma de transmisión diferencial y largo alcance. 
+\par Al inicio del sistema la central (funcionando como el maestro en la comunicación) requiere el estado de cada nodo, del cual si alguno detecta una inhibición comenzaría el proceso para ver el estado de los demás nodos y comenzar a activar alarmas.
 
 \subsubsection{Alarmas locales}
-\par Una vez detectada la inhibición y procesado el estado del sistema en general, se dan las alarmas visuales y sonoras en la central misma para dar aviso al personal de seguridad que se encuentra en el lugar. 
+\par Una vez detectada la inhibición y procesado el estado del sistema en general se dan las alarmas visuales y sonoras en la central misma para dar aviso al personal de seguridad que se encuentra en el lugar. 
 
 \subsubsection{Comunicación remota al servidor web}
-\par Como ya vimos en el apartado \ref{cap:sim800l}, la comunicación con el servidor web se hace de manera remota mediante GPRS una vez que se encuentra el sistema en un estado de alarma, cargando en el mismo la ubicación, ID de nodos, entre otros que se detallaran en las siguientes secciones. 
+\par Como ya vimos en el apartado \ref{cap:sim800l}, la comunicación con el servidor web se hace de manera remota mediante GPRS una vez que se encuentra el sistema en un estado de alarma, cargando en el mismo la ubicación, ID de nodos, entre otros que se detallarán en las siguientes secciones. 
 
 \section{Prototipo}
 \subsection{Diseño}
@@ -38,15 +38,15 @@ un gabinete.
 
 \subsection{Problemas surgidos}
 \par Los principales problemas de esta primer aproximación al diseño final fueron en
-base a la alimentación requeridas por el integrado de comunicación GPRS.
+base a la alimentación requerida por el integrado de comunicación GPRS.
 \par En primer lugar, era necesario un capacitor en la alimentación del SIM800 para
 suavizar el arranque del mismo, ya que al conectarse a una red GSM/GPRS requiere un pico
 de corriente de 2A.
-\par Por otra parte, al tener que rediseñar la placa, notamos que la fuente conmutada implementada (encerrada en lineas cortadas en la figura \ref{im:pcb-prototipo}) requería gran cantidad de componentes, aumentando así el costo, principalmente con el integrado e inductor necesarios. Por ello, se opto como solución un regulador lineal que con tan solo dos capacitores y dos resistencias se obtienen los requerimientos necesarios. 
+\par Por otra parte, al tener que rediseñar la placa, notamos que la fuente conmutada implementada (encerrada en lineas cortadas en la figura \ref{im:pcb-prototipo}) requería gran cantidad de componentes, aumentando así el costo, principalmente con el integrado e inductor necesarios. Por ello, se optó como solución un regulador lineal que con tan solo dos capacitores y dos resistencias se obtienen los requerimientos necesarios. 
 
 \section{Diseño final}
 \subsection{Software}
-\par Para no volver redundante la explicación respecto del prototipo, se opto que el
+\par Para no volver redundante la explicación respecto del prototipo, se optó que el
 funcionamiento del sistema embebido se detalle en esta sección ya que en cuanto a este no
 fueron grandes los cambios realizados. 
 \par En este apartado se nombraran como se llevaron a cabo los siguientes items:
@@ -59,7 +59,7 @@ fueron grandes los cambios realizados.
 
 \subsubsection{Comunicación con nodos}
 \par Comenzamos nombrado esta etapa ya que es la tarea mas importante que ocurre en el dispositivo, un buen esquema de comunicación determina el buen funcionamiento del sistema en fin, ya que si bien los nodos son los encargados de detectar las inhibiciones, la central es el maestro que activa o no las alarmas y avisos. 
-\par Como ya se nombro en la sección \ref{cap:max485}, la comunicación RS485 es half-duplex y debe existir un dispositivo maestro (en nuestro caso es el que se esta desarrollando), el cual es el encargado de generar requerimientos a cada dispositivo de la red y, si es necesario, esperar una respuesta de estos. 
+\par Como ya se nombró en la sección \ref{cap:max485}, la comunicación RS485 es half-duplex y debe existir un dispositivo maestro (en nuestro caso es el que se esta desarrollando), el cual es el encargado de generar requerimientos a cada dispositivo de la red y, si es necesario, esperar una respuesta de estos. 
 \par Para entender el funcionamiento podemos ver la imagen \ref{im:maq-est-central} en donde se observan 3 columnas correspondientes cada una a un estado de funcionamiento.
 \par En el estado 0, la comunicación es continua y rige un ciclo de un requerimiento de nodo por ves. La palabra es de 2 bytes, donde el primero corresponde al ID del nodo requerido y el segundo indica el estado que ocurre, esperando una respuesta por parte del nodo de una trama de 3 bytes designada de la forma que el primer byte corresponde nuevamente al ID del nodo, el segundo byte en este caso es 0 y en el tercero el nodo reporta su estado de inhibición (0 para decir que no detecto inhibición, 1 y 2 para alertar a la central que hay una inhibición ocurriendo). En caso de que el tercer byte de respuesta sea distinto de 0, pasaremos al estado siguiente.
 \par En el estado 1, los requerimientos nuevamente es de un nodo a la vez y solo se volverá a ejecutar en el momento que un nodo no responda y deba chequear que solo fue una desincronización o que este se encuentre fallando. Aquí la palabra que envía la central es de 2 bytes indicando en el primero el ID del nodo y en el segundo un 1, correspondiente al estado que se encuentra, esperando recibir una respuesta de cada nodo con 3 bytes (ID de nodo, valor de RSSI medido y estado de inhibición). Al tener la respuesta o no de cada uno se actualizan las banderas de presencia de inhibición, salud de los nodos, comienza la activación de alarmas y carga de datos al servidor web. 
@@ -92,7 +92,7 @@ fueron grandes los cambios realizados.
     RSSI=45&mode_inhi=1 
 \end{lstlisting}
 \subsection{Hardware}
-\par En este apartado se mostrara una descripción de la placa que contiene el MCU, los esquemáticos finales, el pcb obtenido y su modelo en 3D. 
+\par En este apartado se mostrará una descripción de la placa que contiene el MCU, los esquemáticos finales, el pcb obtenido y su modelo en 3D. 
 
 
 \subsubsection{Esquemático}
@@ -107,7 +107,7 @@ figura \ref{cristal_bluepill} se puede observar lo antes mencionado.
 	\label{cristal_bluepill}
 \end{figure}
 
-\par También cuenta con un regulador de 5V a 3.3V (figura \ref{im:reg-bluepill}) para la alimentación a los pines que manejan estos niveles de lógica y es utilizado también para el debugger. Por ultimo como se observa en la figura \ref{im:reset-bluepill}, la placa tiene un botón de reset el cual es activo por bajo. 
+\par También cuenta con un regulador de 5V a 3.3V (figura \ref{im:reg-bluepill}) para la alimentación a los pines que manejan estos niveles de lógica y es utilizado también para el debugger. Por último como se observa en la figura \ref{im:reset-bluepill}, la placa tiene un botón de reset el cual es activo por bajo. 
 
 \begin{figure}[!h]
 	\centering
@@ -123,7 +123,7 @@ figura \ref{cristal_bluepill} se puede observar lo antes mencionado.
 	\label{im:reset-bluepill}
 \end{figure}
 
-\par El esquemático en general se separo en varias partes para que se puedan observar de una manera mas ordenada en el presente informe. Estas 3 partes nombradas se pueden ver en las figuras \ref{im:esq-central-1}, \ref{im:esq-central-2} y \ref{im:esq-central-3} con su descripción de la correspondencia de cada una de ellas. 
+\par El esquemático en general se separó en varias partes para que se puedan observar de una manera mas ordenada en el presente informe. Estas 3 partes nombradas se pueden ver en las figuras \ref{im:esq-central-1}, \ref{im:esq-central-2} y \ref{im:esq-central-3} con su descripción de la correspondencia de cada una de ellas. 
 
 \begin{figure}[!h]
 	\centering
