@@ -66,9 +66,9 @@ esto provoca que señales de gran potencia saturen nuestro receptor y nos imposi
 de la posición es un objetivo secundario. \par
 En la sección \ref{cap:cc1101} se exponen en detalle las características del módulo.\par
 
-\section{CC1101} \label{cap:cc1101}
-\subsection{Transceptor}
-\subsubsection{Descripción del componente}
+\subsection{CC1101} \label{cap:cc1101}
+\subsubsection{Transceptor}
+\paragraph{Descripción del componente}
 
 
 \begin{figure}[htb]
@@ -85,7 +85,7 @@ CC1101 proporciona un amplio soporte de hardware para manejo de paquetes, almace
 indicación de calidad de enlace y wake-on-radio. \par 
 En un típico sistema, el CC1101 se utilizará junto con un microcontrolador y algunos componentes pasivos adicionales.
 
-\subsubsection{Características generales}
+\paragraph{Características generales}
 
 En este apartado mostramos algunas caracteristicas importantes del CC1101 sin extendernos demasiado. Si se quiere mas información sobre este integrado ver \todo 
 
@@ -102,7 +102,7 @@ En este apartado mostramos algunas caracteristicas importantes del CC1101 sin ex
     \item Filtro digital de banda ancha programable. 58-812kHz.
 \end{itemize}
 
-\subsection{Módulo}
+\subsubsection{Módulo}
 
 El modulo aporta simplicidad al sistema, ya que contiene los componentes pasivos necesarios para el funcionamiento del CC1101. También permite mejor acceso a los pines 
 del integrado y tiene conexión SMA para antena. En nuestro caso particular, este módulo fue necesario debido a que soldamos los componentes de forma manual y porque
@@ -130,6 +130,8 @@ Se puede observar en el esquemático, que el módulo es muy simple en cuanto a l
 
 La comunicación se puede dividir en dos partes, la primera referida a la comunicación entre los nodos y la central y la otra, referida a la comunicación
 de la central con un servidor web.
+
+
 \subsection{Comunicación local}
 
 Según nuestros objetivos, la comunicación debe reunir las siguientes características:
@@ -167,6 +169,26 @@ Para nuestra aplicación usaremos el RS485 en combinación de la UART de nuestro
 (ver sección \ref{cap:max485}). Utilizaremos uno en cada nodo y en la central. El MAX485 tiene la capacidad de transformar los datos de la UART al estandar
 RS485 y viceversa. \par
 
+\subsection{MAX485} \label{cap:max485}
+
+MAX 485 es un transceptor de baja potencia para comunicación RS-485 y RS-422. Cada integrado contiene un controlador y un receptor.\par 
+La velocidad de respuesta del controlador del MAX485 no está limitada, lo que les permite transmitir hasta 2,5 Mbps. Estos transceptores
+consumen entre 120 µA y 500 µA de corriente de suministro cuando están descargados o completamente cargados con controladores desactivados.
+Todas las piezas funcionan con un solo suministro de 5V. 
+
+\begin{figure}[htb]
+	\centering
+	\includegraphics[scale=0.5]{images/max485.jpg}
+    \caption{Max 485}
+	\label{fig:max485}
+\end{figure}
+
+Los controladores tienen limitación de corriente de cortocircuito y están protegidos
+contra una disipación de energía excesiva mediante un circuito de apagado térmico que coloca las salidas del controlador en un estado de alta 
+impedancia. La entrada del receptor tiene una característica a prueba de fallas que garantiza una salida lógica alta si la entrada está en 
+circuito abierto. El MAX485 está diseñado para aplicaciones semidúplex.
+
+
 \subsection{Comunicación con Servidor Web}
 
 Una de las características mas importantes del proyecto, es la capacidad de subir la información a un Servidor Web, por lo que es indispensable que la central disponga
@@ -194,28 +216,10 @@ Nosotros elegimos el módulo sim800l por dos razones, la primera es el bajo prec
 que disponíamos con este módulo.
 En la sección \ref{cap:sim800l} se detallan las características de este componente.
 
-\section{MAX485} \label{cap:max485}
 
-MAX 485 es un transceptor de baja potencia para comunicación RS-485 y RS-422. Cada integrado contiene un controlador y un receptor.\par 
-La velocidad de respuesta del controlador del MAX485 no está limitada, lo que les permite transmitir hasta 2,5 Mbps. Estos transceptores
-consumen entre 120 µA y 500 µA de corriente de suministro cuando están descargados o completamente cargados con controladores desactivados.
-Todas las piezas funcionan con un solo suministro de 5V. 
+\subsection{SIM800L} \label {cap:sim800l}
 
-\begin{figure}[htb]
-	\centering
-	\includegraphics[scale=0.5]{images/max485.jpg}
-    \caption{Max 485}
-	\label{fig:max485}
-\end{figure}
-
-Los controladores tienen limitación de corriente de cortocircuito y están protegidos
-contra una disipación de energía excesiva mediante un circuito de apagado térmico que coloca las salidas del controlador en un estado de alta 
-impedancia. La entrada del receptor tiene una característica a prueba de fallas que garantiza una salida lógica alta si la entrada está en 
-circuito abierto. El MAX485 está diseñado para aplicaciones semidúplex.
-
-\section{SIM800L} \label {cap:sim800l}
-
-\subsection{Descripción del componente}
+\subsubsection{Descripción del componente}
 
 Utilizamos el SIM800L a través de un módulo del mismo nombre, como se suele utilizar normalmente. El módulo nos permite accesar a los pines 
 mas importantes del SIM800L para manejarlo desde un microcontrolador.\par
@@ -229,7 +233,7 @@ datos o realizar llamadas en un tamaño sumamente compacto.
 	\label{fig:sim800l}
 \end{figure}
 
-\subsection{Caracteísticas Generales}
+\subsubsection{Caracteísticas Generales}
 
 A continuación se listan algunas características importantes de este módulo. Sin embargo, si se quiere ver en mayor profundidad ver \todo
 
@@ -255,7 +259,7 @@ en caso de la presencia de un inhibidor, activar las alarmas correspondientes y 
 
 El microcontrolador que utilizamos tanto para los nodos como en la central es el stm32f103c8t6. La decisión de utilizar este microncontrolador se tomó debido 
 a sus características, el bajo precio y sobre todo porque ya contábamos con experiencia en su uso.
-En este caso, decidimos utilizar un módulo de desarrollo llamado "Blue Pill". Las características de esta placa la podemos ver en la sección \ref{cap:bluepill}
+En este caso, decidimos utilizar un módulo de desarrollo llamado "Blue Pill". Las características de esta placa la podemos ver en la sección \ref{cap:stm32}
 
 En la tabla \ref{tab:uC} podemos ver una comparación entre nuestro microcontrolador y otras opciones similares de otros marcas.
 
@@ -280,8 +284,8 @@ Es importante añadir que podemos programar la Blue Pill mediante un programador
 utilizar el programa STM32CubeIDE del fabricante para debuggear el sistema, característica que fue muy importante en el desarrollo del proyecto.\par
 En la sección \ref{cap:stm32} ahondamos mas sobre este módulo y el microcontrolador en cuestión. 
 
-\section{Blue Pill STM32} \label{cap:stm32}
-\subsection{stm32f103c8t6}
+\subsection{Blue Pill STM32} \label{cap:stm32}
+\subsubsection{stm32f103c8t6}
 
 Es un microcontrolador perteneciente a la linea de rendimiento medio de la familia STM. Incorpora el npucleo RISC ARM Cortex de 32 bits de alto rendimiento,
 posee memorias integradas de alta velocidad y una amplia gama de entradas y salidas. Este dispositivo ofrece dos ADC de 12bits, tres temporizadores de 16bits
@@ -302,7 +306,7 @@ A continuación se listan algunas de las características que nos parecen mas im
     \item Dos ADC de 10 canales.
 \end{itemize}
 
-\subsection{Módulo Blue Pill} \label{cap:bluepill}
+\subsubsection{Módulo Blue Pill}
 
 En nuestro sistema utilizamos la placa de desarrollo llamaba Blue Pill. Esta placa incorpora al stm32f103c8t6 y aporta los componentes pasivos
 adecuados para su uso, también incorpora dos cristales, entrada microUSB, leds indicadores, boton de reset e integrado para regulación de tensión. \par
