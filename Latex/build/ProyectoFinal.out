@@ -10,3 +10,45 @@
 \BOOKMARK [1][-]{section.2.1}{Objetivos globales del sistema}{chapter.2}% 10
 \BOOKMARK [1][-]{section.2.2}{Esquema de funcionamiento}{chapter.2}% 11
 \BOOKMARK [1][-]{section.2.3}{Subsistemas que lo componen}{chapter.2}% 12
+\BOOKMARK [0][-]{chapter.3}{Selecci\363n de componentes}{}% 13
+\BOOKMARK [1][-]{section.3.1}{Etapa receptora de RF}{chapter.3}% 14
+\BOOKMARK [1][-]{section.3.2}{CC1101}{chapter.3}% 15
+\BOOKMARK [2][-]{subsection.3.2.1}{Transceptor}{section.3.2}% 16
+\BOOKMARK [2][-]{subsection.3.2.2}{M\363dulo}{section.3.2}% 17
+\BOOKMARK [1][-]{section.3.3}{Comunicaci\363n Serial}{chapter.3}% 18
+\BOOKMARK [2][-]{subsection.3.3.1}{Comunicaci\363n local}{section.3.3}% 19
+\BOOKMARK [2][-]{subsection.3.3.2}{Comunicaci\363n con Servidor Web}{section.3.3}% 20
+\BOOKMARK [1][-]{section.3.4}{MAX485}{chapter.3}% 21
+\BOOKMARK [1][-]{section.3.5}{SIM800L}{chapter.3}% 22
+\BOOKMARK [2][-]{subsection.3.5.1}{Descripci\363n del componente}{section.3.5}% 23
+\BOOKMARK [2][-]{subsection.3.5.2}{Caracte\355sticas Generales}{section.3.5}% 24
+\BOOKMARK [1][-]{section.3.6}{Procesamiento}{chapter.3}% 25
+\BOOKMARK [1][-]{section.3.7}{Blue Pill STM32}{chapter.3}% 26
+\BOOKMARK [2][-]{subsection.3.7.1}{stm32f103c8t6}{section.3.7}% 27
+\BOOKMARK [2][-]{subsection.3.7.2}{M\363dulo Blue Pill}{section.3.7}% 28
+\BOOKMARK [0][-]{chapter.4}{Central de procesamiento}{}% 29
+\BOOKMARK [1][-]{section.4.1}{Descripci\363n general}{chapter.4}% 30
+\BOOKMARK [2][-]{subsection.4.1.1}{Funcionamiento}{section.4.1}% 31
+\BOOKMARK [1][-]{section.4.2}{Prototipo}{chapter.4}% 32
+\BOOKMARK [2][-]{subsection.4.2.1}{Dise\361o}{section.4.2}% 33
+\BOOKMARK [2][-]{subsection.4.2.2}{Problemas surgidos}{section.4.2}% 34
+\BOOKMARK [1][-]{section.4.3}{Dise\361o final}{chapter.4}% 35
+\BOOKMARK [2][-]{subsection.4.3.1}{Software}{section.4.3}% 36
+\BOOKMARK [2][-]{subsection.4.3.2}{Hardware}{section.4.3}% 37
+\BOOKMARK [1][-]{section.4.4}{Gabinete}{chapter.4}% 38
+\BOOKMARK [0][-]{chapter.5}{Nodos de recepci\363n}{}% 39
+\BOOKMARK [1][-]{section.5.1}{Descripci\363n general}{chapter.5}% 40
+\BOOKMARK [1][-]{section.5.2}{Prototipo}{chapter.5}% 41
+\BOOKMARK [1][-]{section.5.3}{Dise\361o final}{chapter.5}% 42
+\BOOKMARK [2][-]{subsection.5.3.1}{Software}{section.5.3}% 43
+\BOOKMARK [2][-]{subsection.5.3.2}{Hardware}{section.5.3}% 44
+\BOOKMARK [2][-]{subsection.5.3.3}{Gabinete}{section.5.3}% 45
+\BOOKMARK [0][-]{chapter.6}{Desarrollo de servidor web}{}% 46
+\BOOKMARK [1][-]{section.6.1}{Objetivos}{chapter.6}% 47
+\BOOKMARK [1][-]{section.6.2}{P\341gina web}{chapter.6}% 48
+\BOOKMARK [2][-]{subsection.6.2.1}{Pesta\361as}{section.6.2}% 49
+\BOOKMARK [1][-]{section.6.3}{Base de datos}{chapter.6}% 50
+\BOOKMARK [2][-]{subsection.6.3.1}{Carga de datos}{section.6.3}% 51
+\BOOKMARK [0][-]{chapter.7}{Conclusiones y trabajo futuro}{}% 52
+\BOOKMARK [1][-]{section.7.1}{Conlcusiones}{chapter.7}% 53
+\BOOKMARK [1][-]{section.7.2}{Trabajo futuro}{chapter.7}% 54

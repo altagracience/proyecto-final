@@ -554,6 +554,15 @@ INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\generic\uniquecounter\uni
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\generic\uniquecounter\uniquecounter.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\tools\array.sty
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\listings\listings.sty
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\listings\listings.sty
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\latex\listings\listings.sty
@@ -624,6 +633,16 @@ INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\generic\gettitlestring\ge
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\tex\generic\gettitlestring\gettitlestring.sty
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
 OUTPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.out
 INPUT .\images\LogoUTN.png
 INPUT .\images\LogoUTN.png
@@ -639,20 +658,42 @@ INPUT C:\Users\teto_\AppData\Local\MiKTeX\pdftex\config\pdftex.map
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr17.tfm
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmti12.tfm
-OUTPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.toc
-OUTPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
-INPUT .\chapter-introduccion.tex
-INPUT .\chapter-introduccion.tex
-INPUT .\chapter-introduccion.tex
-INPUT .\chapter-introduccion.tex
-INPUT .\chapter-introduccion.tex
-INPUT chapter-introduccion.tex
-INPUT .\chapter-introduccion.tex
-INPUT .\chapter-introduccion.tex
-INPUT .\chapter-introduccion.tex
-INPUT .\chapter-introduccion.tex
-INPUT chapter-introduccion.tex
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.toc
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.toc
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.toc
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
+INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
+OUTPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.toc
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
+INPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
+OUTPUT c:\Users\teto_\Documents\FACULTAD_2020\Proyecto final\proyecto-final\Latex\build\ProyectoFinal.lof
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\chapter-introduccion.tex
+INPUT .\chapter-introduccion.tex
+INPUT .\chapter-introduccion.tex
+INPUT .\chapter-introduccion.tex
+INPUT .\chapter-introduccion.tex
+INPUT chapter-introduccion.tex
+INPUT .\chapter-introduccion.tex
+INPUT .\chapter-introduccion.tex
+INPUT .\chapter-introduccion.tex
+INPUT .\chapter-introduccion.tex
+INPUT chapter-introduccion.tex
 INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmbx12.tfm
 INPUT .\images\LogoUTN.png
 INPUT .\images\LogoUTN.png
@@ -702,14 +743,6 @@ INPUT .\images\LogoUTN.png
 INPUT .\images\LogoUTN.png
 INPUT images\LogoUTN.png
 INPUT .\images\LogoUTN.png
-INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr8.tfm
-INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmr6.tfm
-INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi12.tfm
-INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi8.tfm
-INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmmi6.tfm
-INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy10.tfm
-INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy8.tfm
-INPUT C:\Users\teto_\AppData\Local\Programs\MiKTeX\fonts\tfm\public\cm\cmsy6.tfm
 INPUT .\images\LogoUTN.png
 INPUT .\images\LogoUTN.png
 INPUT images\LogoUTN.png
@@ -819,6 +852,106 @@ INPUT .\chapter-componentes.tex
 INPUT .\chapter-componentes.tex
 INPUT .\chapter-componentes.tex
 INPUT chapter-componentes.tex
+INPUT .\images\Opcion1.png
+INPUT .\images\Opcion1.png
+INPUT images\Opcion1.png
+INPUT .\images\Opcion1.png
+INPUT .\images\Opcion1.png
+INPUT .\images\Opcion1.png
+INPUT .\images\Opcion1.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\Opcion2.png
+INPUT .\images\Opcion2.png
+INPUT images\Opcion2.png
+INPUT .\images\Opcion2.png
+INPUT .\images\Opcion2.png
+INPUT .\images\Opcion2.png
+INPUT .\images\Opcion2.png
+INPUT .\images\CC1101.png
+INPUT .\images\CC1101.png
+INPUT images\CC1101.png
+INPUT .\images\CC1101.png
+INPUT .\images\CC1101.png
+INPUT .\images\CC1101.png
+INPUT .\images\CC1101.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\EsquemáticoCC1101.jpg
+INPUT .\images\EsquemáticoCC1101.jpg
+INPUT images\EsquemáticoCC1101.jpg
+INPUT .\images\EsquemáticoCC1101.jpg
+INPUT .\images\EsquemáticoCC1101.jpg
+INPUT .\images\EsquemáticoCC1101.jpg
+INPUT .\images\EsquemáticoCC1101.jpg
+INPUT .\images\modulo_cc1101.jpg
+INPUT .\images\modulo_cc1101.jpg
+INPUT images\modulo_cc1101.jpg
+INPUT .\images\modulo_cc1101.jpg
+INPUT .\images\modulo_cc1101.jpg
+INPUT .\images\modulo_cc1101.jpg
+INPUT .\images\modulo_cc1101.jpg
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\max485.jpg
+INPUT .\images\max485.jpg
+INPUT images\max485.jpg
+INPUT .\images\max485.jpg
+INPUT .\images\max485.jpg
+INPUT .\images\max485.jpg
+INPUT .\images\max485.jpg
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\sim800l.png
+INPUT .\images\sim800l.png
+INPUT images\sim800l.png
+INPUT .\images\sim800l.png
+INPUT .\images\sim800l.png
+INPUT .\images\sim800l.png
+INPUT .\images\sim800l.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\esquematico_bluepill.png
+INPUT .\images\esquematico_bluepill.png
+INPUT images\esquematico_bluepill.png
+INPUT .\images\esquematico_bluepill.png
+INPUT .\images\esquematico_bluepill.png
+INPUT .\images\esquematico_bluepill.png
+INPUT .\images\esquematico_bluepill.png
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
 INPUT .\chapter-central.tex
 INPUT .\chapter-central.tex
 INPUT .\chapter-central.tex
@@ -830,6 +963,10 @@ INPUT .\chapter-central.tex
 INPUT .\chapter-central.tex
 INPUT .\chapter-central.tex
 INPUT chapter-central.tex
+INPUT .\images\LogoUTN.png
+INPUT .\images\LogoUTN.png
+INPUT images\LogoUTN.png
+INPUT .\images\LogoUTN.png
 INPUT .\images\central\placa-prot-central-superior.png
 INPUT .\images\central\placa-prot-central-superior.png
 INPUT images\central\placa-prot-central-superior.png
