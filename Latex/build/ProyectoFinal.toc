@@ -65,34 +65,34 @@
 \contentsline {subsubsection}{PCB}{39}{section*.37}%
 \contentsline {subsubsection}{Modelo 3D}{39}{section*.38}%
 \contentsline {section}{\numberline {4.4}Gabinete}{41}{section.4.4}%
-\contentsline {chapter}{\numberline {5}Nodos de recepción}{44}{chapter.5}%
-\contentsline {section}{\numberline {5.1}Descripción general}{44}{section.5.1}%
-\contentsline {section}{\numberline {5.2}Prototipo}{44}{section.5.2}%
-\contentsline {section}{\numberline {5.3}Diseño final}{47}{section.5.3}%
-\contentsline {subsection}{\numberline {5.3.1}Software}{47}{subsection.5.3.1}%
-\contentsline {subsubsection}{Recepción RF}{47}{section*.39}%
-\contentsline {subsubsection}{Estrategia de detección de inhibiciones}{48}{section*.40}%
-\contentsline {subsubsection}{Comunicación con la central}{48}{section*.41}%
-\contentsline {subsection}{\numberline {5.3.2}Hardware}{50}{subsection.5.3.2}%
-\contentsline {subsection}{\numberline {5.3.3}Gabinete}{51}{subsection.5.3.3}%
-\contentsline {chapter}{\numberline {6}Ensayos}{53}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Análisis de llaves e inhibidores}{53}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Pruebas y configuración del CC1101}{54}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Ensayos de las estrategias de detección}{54}{section.6.3}%
-\contentsline {section}{\numberline {6.4}Servidor Web y conexión a internet}{55}{section.6.4}%
-\contentsline {section}{\numberline {6.5}Desarrollo de la comunicación serial del sistema}{55}{section.6.5}%
-\contentsline {section}{\numberline {6.6}Ensayos Finales}{56}{section.6.6}%
-\contentsline {chapter}{\numberline {7}Desarrollo de servidor web}{57}{chapter.7}%
-\contentsline {section}{\numberline {7.1}Objetivos}{57}{section.7.1}%
-\contentsline {section}{\numberline {7.2}Página web}{58}{section.7.2}%
-\contentsline {subsection}{\numberline {7.2.1}Pestañas}{60}{subsection.7.2.1}%
-\contentsline {subsubsection}{Inicio}{60}{section*.42}%
-\contentsline {subsubsection}{Nosotros}{60}{section*.43}%
-\contentsline {subsubsection}{Estadísticas}{61}{section*.44}%
-\contentsline {subsubsection}{Triangulación}{62}{section*.45}%
-\contentsline {subsubsection}{Contacto}{62}{section*.46}%
-\contentsline {section}{\numberline {7.3}Base de datos}{63}{section.7.3}%
-\contentsline {subsection}{\numberline {7.3.1}Carga de datos}{64}{subsection.7.3.1}%
-\contentsline {chapter}{\numberline {8}Conclusiones y trabajo futuro}{65}{chapter.8}%
-\contentsline {section}{\numberline {8.1}Conlcusiones}{65}{section.8.1}%
-\contentsline {section}{\numberline {8.2}Trabajo futuro}{66}{section.8.2}%
+\contentsline {chapter}{\numberline {5}Nodos de recepción}{45}{chapter.5}%
+\contentsline {section}{\numberline {5.1}Descripción general}{45}{section.5.1}%
+\contentsline {section}{\numberline {5.2}Prototipo}{45}{section.5.2}%
+\contentsline {section}{\numberline {5.3}Diseño final}{48}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Software}{48}{subsection.5.3.1}%
+\contentsline {subsubsection}{Recepción RF}{48}{section*.39}%
+\contentsline {subsubsection}{Estrategia de detección de inhibiciones}{49}{section*.40}%
+\contentsline {subsubsection}{Comunicación con la central}{49}{section*.41}%
+\contentsline {subsection}{\numberline {5.3.2}Hardware}{51}{subsection.5.3.2}%
+\contentsline {subsection}{\numberline {5.3.3}Gabinete}{53}{subsection.5.3.3}%
+\contentsline {chapter}{\numberline {6}Ensayos}{55}{chapter.6}%
+\contentsline {section}{\numberline {6.1}Análisis de llaves e inhibidores}{55}{section.6.1}%
+\contentsline {section}{\numberline {6.2}Pruebas y configuración del CC1101}{56}{section.6.2}%
+\contentsline {section}{\numberline {6.3}Ensayos de las estrategias de detección}{56}{section.6.3}%
+\contentsline {section}{\numberline {6.4}Servidor Web y conexión a internet}{57}{section.6.4}%
+\contentsline {section}{\numberline {6.5}Desarrollo de la comunicación serial del sistema}{57}{section.6.5}%
+\contentsline {section}{\numberline {6.6}Ensayos Finales}{58}{section.6.6}%
+\contentsline {chapter}{\numberline {7}Desarrollo de servidor web}{59}{chapter.7}%
+\contentsline {section}{\numberline {7.1}Objetivos}{59}{section.7.1}%
+\contentsline {section}{\numberline {7.2}Página web}{60}{section.7.2}%
+\contentsline {subsection}{\numberline {7.2.1}Pestañas}{62}{subsection.7.2.1}%
+\contentsline {subsubsection}{Inicio}{62}{section*.42}%
+\contentsline {subsubsection}{Nosotros}{62}{section*.43}%
+\contentsline {subsubsection}{Estadísticas}{63}{section*.44}%
+\contentsline {subsubsection}{Triangulación}{64}{section*.45}%
+\contentsline {subsubsection}{Contacto}{64}{section*.46}%
+\contentsline {section}{\numberline {7.3}Base de datos}{65}{section.7.3}%
+\contentsline {subsection}{\numberline {7.3.1}Carga de datos}{66}{subsection.7.3.1}%
+\contentsline {chapter}{\numberline {8}Conclusiones y trabajo futuro}{67}{chapter.8}%
+\contentsline {section}{\numberline {8.1}Conlcusiones}{67}{section.8.1}%
+\contentsline {section}{\numberline {8.2}Trabajo futuro}{68}{section.8.2}%

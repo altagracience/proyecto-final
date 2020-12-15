@@ -83,6 +83,8 @@ uint8_t GSM_Inited = 0;
 uint32_t ticks;
 uint8_t bTx_command = 1, bFin_GPRS=1;
 char GSM_Data_out[] = "params='A','B','C','AG',0,0,0,0,0,0)\n\r";
+uint8_t RSSI_value[3] = {0,0,0};
+uint8_t estado_inhi[3] = {0,0,0};
 
 /* USER CODE END 0 */
 
@@ -122,8 +124,6 @@ int main(void)
 
 
   eSystemState NextState;
-  uint8_t RSSI_value[3] = {0,0,0};
-  uint8_t estado_inhi[3] = {0,0,0};
   uint8_t cRx = 0;
   uint8_t err = 0, eRx = 0;
   uint8_t i = 0;
@@ -515,6 +515,9 @@ static void MX_GPIO_Init(void)
   /*Configure GPIO pin Output Level */
   HAL_GPIO_WritePin(GPIOB, GPIO_PIN_4|GPIO_PIN_6, GPIO_PIN_RESET);
 
+  /*Configure GPIO pin Output Level */
+  HAL_GPIO_WritePin(GPIOB, GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9, GPIO_PIN_SET);
+
   /*Configure GPIO pin : PA8 */
   GPIO_InitStruct.Pin = GPIO_PIN_8;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
@@ -529,8 +532,8 @@ static void MX_GPIO_Init(void)
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
   HAL_GPIO_Init(GPIOA, &GPIO_InitStruct);
 
-  /*Configure GPIO pin : PB4 */
-  GPIO_InitStruct.Pin = GPIO_PIN_4;
+  /*Configure GPIO pins : PB4 PB7 PB8 PB9 */
+  GPIO_InitStruct.Pin = GPIO_PIN_4|GPIO_PIN_7|GPIO_PIN_8|GPIO_PIN_9;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;
