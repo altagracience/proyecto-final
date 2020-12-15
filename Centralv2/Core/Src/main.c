@@ -82,6 +82,7 @@ uint8_t GSM_Data_In [2] = "";
 uint8_t GSM_Inited = 0;
 uint32_t ticks;
 uint8_t bTx_command = 1, bFin_GPRS=1;
+char GSM_Data_out[] = "params='A','B','C','AG',0,0,0,0,0,0)\n\r";
 
 /* USER CODE END 0 */
 
@@ -581,6 +582,15 @@ void GSM_Send(void){
 		HAL_UART_Transmit(&huart2, (uint8_t*)"AT+SAPBR=3,1,PWD,adgj\n\r", strlen("AT+SAPBR=3,1,PWD,adgj\n\r"),HAL_MAX_DELAY);
 		HAL_Delay(300);
 		GSM_State = 0;
+
+		GSM_Data_out[24] = (char) RSSI_value[0];
+		GSM_Data_out[26] = (char) RSSI_value[1];
+		GSM_Data_out[28] = (char) RSSI_value[2];
+
+		GSM_Data_out[30] = (char) estado_inhi[0];
+		GSM_Data_out[32] = (char) estado_inhi[1];
+		GSM_Data_out[34] = (char) estado_inhi[2];
+
 		ticks = HAL_GetTick();
 		HAL_TIM_Base_Start_IT(&htim3);
 	}
@@ -645,7 +655,7 @@ void HAL_TIM_PeriodElapsedCallback(TIM_HandleTypeDef *htim){
 
 		if(GSM_State == 8 && ((HAL_GetTick() - ticks) >= (1000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
 			bTx_command = 0;
-			HAL_UART_Transmit_IT(&huart2, (uint8_t*)"params='A','B','C','UTN',98,97,96,0,1,2)\n\r", strlen("params='A','B','C','UTN',98,97,96,0,1,2)\n\r"));
+			HAL_UART_Transmit_IT(&huart2, (uint8_t*) GSM_Data_out, strlen(GSM_Data_out));
 		}
 		if(GSM_State == 9 && ((HAL_GetTick() - ticks) >= (10000 + (uint32_t)(uwTickFreq))) && bTx_command == 1){
 			bTx_command = 0;

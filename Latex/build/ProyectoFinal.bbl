@@ -1,0 +1,45 @@
+\begin{thebibliography}{10}
+
+\bibitem{cc1101}
+Texas Instruments, {\em CC1101. Low power Sub-1 GHz RF Transceiver -
+  Datasheet}.
+
+\bibitem{sim800}
+SIMCom, {\em SIM800L - Datasheet}.
+
+\bibitem{max1473}
+Maxin Integrated, {\em MAX1473 - Datasheet}.
+
+\bibitem{hacker_handbook}
+C.~Smith, ``The car hacker's handbook: a guide for the penetration tester,''
+  2016.
+
+\bibitem{detectiong_jamming}
+{Wenyuan Xu, Wade Trappe, Yanyong Zhang and Timothy Wood}, ``The feasibility of
+  launching and detecting jamming attacks in wireless networks.'' Rutgers
+  University.
+
+\bibitem{denial_service}
+{Konstantinos Pelechrinis, Marios Iliofotou and Srikanth V. Krishnamurthy},
+  ``Denial of service attacks in wireless networks: The case of jammers,'' {\em
+  IEEE communications surveys and tutorials}, 2011.
+
+\bibitem{jamming-sensor}
+{Wenyuan Xu, Ke Ma, Wade Trappe and Yanyong Zhang}, ``Jamming sensor networks:
+  Attack and defense strategies.'' Rutgers University.
+
+\bibitem{blocking}
+{Robert G. Meyer and Alvin K. Wong}, ``Blocking and desensitization in rf
+  amplifiers,'' {\em IEEE JOURNAL OF SOLID-STATE CIRCUITS, VOL. 30}, 1995.
+
+\bibitem{intentional-elec}
+{Stefan van de Beek, Robert Vogt-Ardatjew and Frank Leferink}, ``Intentional
+  electromagnetic interference through saturation of the rf front end,'' {\em
+  APEMC}, 2015.
+
+\bibitem{reactive}
+{Matthias Wilhelm, Ivan Martinovic, Jens B. Schmitt and Vincent Lenders},
+  ``Reactive jamming in wireless networks — how realistic is the threat?.''
+  Disco Labs.
+
+\end{thebibliography}
