@@ -117,9 +117,9 @@ radiofrecuencia. Esto puede ser logrado mediante dos estrategias:
 El ataque más evidente que se presenta para inhibir una comunicación es el de inyectar en el canal que se desea perjudicar una señal con 
 datos aleatorios que perjudique la relación señal ruido (SNR) y dificulte la recepción para el sistema. \par
 En el caso particular de los vehículos, los receptores de radiofrecuencia que se utilizan y sobre los que basamos nuestro análisis
-son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se analiza en [1].\par
+son de 433,92 MHz con un filtro de ancho de banda de entrada de 300 KHz -como se analiza en [3].\par
 El ancho de banda de recepción da lugar a sumar ruido en el canal, alterando así los datos recibidos por el demodulador. Una figura
-ilustrativa se puede observa en la imagen \ref{fpb_jam} de [2].
+ilustrativa se puede observa en la imagen \ref{fpb_jam} de [4].
 
 \begin{figure}[htb]
 	\centering
@@ -141,7 +141,9 @@ Los receptores de radiofrecuencia usualmente están diseñados asumiendo que se 
 etapa presente es un amplificador de bajo ruido.  Este es clave para que el ruido del mezclador no afecte la relación señal ruido de las 
 etapas siguientes. Entre las especificaciones importantes de dichos amplificadores de RF se incluyen la figura de ruido, la ganancia y la 
 intercepción de intermodulación de tercer orden.\par
-La influencia de grandes señales de interferencia se manifiesta de varias formas. Una de estas es en la intermodulación de tercer orden en la que dos señales, una pequeña (de interés) y la interferente (de gran amplitud), se superponen. La interferente podría saturar el receptor de modo que la señal de interés presente una pequeña ganancia como hace referencia [6] y [7]. Este efecto es causado por la no linealidad de tercer orden del sistema.
+La influencia de grandes señales de interferencia se manifiesta de varias formas. Una de estas es en la intermodulación de tercer orden en la que dos señales, 
+una pequeña (de interés) y la interferente (de gran amplitud), se superponen. La interferente podría saturar el receptor de modo que la señal de interés presente 
+una pequeña ganancia como hace referencia [8] y [9]. Este efecto es causado por la no linealidad de tercer orden del sistema.
 
 La saturación de un sistema suele tener un comportamiento de compresión  de la ganancia, decrementando la misma a medida de que la entrada aumenta.
 Este efecto puede ser cualificado como el punto de 1 dB de compresión el cual está definido como el punto en el que la amplitud de la señal de 
@@ -207,7 +209,7 @@ comunicaciones inalámbricas de banda angosta poseen un angosto filtrado.
 Se utiliza una señal constante que se modula con la portadora resultando una señal de muy angosto ancho de banda. En sistemas de comunicación 
 avanzados posee una alta eficiencia de interferencia ya que perjudica la recuperación de la sintonización a causa de que el receptor detecta 
 la señal como una segunda portadora y de que más potencia por Hertz (densidad de potencia espectral) gracias a que está más concentrado
-en el canal, como profundamente se analiza en [8].
+en el canal, como profundamente se analiza en [10].
 
 \subsubsection{Inhibición por pulsos}
 
@@ -290,7 +292,7 @@ comparado a la potencia de señal que se espera recibir y para el que fue diseñ
 potencia recibidos, estableciendo un valor a partir del cual se señale como alarmante para la correcta recepción de la información. 
 En el caso particular de los dispositivos de control remoto en los sistemas de seguridad vehicular resulta más sencillo el análisis 
 debido a que los dispositivos emisores que se utilizan son de baja potencia comparado a la necesaria para saturar un receptor típico.\par
-En [7] se realiza el análisis del receptor MAX1470 [1], muy difundido en sistemas de control remoto tanto en el ámbito automotriz como también
+En [9] se realiza el análisis del receptor MAX1473 [3], muy difundido en sistemas de control remoto tanto en el ámbito automotriz como también
 en sistemas de portones de apertura inalámbrica, sistemas de seguridad, sensores inalámbricos y mucho más. Este integrado es un receptor de 
 ASK superheterodíneo de bajo costo que posee un mezclador de rechazo de imagen que mezcla la señal a una frecuencia intermedia de 10,7 MHz. En
 la figura \ref{compresion_max} se puede observar que la ganancia del sistema de recepción se aplana aproximadamente con una entrada de -35 dBm.
